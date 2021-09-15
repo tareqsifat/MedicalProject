@@ -26,8 +26,6 @@
                         <li class="menu-item"><a class="menu-link" href="{{ route('website_doctor') }}"><div>Doctors</div></a>
                             <ul class="sub-menu-container">
                                 <li class="menu-item"><a class="menu-link" href="{{ route('website_doctor_list') }}"><div>2 columns - List style</div></a></li>
-                                <li class="menu-item"><a class="menu-link" href="demo-medical-doctors-3.html"><div>3 columns</div></a></li>
-                                <li class="menu-item"><a class="menu-link" href="demo-medical-doctors.html"><div>4 columns</div></a></li>
                             </ul>
                         </li>
                         <li class="menu-item"><a class="menu-link" href="{{ route('website_blog') }}"><div>Blog</div></a></li>

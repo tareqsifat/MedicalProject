@@ -21,77 +21,119 @@
 		<div class="container">
 
 			<div class="tabs tabs-tb tabs-responsive" id="tab" data-accordion-style="accordion-bg">
-
 				<ul class="tab-nav">
-					<li><a href="#tabs-1"><i class="icon-medical-i-cardiology"></i> Health Care</a></li>
-					<li><a href="#tabs-2"><i class="icon-medical-i-surgery"></i> Outpatient Surgery</a></li>
-					<li><a href="#tabs-3"><i class="icon-medical-i-dental"></i> Dentist</a></li>
-					<li><a href="#tabs-4"><i class="icon-medical-ophthalmology"></i> Ophthalmology Clinic</a></li>
+					@foreach ($department as $key=> $item)
+						<li><a href="#tabs-{{ $key+1}}"><i class="{{ $item->icon }}"></i> {{ $item->title }}</a></li>
+						{{-- <li><a href="#tabs-2"><i class="icon-medical-i-surgery"></i> Outpatient Surgery</a></li>
+						<li><a href="#tabs-3"><i class="icon-medical-i-dental"></i> Dentist</a></li>
+						<li><a href="#tabs-4"><i class="icon-medical-ophthalmology"></i> Ophthalmology Clinic</a></li> --}}
+					@endforeach
 				</ul>
 
 				<div class="tab-container">
-					<div class="tab-content" id="tabs-1">
-						<blockquote class="quote"><p>Proin elit arcu, rutrum commodo, vehicula tempus, commodo a, risus. Curabitur nec arcu. Donec sollicitudin mi sit amet mauris. Nam elementum quam ullamcorper ante. Etiam aliquet massa et lorem. Mauris dapibus lacus auctor risus. Aenean tempor ullamcorper leo. Vivamus sed magna quis ligula eleifend adipiscing</p></blockquote>
+					@foreach ($department as $key=> $item)
+						<div class="tab-content" id="tabs-{{$key + 1}}">
+						<blockquote class="quote"><p>{{ $item->description }}</p></blockquote>
 						<div class="row">
-							<div class="col-lg-4">
-								<h4 class="leftmargin-sm">Treatements</h4>
-								<ul class="price-table leftmargin-sm mb-0">
-									<li>
-										<span>Tummy Tuck</span>
-										<div class="value">$130</div>
-									</li>
-									<li>
-										<span>Liposuction</span>
-										<div class="value">$110</div>
-									</li>
-									<li>
-										<span>Colonoscopy</span>
-										<div class="value">$90</div>
-									</li>
-									<li>
-										<span>Cardiac ablation</span>
-										<div class="value">$173</div>
-									</li>
-									<li>
-										<span>Dermatology</span>
-										<div class="value">$124</div>
-									</li>
-								</ul>
-								<a href="#" class="more-link leftmargin-sm bottommargin-sm">View Full Services→</a>
-							</div>
-							<div class="col-lg-4">
-								<h4 class="leftmargin-sm">Therapists</h4>
-								<ul class="price-table leftmargin-sm mb-0">
-									<li>
-										<span>Tummy Tuck</span>
-										<div class="value">$120</div>
-									</li>
-									<li>
-										<span>Liposuction</span>
-										<div class="value">$210</div>
-									</li>
-									<li>
-										<span>Heart Patient</span>
-										<div class="value">$320</div>
-									</li>
-									<li>
-										<span>Colonoscopy</span>
-										<div class="value">$80</div>
-									</li>
-									<li>
-										<span>Cardio</span>
-										<div class="value">$42</div>
-									</li>
-								</ul>
-								<a href="#" class="more-link leftmargin-sm bottommargin-sm">View Full Services→</a>
-							</div>
+							@if ($item->service)
+								<div class="col-lg-4">
+									<h4 class="leftmargin-sm"><p>Treatments</p></h4>
+									<ul class="price-table leftmargin-sm mb-0">
+										{{-- <li>
+											<span>Tummy Tuck</span>
+											<div class="value">$120</div>
+										</li> --}}
+										<li>
+											<span>{{ $item->treatment_info->name }}</span>
+											<div class="value">${{ $item->treatment_info->cost }}</div>
+										</li>
+										<li>
+											<span>Liposuction</span>
+											<div class="value">$110</div>
+										</li>
+										<li>
+											<span>Colonoscopy</span>
+											<div class="value">$90</div>
+										</li>
+										<li>
+											<span>Cardiac ablation</span>
+											<div class="value">$173</div>
+										</li>
+										<li>
+											<span>Dermatology</span>
+											<div class="value">$124</div>
+										</li>
+									</ul>									
+									<a href="#" class="more-link leftmargin-sm bottommargin-sm">View Full Services→</a>
+								</div>
+							@else
+								<div class="col-lg-4">
+									<h4 class="leftmargin-sm">Therapists</h4>
+									<ul class="price-table leftmargin-sm mb-0">
+										{{-- <li>
+											<span>Tummy Tuck</span>
+											<div class="value">$120</div>
+										</li> --}}
+										<li>
+											<span>{{ $item->treatment_info->name }}</span>
+											<div class="value">${{ $item->treatment_info->cost }}</div>
+										</li>
+										<li>
+											<span>Liposuction</span>
+											<div class="value">$210</div>
+										</li>
+										<li>
+											<span>Heart Patient</span>
+											<div class="value">$320</div>
+										</li>
+										<li>
+											<span>Colonoscopy</span>
+											<div class="value">$80</div>
+										</li>
+										<li>
+											<span>Cardio</span>
+											<div class="value">$42</div>
+										</li>
+									</ul>
+									<a href="#" class="more-link leftmargin-sm bottommargin-sm">View Full Services→</a>
+								</div>
+							@endif
 							<div class="col-lg-4">
 								<img src="{{ 'contents/website' }}/demos/medical/images/section-bg.jpg" alt="Image">
 							</div>
 						</div>
+						<div class="row justify-content-center">
+							<div class="col-lg-6">
+								<div class="team team-list row align-items-center">
+									<div class="team-image col-sm-6">
+										<img src="{{ asset('/uploads/doctors') }}/{{ $item->doctor_info->photo }}" alt="{{ $item->doctor_info->photo }}">
+									</div>
+									<div class="team-desc col-sm-6">
+										<div class="team-title"><h4>{{ $item->doctor_info->name }}</h4><span>CEO</span></div>
+										<div class="team-content">
+											<p>{{ $item->doctor_info->description }}</p>
+										</div>
+										<a href="{{ $item->doctor_info->facebook_ac }}" class="social-icon si-rounded si-small si-facebook">
+											<i class="icon-facebook"></i>
+											<i class="icon-facebook"></i>
+										</a>
+										<a href="{{ $item->doctor_info->twitter_ac }}" class="social-icon si-rounded si-small si-twitter">
+											<i class="icon-twitter"></i>
+											<i class="icon-twitter"></i>
+										</a>
+										<a href="{{ $item->doctor_info->google_ac }}" class="social-icon si-rounded si-small si-gplus">
+											<i class="icon-gplus"></i>
+											<i class="icon-gplus"></i>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
+					@endforeach
+					
 
-					<div class="tab-content" id="tabs-2">
+					{{-- <div class="tab-content" id="tabs-2">
 						<blockquote class="quote"><p>Proin elit arcu, rutrum commodo, vehicula tempus, commodo a, risus. Curabitur nec arcu. Donec sollicitudin mi sit amet mauris. Nam elementum quam ullamcorper ante. Etiam aliquet massa et lorem. Mauris dapibus lacus auctor risus. Aenean tempor ullamcorper leo. Vivamus sed magna quis ligula eleifend adipiscing</p></blockquote>
 						<div class="row col-mb-50 mb-0">
 							<div class="col-lg-6">
@@ -312,7 +354,7 @@
 								<a href="#" class="more-link leftmargin-sm">View Full Services→</a>
 							</div>
 						</div>
-					</div>
+					</div> --}}
 
 				</div>
 

@@ -5,25 +5,25 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\WebsiteController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Admin\SubCategoryController;
-use App\Http\Controllers\Admin\BlogController;
-use App\Http\Controllers\Admin\ServiceController;
-use App\Http\Controllers\Admin\AppointmentController;
-use App\Http\Controllers\Admin\FaqController;
-use App\Http\Controllers\Admin\TestimonialController;
-use App\Http\Controllers\Admin\FooterController;
-use App\Http\Controllers\Admin\SubscribeController;
-use App\Http\Controllers\Admin\SliderController;
-use App\Http\Controllers\Admin\OurWorkController;
-use App\Http\Controllers\Admin\OpeningHourController;
-use App\Http\Controllers\Admin\AppointmentQueController;
-use App\Http\Controllers\Admin\AppointmentPageController;
-use App\Http\Controllers\Admin\DoctorsController;
+
+// use App\Http\Controllers\Admin\CategoryController;
+// use App\Http\Controllers\Admin\SubCategoryController;
+// use App\Http\Controllers\Admin\BlogController;
+// use App\Http\Controllers\Admin\ServiceController;
+// use App\Http\Controllers\Admin\AppointmentController;
+// use App\Http\Controllers\Admin\FaqController;
+// use App\Http\Controllers\Admin\TestimonialController;
+// use App\Http\Controllers\Admin\FooterController;
+// use App\Http\Controllers\Admin\SubscribeController;
+// use App\Http\Controllers\Admin\SliderController;
+// use App\Http\Controllers\Admin\OurWorkController;
+// use App\Http\Controllers\Admin\OpeningHourController;
+// use App\Http\Controllers\Admin\AppointmentQueController;
+// use App\Http\Controllers\Admin\AppointmentPageController;
+// use App\Http\Controllers\Admin\DepartmentController;
+// use App\Http\Controllers\Admin\DoctorsController;
 use App\Http\Controllers\Admin\NotificationController;
-use App\Http\Controllers\Admin\treat;
-// use App\Http\Controllers\Admin\DoctorsController;   
-use Database\Seeders\OpeningHourSeeder;
+// use App\Http\Controllers\Admin\TreatmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,36 +61,56 @@ Route::get('/user', [UserController::class, 'index'])->name('user_index');
 // Route::get('/category/update', [CategoryController::class , 'update'])->name('category_update');
 // Route::get('/category/delete/{id}', [CategoryController::class , 'destroy'])->name('category_delete');
 
-//category
-Route::resource('category', CategoryController::class);
-//subCategory
-Route::resource('subcategory', SubCategoryController::class);
-// Blog
-Route::resource('blogs', BlogController::class);
-//slider
-Route::resource('slider', SliderController::class);
-//service
-Route::resource('service', ServiceController::class);
-//Appointment
-Route::resource('appointments', AppointmentController::class);
-//FAQ
-Route::resource('faqs', FaqController::class);
-//FAQ
-Route::resource('testimonial', TestimonialController::class);  
-//Footer
-Route::resource('footer', FooterController::class);  
-//Subscribe
-Route::resource('subscribe', SubscribeController::class);  
-//OutWork
-Route::resource('ourwork', OurWorkController::class);  
-//openingHour
-Route::resource('opening_hour', OpeningHourController::class);  
-//AppointMent_Questions
-Route::resource('appoint_que', AppointmentQueController::class);  
-//AppointMent_Page
-Route::resource('appoint_page', AppointmentPageController::class);  
-//Doctor List
-Route::resource('doctors', DoctorsController::class);  
+Route::group([
+    'prefix'=>'admin',
+    'middleware'=>['auth'],
+    'namespace'=>'App\Http\Controllers\Admin'
+
+],function(){
+    //category
+    Route::resource('category', CategoryController::class);
+    //subCategory
+    Route::resource('subcategory', SubCategoryController::class);
+    // Blog
+    Route::resource('blogs', BlogController::class);
+    //slider
+    Route::resource('slider', SliderController::class);
+    //service
+    Route::resource('service', ServiceController::class);
+    //Appointment
+    Route::resource('appointments', AppointmentController::class);
+    //FAQ
+    Route::resource('faqs', FaqController::class);
+    //FAQ
+    Route::resource('testimonial', TestimonialController::class);  
+    //Footer
+    Route::resource('footer', FooterController::class);  
+    //Subscribe
+    Route::resource('subscribe', SubscribeController::class);  
+    //OutWork
+    Route::resource('ourwork', OurWorkController::class);  
+    //openingHour
+    Route::resource('opening_hour', OpeningHourController::class);  
+    //AppointMent_Questions
+    Route::resource('appoint_que', AppointmentQueController::class);  
+    //AppointMent_Page
+    Route::resource('appoint_page', AppointmentPageController::class);  
+    //Doctor List
+    Route::resource('doctors', DoctorsController::class);  
+    //Treatment 
+    Route::resource('treatment', TreatmentController::class);
+    //Department
+    Route::resource('departments', DepartmentController::class);
+});
+
+Route::group([
+    'prefix'=>'admin',
+    'middleware'=>['auth'],
+
+],function(){
+    // Notification
+    Route::get('all_notification',[NotificationController::class,'index'])->name('notification_index');
+});
 
 
 
@@ -104,7 +124,6 @@ Route::get('/doctor/{slug}', [WebsiteController::class, 'singleDoctor'])->name('
 Route::get('/blog', [WebsiteController::class, 'blog'])->name('website_blog');
 Route::get('/contact', [WebsiteController::class, 'contact'])->name('website_contact');
 
-Route::get('/all_notification',[NotificationController::class,'index'])->name('notification_index');
 // Route::post('/add_notification',[NotificationController::class,'store'])->name('notification_store');
 
 

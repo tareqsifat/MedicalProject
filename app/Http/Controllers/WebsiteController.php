@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\AppointPage;
 use App\Models\AppointQue;
 use App\Models\Blog;
+use App\Models\Department;
 use App\Models\Doctor;
 use App\Models\Faq;
 use App\Models\Footer;
@@ -41,7 +42,8 @@ class WebsiteController extends Controller
     public function department()
     {
         // $footer = Footer::latest()->get();
-        return view('website.department');
+        $department = Department::where('status',1)->with('doctor_info')->with('treatment_info')->get();
+        return view('website.department', compact('department'));
     }
 
     public function appointment()

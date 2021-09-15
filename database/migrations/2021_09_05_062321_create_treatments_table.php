@@ -14,7 +14,14 @@ class CreateTreatmentsTable extends Migration
     public function up()
     {
         Schema::create('treatments', function (Blueprint $table) {
-            
+            $table->id();
+            $table->integer('department_id')->nullable();
+            $table->string('name');
+            $table->integer('cost')->nullable();
+            $table->string('creator',100)->nullable();
+            $table->string('slug')->nullable();
+            $table->string('status')->default(1);
+            $table->timestamps();
         });
     }
 

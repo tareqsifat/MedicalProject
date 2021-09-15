@@ -73,6 +73,23 @@
                     </a>
                 </li>
                 <li>
+                    <a href="{{ route('treatment.index') }}" class="side-menu">
+                        <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                        <div class="side-menu__title">
+                            Treatments 
+                            <div class="side-menu__sub-icon "> <i data-feather="chevron-down"></i> </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('departments.index') }}" class="side-menu">
+                        <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                        <div class="side-menu__title">
+                            Department 
+                            <div class="side-menu__sub-icon "> <i data-feather="chevron-down"></i> </div>
+                        </div>
+                    </a>
+                </li>
                 <li>
                     <a href="{{ route('doctors.index') }}" class="side-menu">
                         <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
@@ -202,13 +219,21 @@
         </li>
         <li class="side-nav__devider my-6"></li>
         <li>
-            <a href="javascript:;" class="side-menu">
-                <div class="side-menu__icon"> <i data-feather="inbox"></i> </div>
+            {{-- <a href="{{ route('logout') }}" class="side-menu" >
                 <div class="side-menu__title">
                     Log Out
-                    <div class="side-menu__sub-icon "> <i data-feather="chevron-down"></i> </div>
+                    <div class="side-menu__sub-icon "> </div>
                 </div>
-            </a>
+            </a> --}}
+            {{-- <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a> --}}
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+                <button type="submit">Log out</button>
+            </form>
         </li>
     </ul>
 </nav>

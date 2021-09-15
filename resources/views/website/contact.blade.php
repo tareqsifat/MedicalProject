@@ -5,11 +5,11 @@
 
 	<div class="container clearfix" style="z-index: 2">
 		<div class="emphasis-title dark mb-0">
-			<span class="before-heading" style="color: #FFF;">medical@canvas.com</span>
-			<h2 class="fw-bold ls0" style="color: #FFF;">+1-800-9876-221</h2>
+			<span class="before-heading" style="color: #FFF;">{{ $footer->email }}</span>
+			<h2 class="fw-bold ls0" style="color: #FFF;">{{ $footer->phone }}</h2>
 		</div>
 		<a href=https://maps.google.com/maps?q=221B+Baker+Street,+London,+United+Kingdom&hl=en&t=v&hnear=221B+Baker+St,+London+NW1+6XE,+United+Kingdom" data-lightbox="iframe"><i class="icon-line-map i-large i-plain dark mx-auto"></i></a>
-		<span class="fw-semibold ls1 text-uppercase" style="color: #EEE;">795 Folsom Ave, Suite 600<br>San Francisco, CA 94107</span>
+		<span class="fw-semibold ls1 text-uppercase" style="color: rgb(22, 13, 13);">795 Folsom Ave, Suite 600<br>San Francisco, CA 94107</span>
 	</div>
 
 	<div class="video-overlay" style="background: rgba(222,98,98,0.85); z-index: 1"></div>
