@@ -18,7 +18,7 @@ class CreateFootersTable extends Migration
             $table->string('email', 100);
             $table->string('phone', 100);
             $table->string('facebook', 100);
-            $table->string('feed', 100);
+            $table->string('company_name', 100);
 
             $table->string('creator',100)->nullable();
             $table->string('slug', 100)->nullable();

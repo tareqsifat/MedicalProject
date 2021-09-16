@@ -12,6 +12,7 @@ class NotificationController extends Controller
         $notification = Notification::where('notification', 0)->update([
             'notification' => 1,
         ]);
+        
         $collection = Notification::latest()->get();
         
         return view('admin.notification.index',compact('collection'));

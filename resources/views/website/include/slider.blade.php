@@ -3,10 +3,10 @@
 
         <div class="swiper-container swiper-parent">
             <div class="swiper-wrapper">
-                @foreach ($slider as $item)
+                @foreach ($slider as $key=>$item)
                     <div class="swiper-slide">
-                        <div class="container">
-                            <div class="slider-caption slider-caption-right" style="max-width: 700px;">
+                        <div class="container">@if($key%2==0)@else @endif
+                            <div @if($key%2==0)class="slider-caption slider-caption-right" style="max-width: 700px;" @else class="slider-caption" @endif >
                                 <div>
                                     <h2 data-animate="flipInX">{{ $item->left_title }}<span>{{ $item->right_title }}</span></h2>
                                     <p class="d-none d-sm-block" data-animate="flipInX" data-delay="500">{{ $item->description }}</p>

@@ -24,7 +24,6 @@
 			============================================= -->
 			<div id="posts" class="post-grid row grid-container mb-0 gutter-40">
 				@foreach ($blog as $item)
-					
 					<div class="entry col-12 col-sm-6 col-md-4 col-xl-3">
 						<div class="grid-inner">
 							<div class="entry-image">
@@ -41,7 +40,7 @@
 								</ul>
 							</div>
 							<div class="entry-content">
-								<p>{{ \Illuminate\Support\Str::limit($item->body, 80, $end='...') }}</p>
+								<p>{{ \Illuminate\Support\Str::limit($item->body, 70, $end='...') }}</p>
 								{{-- <p>{{ $item->body }}</p> --}}
 								<a href="blog-single.html" class="button button-rounded button-small m-0">Read More</a>
 							</div>

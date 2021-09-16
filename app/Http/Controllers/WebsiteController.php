@@ -14,7 +14,6 @@ use App\Models\OurWork;
 use App\Models\Service;
 use App\Models\Slider;
 use App\Models\Testimonial;
-use Illuminate\Http\Request;
 
 class WebsiteController extends Controller
 {
@@ -66,16 +65,8 @@ class WebsiteController extends Controller
         // $footer = Footer::latest()->get();
         return view('website.doctor_list', compact('doctor'));
     }
-    // public function doctor_2()
-    // {
-    //     $footer = Footer::latest()->get();
-    //     return view('website.doctor', compact('footer'));
-    // }
-    // public function doctor_3()
-    // {
-    //     $footer = Footer::latest()->get();
-    //     return view('website.doctor', compact('footer'));
-    // }
+
+
     public function singleDoctor($slug)
     {
         $doctor = Doctor::where('slug', $slug)->first();
@@ -87,6 +78,14 @@ class WebsiteController extends Controller
         $blog = Blog::get();
         // $footer = Footer::latest()->get();
         return view('website.blog', compact('blog'));
+    }
+
+    public function blogShow($slug)
+    {
+        // // $blog = Blog::get();
+        // $blog_show = Blog::where('slug', $slug)->first();
+        // // $footer = Footer::latest()->get();
+        // return view('website.blog', compact('blog_show'));
     }
     public function contact()
     {

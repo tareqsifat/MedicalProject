@@ -8,7 +8,6 @@
                     </div>
                     <div class="fbox-content">
                         <div class="count" style="display: none">
-                            {{ $key+1 }}
                         </div>
                         <h3>{{$item->title }}</h3>
                         <p>{{ $item->description }}</p>

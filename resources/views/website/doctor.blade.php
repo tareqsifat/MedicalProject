@@ -21,7 +21,7 @@
 		<div class="col-sm-10"></div>
 		<div class="col-sm-2" style="margin-top: 20px">
 			<div class="btn-group" role="group" aria-label="Basic example">
-				<a href="#">
+				<a href="{{ route('website_doctor') }}">
 					<button type="button" class="btn btn-secondary">Gridview</button>
 				</a>
 				<a href="{{ route('website_doctor_list') }}">

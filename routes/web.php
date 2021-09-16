@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\WebsiteController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\CommentController;
 use App\Http\Controllers\Admin\UserController;
 
 // use App\Http\Controllers\Admin\CategoryController;
@@ -47,7 +48,7 @@ Route::group( [
 
     // Route::get('/','AdminController@index')->name('admin_index');
     // admin 
-    Route::get('admin', [AdminController::class, 'index'])->name('admin_index');
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin_index');
     
     //user
     Route::get('/user', [UserController::class, 'index'])->name('user_index');
@@ -110,6 +111,8 @@ Route::group([
     Route::resource('departments', DepartmentController::class);
 });
 
+    Route::resource('comments', CommentController::class);
+
 Route::group([
     'prefix'=>'admin',
     'middleware'=>['auth'],
@@ -120,7 +123,6 @@ Route::group([
 });
 
 
-
 Route::get('/', [WebsiteController::class, 'index'])->name('website_index');
 Route::get('/about_us', [WebsiteController::class, 'aboutUs'])->name('website_about');
 Route::get('/department', [WebsiteController::class, 'department'])->name('website_department');
@@ -129,6 +131,7 @@ Route::get('/doctor', [WebsiteController::class, 'doctor'])->name('website_docto
 Route::get('/doctorlist', [WebsiteController::class, 'doctorList'])->name('website_doctor_list');
 Route::get('/doctor/{slug}', [WebsiteController::class, 'singleDoctor'])->name('website_single_doctor');
 Route::get('/blog', [WebsiteController::class, 'blog'])->name('website_blog');
+Route::get('/blog/{slug}', [WebsiteController::class, 'blogShow'])->name('website_blog_show');
 Route::get('/contact', [WebsiteController::class, 'contact'])->name('website_contact');
 
 // Route::post('/add_notification',[NotificationController::class,'store'])->name('notification_store');

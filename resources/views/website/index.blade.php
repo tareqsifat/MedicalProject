@@ -26,7 +26,7 @@
 				</div>
 			</div>
 
-			<div class="container clearfix">
+			<div class="container clearfix" id="faq">
 
 				<div class="row col-mb-50 mb-0">
 					<div class="col-md-7">

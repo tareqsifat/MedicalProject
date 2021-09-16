@@ -19,17 +19,17 @@
                 <nav class="primary-menu style-3 menu-spacing-margin">
 
                     <ul class="menu-container">
-                        <li class="menu-item current"><a class="menu-link" href="{{ route('website_index') }}"><div>Home</div></a></li>
-                        <li class="menu-item"><a class="menu-link" href="{{ route('website_about') }}"><div>About Us</div></a></li>
-                        <li class="menu-item"><a class="menu-link" href="{{ route('website_department') }}"><div>Departments</div></a></li>
-                        <li class="menu-item"><a class="menu-link" href="{{ route('website_appointment') }}"><div>Appointment</div></a></li>
-                        <li class="menu-item"><a class="menu-link" href="{{ route('website_doctor') }}"><div>Doctors</div></a>
+                        <li class="menu-item {{ Request::is('/') ? 'current' : '' }}"><a class="menu-link" href="{{ route('website_index') }}"><div>Home</div></a></li>
+                        <li class="menu-item {{ Request::is('about_us') ? 'current' : '' }}"><a class="menu-link" href="{{ route('website_about') }}"><div>About Us</div></a></li>
+                        <li class="menu-item {{ Request::is('department') ? 'current' : '' }}"><a class="menu-link" href="{{ route('website_department') }}"><div>Departments</div></a></li>
+                        <li class="menu-item {{ Request::is('appointment') ? 'current' : '' }}"><a class="menu-link" href="{{ route('website_appointment') }}"><div>Appointment</div></a></li>
+                        <li class="menu-item {{ Request::is('doctor') || Request::is('doctorlist')  ? 'current' : '' }}"><a class="menu-link" href="{{ route('website_doctor') }}"><div>Doctors</div></a>
                             <ul class="sub-menu-container">
-                                <li class="menu-item"><a class="menu-link" href="{{ route('website_doctor_list') }}"><div>2 columns - List style</div></a></li>
+                                <li class="menu-item"><a class="menu-link" href="{{ route('website_doctor_list') }}"><div>Doctor List</div></a></li>
                             </ul>
                         </li>
-                        <li class="menu-item"><a class="menu-link" href="{{ route('website_blog') }}"><div>Blog</div></a></li>
-                        <li class="menu-item"><a class="menu-link" href="{{ route('website_contact') }}"><div>Contact</div></a></li>
+                        <li class="menu-item {{ Request::is('blog') ? 'current' : '' }}"><a class="menu-link" href="{{ route('website_blog') }}"><div>Blog</div></a></li>
+                        <li class="menu-item {{ Request::is('contact') ? 'current' : '' }}"><a class="menu-link" href="{{ route('website_contact') }}"><div>Contact</div></a></li>
                     </ul>
 
                 </nav><!-- #primary-menu end -->

@@ -55,7 +55,7 @@ class BlogController extends Controller
             
             $savename = $filename.'.'.$extension;
             $path = public_path("uploads/blogs/$savename");
-            Image::make($file)->fit(294,165)->save($path);
+            Image::make($file)->fit(294,195)->save($path);
 
             $blog->image = $savename;
         }
@@ -122,7 +122,7 @@ class BlogController extends Controller
             
             $savename = $filename.'.'.$extension;
             $path = public_path("uploads/blogs/$savename");
-            Image::make($file)->fit(294,165)->save($path);
+            Image::make($file)->fit(294,195)->save($path);
 
             $blog->image = $savename;
         }

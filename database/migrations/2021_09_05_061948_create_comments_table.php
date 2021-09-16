@@ -15,10 +15,11 @@ class CreateCommentsTable extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->string('images', 100)->nullable();
-            $table->text('body');
+            $table->string('image', 100)->nullable();
+            $table->string('body')->nullable();
+            $table->string('post_id')->nullable();
 
-            $table->string('creator', 100)->nullable();
+            $table->string('creator', 100)->nullable(); 
             $table->string('slug', 100);
             $table->boolean('status')->default(1);
             $table->timestamps();

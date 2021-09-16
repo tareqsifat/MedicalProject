@@ -28,8 +28,8 @@ class AppServiceProvider extends ServiceProvider
     {
         $footer = Footer::first();
         View::share(['footer' => $footer]);
-
         $notification = Notification::where('notification', 0)->get();
         View::share(['notification' => $notification]);
+
     }
 }

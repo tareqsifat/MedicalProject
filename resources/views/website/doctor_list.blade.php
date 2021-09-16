@@ -19,36 +19,52 @@
 		<!-- Content
 		============================================= -->
 		<section id="content">
+			<div class="row justify-content-between">
+				<div class="col-sm-10"></div>
+				<div class="col-sm-2" style="margin-top: 20px">
+					<div class="btn-group" role="group" aria-label="Basic example">
+						<a href="{{ route('website_doctor') }}">
+							<button type="button" class="btn btn-secondary">Gridview</button>
+						</a>
+						<a href="{{ route('website_doctor_list') }}">
+							<button type="button" class="btn btn-secondary">ListView</button>
+						</a>
+					</div>
+				</div>
+			</div>
 			<div class="content-wrap">
 				<div class="container">
-
 					<div class="row col-mb-50 mb-0">
 						@foreach ($doctor as $item)
-							<div class="col-12">
-								<div class="team team-list row align-items-center">
-									<div class="team-image col-md-5 col-lg-3">
-										<img src='{{ asset("/uploads/doctors/$item->photo") }}' alt="{{ $item->photo }}">
-									</div>
-									<div class="team-desc col-md" id="{{ $item->name }}">
-										<div class="team-title">
-											<a href="#"><h4>{{ $item->name }}</h4></a>
-											<a href="#"><span>{{ $item->designation }}</span></a>
+							<div class="col-sm-6">
+								<div class="card">
+									<div class="card-body">
+										<div class="team team-list row align-items-center">
+											<div class="team-image col-md-5 col-lg-3">
+												<img src='{{ asset("/uploads/doctors/$item->photo") }}' alt="{{ $item->photo }}">
+											</div>
+											<div class="team-desc col-md" id="{{ $item->name }}">
+												<div class="team-title">
+													<a href="{{ route('website_single_doctor', $item->slug) }}"><h4>{{ $item->name }}</h4></a>
+													<a href="#"><span>{{ $item->designation }}</span></a>
+												</div>
+												<div class="team-content">
+													<p>{{ \Illuminate\Support\Str::limit($item->description, 170, $end='...') }}</p>
+												</div>
+												<a href="{{ $item->facebook_ac }}" class="social-icon si-rounded si-small si-facebook">
+													<i class="icon-facebook"></i>
+													<i class="icon-facebook"></i>
+												</a>
+												<a href="{{ $item->twitter_ac }}" class="social-icon si-rounded si-small si-twitter">
+													<i class="icon-twitter"></i>
+													<i class="icon-twitter"></i>
+												</a>
+												<a href="{{ $item->google_ac }}" class="social-icon si-rounded si-small si-gplus">
+													<i class="icon-gplus"></i>
+													<i class="icon-gplus"></i>
+												</a>
+											</div>
 										</div>
-										<div class="team-content">
-											<p>{{ $item->description }}</p>
-										</div>
-										<a href="{{ $item->facebook_ac }}" class="social-icon si-rounded si-small si-facebook">
-											<i class="icon-facebook"></i>
-											<i class="icon-facebook"></i>
-										</a>
-										<a href="{{ $item->twitter_ac }}" class="social-icon si-rounded si-small si-twitter">
-											<i class="icon-twitter"></i>
-											<i class="icon-twitter"></i>
-										</a>
-										<a href="{{ $item->google_ac }}" class="social-icon si-rounded si-small si-gplus">
-											<i class="icon-gplus"></i>
-											<i class="icon-gplus"></i>
-										</a>
 									</div>
 								</div>
 							</div>

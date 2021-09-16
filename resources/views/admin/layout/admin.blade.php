@@ -16,6 +16,7 @@
 </head>
 <!-- END: Head -->
 <body class="main">
+    {{-- @extends('layouts.app') --}}
     <!-- BEGIN: Mobile Menu -->
     @include('admin.include.mobile_menu')
     <!-- END: Mobile Menu -->

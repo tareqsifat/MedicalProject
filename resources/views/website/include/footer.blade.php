@@ -34,11 +34,11 @@
                         <div class="row col-mb-30">
                             <div class="col-lg-3 col-6 widget_links">
                                 <ul>
-                                    <li><a href="#">Home</a></li>
-                                    <li><a href="#">About</a></li>
-                                    <li><a href="#">FAQs</a></li>
+                                    <li><a href="{{ route('website_index') }}">Home</a></li>
+                                    <li><a href="{{ route('website_about') }}">About</a></li>
+                                    <li><a href="{{ route('website_index') }}#faq">FAQs</a></li>
                                     <li><a href="#">Support</a></li>
-                                    <li><a href="#">Contact</a></li>
+                                    <li><a href="{{ route('website_contact') }}">Contact</a></li>
                                 </ul>
                             </div>
 
@@ -46,7 +46,7 @@
                                 <ul>
                                     <li><a href="#">Shop</a></li>
                                     <li><a href="#">Portfolio</a></li>
-                                    <li><a href="#">Blog</a></li>
+                                    <li><a href="{{ route('website_blog') }}">Blog</a></li>
                                     <li><a href="#">Events</a></li>
                                     <li><a href="#">Forums</a></li>
                                 </ul>
@@ -137,13 +137,18 @@
 
             <div class="row col-mb-30">
                 <div class="col-md-6 text-center text-md-start">
-                    Copyrights &copy; 2020 All Rights Reserved by Canvas Inc.<br>
+                    Copyrights &copy; {{ \Carbon\Carbon::parse($footer->created_at)->year }} All Rights Reserved by {{ $footer->company_name }}<br>
                     <div class="copyright-links"><a href="#">Terms of Use</a> / <a href="#">Privacy Policy</a></div>
                 </div>
 
                 <div class="col-md-6 text-center text-md-end">
                     <div class="copyrights-menu copyright-links clearfix">
-                        <a href="{{ route('website_index') }}">Home</a>/<a href="{{ route('website_about') }}">About Us</a>/<a href="{{ route('website_doctor') }}">Team</a>/<a href="#">Clients</a>/<a href="#">FAQs</a>/<a href="{{ route('website_contact') }}">Contact</a>
+                        <a href="{{ route('website_index') }}">Home</a>/
+                        <a href="{{ route('website_about') }}">About Us</a>/
+                        <a href="{{ route('website_doctor') }}">Team</a>/
+                        <a href="#">Clients</a>/
+                        <a href="{{ route('website_index') }}#faq">FAQs</a>/
+                        <a href="{{ route('website_contact') }}">Contact</a>
                     </div>
                 </div>
             </div>
