@@ -55,7 +55,7 @@ class BlogController extends Controller
             
             $savename = $filename.'.'.$extension;
             $path = public_path("uploads/blogs/$savename");
-            Image::make($file)->save($path);
+            Image::make($file)->fit(294,165)->save($path);
 
             $blog->image = $savename;
         }
@@ -122,20 +122,22 @@ class BlogController extends Controller
             
             $savename = $filename.'.'.$extension;
             $path = public_path("uploads/blogs/$savename");
-            Image::make($file)->save($path);
+            Image::make($file)->fit(294,165)->save($path);
 
             $blog->image = $savename;
         }
 
         $blog->title = $request->title;
-        $blog->body = $request->body;
+        if ($request->has('body')) {
+            $blog->body = $request->body;
+        }
         $blog->creator = Auth::user()->id;
         $blog->slug = Str::slug($request->title);
         $blog->save();
 
         session()->flash('alert-success','Blog updated successfully');
         
-        return redirect('/blogs');
+        return redirect()->route('blogs.index');
     }
 
     /**

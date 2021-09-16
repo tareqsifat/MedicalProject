@@ -32,8 +32,8 @@
                                     <td class="border-b whitespace-nowrap">
                                         <i class="{{ $item->icon }}" style="font-size: 3rem"></i>
                                     </td>
-                                    <td class="border-b whitespace-nowrap">{{ $item->body }}</td>
-                                    <td class="border-b whitespace-nowrap" style="width: 100px"> {{ $item->message }}</td>
+                                    <td class="border-b whitespace-nowrap">{{ \Illuminate\Support\Str::limit($item->body, 60, $end='...') }}</td>
+                                    <td class="border-b whitespace-nowrap" style="width: 100px"> {{ \Illuminate\Support\Str::limit($item->message, 60, $end='...') }}</td>
                                     <td class="border-b whitespace-nowrap">
                                         <div class="d-inline">
                                             <a type="button" href="{{ route('ourwork.edit',$item->id) }}" 

@@ -43,7 +43,7 @@
                                             <p>Therapy</p>
                                         @endif</td>
                                     <td class="border-b whitespace-nowrap" style="width: 100px"> {{ $item->title }}</td>
-                                    <td class="border-b whitespace-nowrap" style="width: 100px">{{ \Illuminate\Support\Str::limit($item->description, 60, $end='...') }}</td>
+                                    <td class="border-b whitespace-nowrap" style="width: 100px">{{ \Illuminate\Support\Str::limit($item->description, 40, $end='...') }}</td>
                                     <td class="border-b whitespace-nowrap" style="width: 100px"> {{ $item->treatment_info->name }}</td>
                                     <td class="border-b whitespace-nowrap">
                                         <div class="d-inline">

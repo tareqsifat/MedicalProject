@@ -29,7 +29,7 @@
                                 <tr>
                                     <td class="border-b whitespace-nowrap">{{ $key+1 }}</td>
                                     <td class="border-b whitespace-nowrap">{{ $item->title }}</td>
-                                    <td class="border-b whitespace-nowrap">{{ $item->body }}</td>
+                                    <td class="border-b whitespace-nowrap">{{ \Illuminate\Support\Str::limit($item->body, 60, $end='...') }}</td>
                                     <td class="border-b whitespace-nowrap">
                                         <div class="d-inline">
                                             <a type="button" href="{{ route('faqs.edit',$item->id) }}" 

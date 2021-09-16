@@ -35,7 +35,7 @@
                                     <td class="border-b whitespace-nowrap"><img src='{{ asset("/uploads/doctors/$item->photo") }}' style="height: 75px;" alt="{{ $item->title_image }}"></td>
                                     <td class="border-b whitespace-nowrap">{{ $item->name }}</td>
                                     <td class="border-b whitespace-nowrap">{{ $item->designation }}</td>
-                                    <td class="border-b whitespace-nowrap">{{ \Illuminate\Support\Str::limit($item->description, 60, $end='...') }}</td>
+                                    <td class="border-b whitespace-nowrap">{{ \Illuminate\Support\Str::limit($item->description, 40, $end='...') }}</td>
                                     <td class="border-b whitespace-nowrap" style="">
                                         <div class="social" style="display: flex; justify-content: space-between; margin: 50px 0px">
                                             <a href="{{ $item->facebook_ac }}">

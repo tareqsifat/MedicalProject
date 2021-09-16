@@ -29,7 +29,7 @@
                                 <tr>
                                     <td class="border-b whitespace-nowrap">{{ $key+1 }}</td>
                                     <td class="border-b whitespace-nowrap"><img src='{{ asset("uploads/testimonials/$item->image") }}' style="height: 100px" alt="{{ $item->image }}"></td>
-                                    <td class="border-b whitespace-nowrap">{{ $item->body }}</td>
+                                    <td class="border-b whitespace-nowrap">{{ \Illuminate\Support\Str::limit($item->body, 60, $end='...') }}</td>
                                     <td class="border-b whitespace-nowrap">
                                         <div class="d-lg-flexflex">
                                             <a type="button" href="{{ route('testimonial.edit', $item->id) }}" 

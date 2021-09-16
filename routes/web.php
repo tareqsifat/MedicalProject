@@ -40,11 +40,18 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// admin 
-Route::get('/admin', [AdminController::class, 'index'])->name('admin_index');
 
-//user
-Route::get('/user', [UserController::class, 'index'])->name('user_index');
+Route::group( [
+    'middleware'=>['auth'],
+],function(){
+
+    // Route::get('/','AdminController@index')->name('admin_index');
+    // admin 
+    Route::get('admin', [AdminController::class, 'index'])->name('admin_index');
+    
+    //user
+    Route::get('/user', [UserController::class, 'index'])->name('user_index');
+});
 // Route::get('/user/view/{id}', [UserController::class, 'index'])->name('user_index');
 // Route::get('/user/create', [UserController::class, 'index'])->name('user_index');
 // Route::post('/user/store', [UserController::class, 'index'])->name('user_index');

@@ -33,10 +33,10 @@
                                     <td class="border-b whitespace-nowrap">{{ $key+1 }}</td>
                                     <td class="border-b whitespace-nowrap"><img src='{{ asset("/uploads/appoint_pages/$item->title_image") }}' style="height: 100px;" alt="{{ $item->title_image }}"></td>
                                     <td class="border-b whitespace-nowrap"><img src='{{ asset("/uploads/appoint_pages/$item->form_image") }}' style="height: 100px;" alt="{{ $item->form_image }}"></td>
-                                    <td class="border-b whitespace-nowrap">{{ \Illuminate\Support\Str::limit($item->title_message, 60, $end='...') }}</td>
-                                    <td class="border-b whitespace-nowrap">{{ \Illuminate\Support\Str::limit($item->question_message, 60, $end='...') }}</td>
-                                    <td class="border-b whitespace-nowrap">{{ \Illuminate\Support\Str::limit($item->highlight_title, 60, $end='...') }}</td>
-                                    <td class="border-b whitespace-nowrap">{{ \Illuminate\Support\Str::limit($item->highlight_message, 60, $end='...') }}</td>
+                                    <td class="border-b whitespace-nowrap">{{ \Illuminate\Support\Str::limit($item->title_message, 35, $end='...') }}</td>
+                                    <td class="border-b whitespace-nowrap">{{ \Illuminate\Support\Str::limit($item->question_message, 35, $end='...') }}</td>
+                                    <td class="border-b whitespace-nowrap">{{ \Illuminate\Support\Str::limit($item->highlight_title, 35, $end='...') }}</td>
+                                    <td class="border-b whitespace-nowrap">{{ \Illuminate\Support\Str::limit($item->highlight_message, 35, $end='...') }}</td>
                                     <td class="border-b whitespace-nowrap">
                                         <div class="d-flex justify-content-between" style="text-align: left">
                                             <a type="button" href="{{ route('appoint_page.edit', $item->id) }}" 

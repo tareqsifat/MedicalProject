@@ -41,7 +41,8 @@
 								</ul>
 							</div>
 							<div class="entry-content">
-								<p>{{ $item->body }}</p>
+								<p>{{ \Illuminate\Support\Str::limit($item->body, 80, $end='...') }}</p>
+								{{-- <p>{{ $item->body }}</p> --}}
 								<a href="blog-single.html" class="button button-rounded button-small m-0">Read More</a>
 							</div>
 						</div>

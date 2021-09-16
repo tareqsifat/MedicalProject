@@ -230,9 +230,9 @@
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a> --}}
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+            <form id="logout-form" class="side-menu" action="{{ route('logout') }}" method="POST" class="d-none">
                 @csrf
-                <button type="submit">Log out</button>
+                <button type="submit"><i class="icon-line-log-out"></i> Log out</button>
             </form>
         </li>
     </ul>
