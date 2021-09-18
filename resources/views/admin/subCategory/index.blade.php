@@ -18,6 +18,7 @@
                         <thead>
                             <tr>
                                 <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">#</th>
+                                <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">Category</th>
                                 <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">Name</th>
                                 <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">Action</th>
                             </tr>
@@ -27,6 +28,7 @@
                             @foreach ($collection as $key=>$item)
                                 <tr>
                                     <td class="border-b whitespace-nowrap">{{ $key+1 }}</td>
+                                    <td class="border-b whitespace-nowrap">{{ $item->category_info->name }}</td>
                                     <td class="border-b whitespace-nowrap">{{ $item->name }}</td>
                                     <td class="border-b whitespace-nowrap">
                                         <div class="d-inline">

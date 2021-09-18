@@ -76,7 +76,7 @@
                     @error('doctor_id')
                     <div class="text-theme-6 mt-2">{{ $message }}<br></div>
                     @enderror
-                    <select name="service" id="horizontal-form-1"class="form-control">
+                    <select name="service" id="horizontal-form-1" class="form-control">
                         <option value="1">Treatment</option>
                         <option value="0">Therapy</option>
                     </select>

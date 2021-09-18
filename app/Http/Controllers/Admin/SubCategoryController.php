@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\SubCategory;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -17,7 +18,8 @@ class SubCategoryController extends Controller
      */
     public function index()
     {
-        $collection = SubCategory::get();
+        $collection = SubCategory::with('category_info')->get();
+        // dd($collection);
         return view('admin.subCategory.index', compact('collection'));
     }
 
@@ -28,7 +30,8 @@ class SubCategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.subCategory.create');
+        $category = Category::latest()->get();
+        return view('admin.subCategory.create',compact('category'));
     }
 
     /**
@@ -40,7 +43,7 @@ class SubCategoryController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|unique:sub_categories,name',
+            'name' => 'required',
         ]);
 
 
@@ -50,13 +53,13 @@ class SubCategoryController extends Controller
             ]
         );
 
-
+        $category->category_id = $request->category_id;
         $category->creator = Auth::user()->id;
         $category->slug = Str::slug($request->name);
 
         $category->save();
 
-        return redirect()->back();
+        return redirect()->route('subcategory.index');
     }
 
     /**
@@ -78,10 +81,11 @@ class SubCategoryController extends Controller
      */
     public function edit($id)
     {
+        $category =Category::get();
         $collection = SubCategory::find($id);
         if ($collection) {
 
-            return view('admin.subcategory.edit', compact('collection'));
+            return view('admin.subcategory.edit', compact('collection','category'));
         } else {
             return abort(404);
         }
@@ -106,13 +110,13 @@ class SubCategoryController extends Controller
         // ]);
         $category = SubCategory::find($id);
         if ($category) {
-
+            $category->category_id = $request->category_id;
             $category->name = $request->name;
             $category->creator = Auth::user()->id;
             $category->slug = Str::slug($category->name);
             $category->save();
 
-            return back();
+            return redirect()->route('subcategory.index');
         }
         else{
             return abort(404);

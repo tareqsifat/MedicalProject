@@ -16,9 +16,21 @@
             @csrf
             <div class="preview">
                 <div class="form-group p-4">
+                    <label for="horizontal-form-1" class="form-label sm:w-20">Category</label>
+                    @error('category_id')
+                        <div class="text-theme-6 mt-2">{{ $message }}<br></div>
+                    @enderror
+                    <select name="category_id" id="horizontal-form-1" class="form-control">
+                        <option value="">--select--</option>
+                        @foreach ($category as $item)
+                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="form-group p-4">
                     <label for="horizontal-form-1" class="form-label sm:w-20">Name</label>
                     @error('name')
-                    <div class="text-theme-6 mt-2">{{ $message }}<br></div>
+                        <div class="text-theme-6 mt-2">{{ $message }}<br></div>
                     @enderror
                     <input id="horizontal-form-1" name="name" type="text" class="form-control" placeholder="SubCategory Name">
                 </div>

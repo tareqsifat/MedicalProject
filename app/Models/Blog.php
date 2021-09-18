@@ -11,10 +11,26 @@ class Blog extends Model
         'image',
         'title',
     ];
+    // public function Category()
+    // {
+    //     return $this->hasMany(Category::class);
+    // }
+    // public function SubCategory()
+    // {
+    //     return $this->hasMany(SubCategory::class);
+    // }
 
 
     public function User_info()
     {
         return $this->belongsTo('App\Models\User', 'creator', 'id');
+    }
+    public function Category_info()
+    {
+        return $this->belongsTo('App\Models\Category', 'category_id', 'id');
+    }
+    public function SubCategory_info()
+    {
+        return $this->belongsTo('App\Models\SubCategory', 'subcategory_id', 'id');
     }
 }

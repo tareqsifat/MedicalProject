@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
+use App\Models\Category;
 use App\Models\Notification;
+use App\Models\SubCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
@@ -19,7 +21,8 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $collection = Blog::get();
+        $collection = Blog::with('User_info')->with('Category_info')->with('SubCategory_info')->get();
+        // dd($collection);
         return view('admin.blog.index', compact('collection'));
     }
 
@@ -30,7 +33,9 @@ class BlogController extends Controller
      */
     public function create()
     {
-        return view('admin.blog.create');
+        $category = Category::latest()->get();
+        $subcategory = SubCategory::latest()->get();
+        return view('admin.blog.create',compact('category', 'subcategory'));
     }
 
     /**
@@ -59,17 +64,14 @@ class BlogController extends Controller
 
             $blog->image = $savename;
         }
+        $blog->category_id = $request->category_id;
+        $blog->subcategory_id = $request->subcategory_id;
         $blog->title = $request->title;
         $blog->body = $request->body;
         $blog->creator = Auth::user()->id;
         $blog->slug = Str::slug(uniqid(10).'_'.$request->title);
         $blog->save();
-
-        $nofication = new Notification();
-        $nofication->creator = Auth::user()->name;
-        $nofication->save();
-        $nofication->message = "$nofication->creator Added a new Blog Post";
-        $nofication->save();
+        // dd($request);
 
         session()->flash('alert-success','Blog updated successfully');
 
@@ -95,8 +97,10 @@ class BlogController extends Controller
      */
     public function edit($id)
     {
+        $category = Category::latest()->get();
+        $subcategory = SubCategory::latest()->get();
         $collection = Blog::find($id);
-        return view('admin.blog.edit', compact('collection'));
+        return view('admin.blog.edit', compact('collection','subcategory','category'));
     }
 
     /**
@@ -128,9 +132,10 @@ class BlogController extends Controller
         }
 
         $blog->title = $request->title;
-        if ($request->has('body')) {
-            $blog->body = $request->body;
-        }
+        $blog->category_id = $request->category_id;
+        $blog->subcategory_id = $request->subcategory_id;
+        $blog->body = $request->body;
+
         $blog->creator = Auth::user()->id;
         $blog->slug = Str::slug(uniqid(10).'-'.$request->title);
         $blog->save();

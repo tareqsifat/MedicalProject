@@ -22,9 +22,33 @@
                     <input id="horizontal-form-1" name="image" type="file" class="form-control" placeholder="Image">
                 </div>
                 <div class="form-group p-4">
+                    <label for="horizontal-form-1" class="form-label sm:w-20">Category</label>
+                    @error('category_id')
+                        <div class="text-theme-6 mt-2">{{ $message }}<br></div>
+                    @enderror
+                    <select name="category_id" id="horizontal-form-1" class="form-control">
+                        <option value="">--select--</option>
+                        @foreach ($category as $item)
+                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="form-group p-4">
+                    <label for="horizontal-form-1" class="form-label sm:w-20">SubCategory</label>
+                    @error('subcategory_id')
+                        <div class="text-theme-6 mt-2">{{ $message }}<br></div>
+                    @enderror
+                    <select name="subcategory_id" id="horizontal-form-1" class="form-control">
+                        <option value="">--select--</option>
+                        @foreach ($subcategory as $item)
+                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="form-group p-4">
                     <label for="horizontal-form-1" class="form-label sm:w-20">Title</label>
                     @error('title')
-                    <div class="text-theme-6 mt-2">{{ $message }}<br></div>
+                        <div class="text-theme-6 mt-2">{{ $message }}<br></div>
                     @enderror
                     <input id="horizontal-form-1" name="title" type="text" class="form-control" placeholder="Blog Title">
                 </div>

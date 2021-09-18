@@ -20,19 +20,24 @@
                             <tr>
                                 <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">#</th>
                                 <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">Image</th>
+                                <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">Category</th>
+                                <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">subCategory</th>
                                 <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">Title</th>
                                 <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">body</th>
+                                <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">Creator</th>
                                 <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">action</th>
                             </tr>
                         </thead>
-                        {{-- <img src="/" alt="" height="50px"> --}}
                         <tbody>
                             @foreach ($collection as $key=>$item)
                                 <tr>
                                     <td class="border-b whitespace-nowrap">{{ $key+1 }}</td>
-                                    <td class="border-b whitespace-nowrap"><img src='{{ asset("/uploads/blogs/$item->image") }}' style="height: 100px;" alt="{{ $item->image }}"></td>
+                                    <td class="border-b whitespace-nowrap"><img src='{{ asset("/uploads/blogs/$item->image") }}' style="height: 100px; width: 100px;" alt="{{ $item->image }}"></td>
+                                    <td class="border-b whitespace-nowrap">{{ $item->Category_inf o->name }}</td>
+                                    <td class="border-b whitespace-nowrap">{{ $item->SubCategory_info->name }}</td>
                                     <td class="border-b whitespace-nowrap">{{ $item->title }}</td>
                                     <td class="border-b whitespace-nowrap">{{ \Illuminate\Support\Str::limit($item->body, 60, $end='...') }}</td>
+                                    <td class="border-b whitespace-nowrap">{{ $item->user_info->name }}</td>
                                     <td class="border-b whitespace-nowrap">
                                         <div class="d-">
                                             <a type="button" href="{{ route('blogs.edit', $item->id) }}" 
