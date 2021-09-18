@@ -62,7 +62,7 @@ class BlogController extends Controller
         $blog->title = $request->title;
         $blog->body = $request->body;
         $blog->creator = Auth::user()->id;
-        $blog->slug = Str::slug($request->title);
+        $blog->slug = Str::slug(uniqid(10).'_'.$request->title);
         $blog->save();
 
         $nofication = new Notification();
@@ -132,7 +132,7 @@ class BlogController extends Controller
             $blog->body = $request->body;
         }
         $blog->creator = Auth::user()->id;
-        $blog->slug = Str::slug($request->title);
+        $blog->slug = Str::slug(uniqid(10).'-'.$request->title);
         $blog->save();
 
         session()->flash('alert-success','Blog updated successfully');

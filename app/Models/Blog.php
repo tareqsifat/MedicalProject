@@ -11,4 +11,10 @@ class Blog extends Model
         'image',
         'title',
     ];
+
+
+    public function User_info()
+    {
+        return $this->belongsTo('App\Models\User', 'creator', 'id');
+    }
 }

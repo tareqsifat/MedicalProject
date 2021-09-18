@@ -82,10 +82,10 @@ class WebsiteController extends Controller
 
     public function blogShow($slug)
     {
-        // // $blog = Blog::get();
-        // $blog_show = Blog::where('slug', $slug)->first();
-        // // $footer = Footer::latest()->get();
-        // return view('website.blog', compact('blog_show'));
+        $blogs = Blog::where('slug', $slug)->with('user_info')->first();
+
+        // dd($blogs->user_info);
+        return view('website.blog_post', compact('blogs'));
     }
     public function contact()
     {

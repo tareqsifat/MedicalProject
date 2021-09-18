@@ -30,11 +30,11 @@
 								<a href='{{ asset("/uploads/blogs/$item->image") }}' data-lightbox="image"><img src='{{ asset("/uploads/blogs/$item->image") }}' alt="{{ $item->image }}"></a>
 							</div>
 							<div class="entry-title">
-								<h2><a href="blog-single.html">{{ $item->title }}</a></h2>
+								<h2><a href="{{ route('website_blog_show', $item->slug) }}">{{ $item->title }}</a></h2>
 							</div>
 							<div class="entry-meta">
 								<ul>
-									<li><i class="icon-calendar3"></i>{{ $item->created_at }}</li>
+									<li><i class="icon-calendar3"></i>{{ $item->created_at->format('d/m/y h:i:s a') }}</li>
 									<li><a href="blog-single.html#comments"><i class="icon-comments"></i> 13</a></li>
 									<li><a href="#"><i class="icon-camera-retro"></i></a></li>
 								</ul>
@@ -42,7 +42,7 @@
 							<div class="entry-content">
 								<p>{{ \Illuminate\Support\Str::limit($item->body, 70, $end='...') }}</p>
 								{{-- <p>{{ $item->body }}</p> --}}
-								<a href="blog-single.html" class="button button-rounded button-small m-0">Read More</a>
+								<a href="{{ route('website_blog_show', $item->slug) }}" class="button button-rounded button-small m-0">Read More</a>
 							</div>
 						</div>
 					</div>
