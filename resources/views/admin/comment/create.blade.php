@@ -14,11 +14,39 @@
             @csrf
             <div class="preview">
                 <div class="form-group p-4">
+                    <label for="horizontal-form-1" class="form-label sm:w-20">name</label>
+                    @error('name')
+                        <div class="text-theme-6 mt-2">{{ $message }}<br></div>
+                    @enderror
+                    <input id="horizontal-form-1" name="name" type="text" class="form-control" placeholder="name">
+                </div>
+                <div class="form-group p-4">
+                    <label for="horizontal-form-1" class="form-label sm:w-20">body</label>
+                    @error('email')
+                        <div class="text-theme-6 mt-2">{{ $message }}<br></div>
+                    @enderror
+                    <input id="horizontal-form-1" name="email" type="email" class="form-control" placeholder="email">
+                </div>
+                <div class="form-group p-4">
+                    <label for="horizontal-form-1" class="form-label sm:w-20">website</label>
+                    @error('website')
+                        <div class="text-theme-6 mt-2">{{ $message }}<br></div>
+                    @enderror
+                    <input id="horizontal-form-1" name="website" type="text" class="form-control" placeholder="website">
+                </div>
+                <div class="form-group p-4">
                     <label for="horizontal-form-1" class="form-label sm:w-20">body</label>
                     @error('body')
                     <div class="text-theme-6 mt-2">{{ $message }}<br></div>
                     @enderror
                     <input id="horizontal-form-1" name="body" type="text" class="form-control" placeholder="body">
+                </div>
+                <div class="form-group p-4">
+                    <label for="horizontal-form-1" class="form-label sm:w-20">blog_id</label>
+                    @error('blog_id')
+                    <div class="text-theme-6 mt-2">{{ $message }}<br></div>
+                    @enderror
+                    <input id="horizontal-form-1" name="blog_id" type="text" class="form-control" placeholder="blog_id">
                 </div>
                 <div class="sm:ml-20 sm:pl-5 mt-5">
                     <button type="submit" style="margin-bottom: 30px" class="btn btn-primary"><i class="icon-lock"></i> Add</button>

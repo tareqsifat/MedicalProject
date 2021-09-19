@@ -15,10 +15,10 @@ class Blog extends Model
     // {
     //     return $this->hasMany(Category::class);
     // }
-    // public function SubCategory()
-    // {
-    //     return $this->hasMany(SubCategory::class);
-    // }
+    public function Comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 
 
     public function User_info()

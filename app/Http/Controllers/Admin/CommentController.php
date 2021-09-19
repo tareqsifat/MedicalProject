@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Comment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
@@ -15,7 +18,8 @@ class CommentController extends Controller
      */
     public function index()
     {
-        $collection = Comment::get();
+        $collection = Comment::with('blog_info')->get();
+        // dd($collection->all());
         return view('admin.comment.index',compact('collection'));
     }
 
@@ -39,8 +43,31 @@ class CommentController extends Controller
     {
         if($request->body){
             $comment = new Comment();
+            if($request->hasFile('image')){
+                $file = $request->file('image');
+                $imagesfileName = $file->getClientOriginalName();
+                $filename = pathinfo($imagesfileName, PATHINFO_FILENAME);
+                $extension = pathinfo($imagesfileName, PATHINFO_EXTENSION);
+
+                $savename = $filename.'.'.$extension;
+                $path = public_path("uploads/comments/$savename");
+                Image::make($file)->resize(304,304)->save($path);
+    
+                // $savename->resize(306,306);
+    
+                $comment->image = $savename;
+            }
+            $comment->name = $request->name;
+            $comment->email = $request->email;
+            $comment->website = $request->website;
             $comment->body = $request->body;
+            $comment->blog_id = $request->blog_id;
+            $comment->creator = Auth::user()->id;
+            $comment->slug = Str::slug(uniqid().'_'.$request->body);
             $comment->save();
+
+            // dd($request->all());
+            return back();
         }
         else{
             return back();

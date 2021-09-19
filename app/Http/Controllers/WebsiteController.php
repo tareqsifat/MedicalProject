@@ -83,8 +83,8 @@ class WebsiteController extends Controller
     public function blogShow($slug)
     {
         $blogs = Blog::where('slug', $slug)->with('user_info')->first();
-
-        // dd($blogs->user_info);
+        // $comments = Blog::where('slug', $slu
+        // dd($blogs->Comments->all());
         return view('website.blog_post', compact('blogs'));
     }
     public function contact()

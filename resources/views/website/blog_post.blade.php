@@ -107,7 +107,7 @@
 
                 <!-- Post Author Info
                 ============================================= -->
-                <div class="card">
+                {{-- <div class="card">
                     <div class="card-header"><strong>Posted by <a href="#">John Doe</a></strong></div>
                     <div class="card-body">
                         <div class="author-image">
@@ -115,7 +115,7 @@
                         </div>
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores, eveniet, eligendi et nobis neque minus mollitia sit repudiandae ad repellendus recusandae blanditiis praesentium vitae ab sint earum voluptate velit beatae alias fugit accusantium laboriosam nisi reiciendis deleniti tenetur molestiae maxime id quaerat consequatur fugiat aliquam laborum nam aliquid. Consectetur, perferendis?
                     </div>
-                </div><!-- Post Single - Author End -->
+                </div><!-- Post Single - Author End --> --}}
 
                 <div class="line"></div>
 
@@ -331,10 +331,12 @@
 
                         <h3>Leave a <span>Comment</span></h3>
 
-                        <form class="row" action="#" method="post" id="commentform">
+                        {{-- <form class="row" action="#" method="post" id="commentform"> --}}
+                        <form method="POST" class="insert_form row" action="{{ route('comments.store') }}" enctype="multipart/form-data" id="horizontal-form">
+                            @csrf
                             <div class="col-md-4 form-group">
                                 <label for="author">Name</label>
-                                <input type="text" name="author" id="author" value="" size="22" tabindex="1" class="sm-form-control" />
+                                <input type="text" name="name" id="author" value="" size="22" tabindex="1" class="sm-form-control" />
                             </div>
 
                             <div class="col-md-4 form-group">
@@ -344,14 +346,14 @@
 
                             <div class="col-md-4 form-group">
                                 <label for="url">Website</label>
-                                <input type="text" name="url" id="url" value="" size="22" tabindex="3" class="sm-form-control" />
+                                <input type="text" name="website" id="url" value="" size="22" tabindex="3" class="sm-form-control" />
                             </div>
 
                             <div class="w-100"></div>
 
                             <div class="col-12 form-group">
                                 <label for="comment">Comment</label>
-                                <textarea name="comment" cols="58" rows="7" tabindex="4" class="sm-form-control"></textarea>
+                                <textarea name="body" cols="58" rows="7" tabindex="4" class="sm-form-control"></textarea>
                             </div>
 
                             <div class="col-12 form-group">

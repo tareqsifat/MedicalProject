@@ -23,7 +23,7 @@
                         <thead>
                             <tr>
                                 <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">#</th>
-                                <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">image</th>
+                                {{-- <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">image</th> --}}
                                 <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">name</th>
                                 <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">email</th>
                                 <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">website</th>
@@ -38,13 +38,14 @@
                             @foreach ($collection as $key=>$item)
                                 <tr>
                                     <td class="border-b whitespace-nowrap">{{ $key+1 }}</td>
-                                    <td class="border-b whitespace-nowrap"><img src={{ "/uploads/comments/$item->image" }} alt="{{ $item->image }}"></td>
+                                    {{-- <td class="border-b whitespace-nowrap"><img src={{ "/uploads/comments/$item->image" }} alt="{{ $item->image }}"></td> --}}
                                     <td class="border-b whitespace-nowrap">{{ $item->name }}</td>
                                     <td class="border-b whitespace-nowrap">{{ $item->email }}</td>
                                     <td class="border-b whitespace-nowrap">{{ $item->website }}</td>
                                     <td class="border-b whitespace-nowrap">{{ $item->body }}</td>
-                                    <td class="border-b whitespace-nowrap">{{ $item->user_id }}</td>
-                                    <td class="border-b whitespace-nowrap">{{ $item->blog_id }}</td>
+                                    <td class="border-b whitespace-nowrap">{{ $item->creator }}</td>
+                                    {{-- <td class="border-b whitespace-nowrap">{{ $item->blog_id }}</td> --}}
+                                    <td class="border-b whitespace-nowrap">{{ $item->blog_info ? $item->blog_info->name : $item->blog_id }}</td>
                                     <td class="border-b whitespace-nowrap">
                                         <div class="justify-content-between">
                                             <a type="button" href="{{ route('category.edit',$item->id) }}" 
