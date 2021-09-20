@@ -24,6 +24,8 @@ use App\Http\Controllers\Admin\UserController;
 // use App\Http\Controllers\Admin\DepartmentController;
 // use App\Http\Controllers\Admin\DoctorsController;
 use App\Http\Controllers\Admin\NotificationController;
+use App\Http\Controllers\ReplyController;
+
 // use App\Http\Controllers\Admin\TreatmentController;
 
 /*
@@ -110,8 +112,10 @@ Route::group([
     //Department
     Route::resource('departments', DepartmentController::class);
 });
-
+    // Comments
     Route::resource('comments', CommentController::class);
+    // Reply
+    Route::resource('reply', ReplyController::class);
 
 Route::group([
     'prefix'=>'admin',

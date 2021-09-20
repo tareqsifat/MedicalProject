@@ -13,12 +13,22 @@ class Comment extends Model
         'body'
     ];
 
-    public function User_info()
+
+    public function reply()
     {
-        return $this->belongsTo('App\Models\User', 'creator', 'id');
+        return $this->hasMany(Reply::class);
     }
-    public function blog_info()
+
+    public function blog()
     {
-        return $this->belongsTo('App\Models\Blog', 'blog_id', 'id');
+        return $this->belongsTo(Blog::class);
     }
+    // public function user_info()
+    // {
+    //     return $this->belongsTo('App\Models\User', 'creator', 'id');
+    // }
+    // public function blog_info()
+    // {
+    //     return $this->belongsTo('App\Models\Blog', 'blog_id', 'id');
+    // }
 }

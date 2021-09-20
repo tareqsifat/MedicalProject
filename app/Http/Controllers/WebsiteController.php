@@ -82,15 +82,19 @@ class WebsiteController extends Controller
 
     public function blogShow($slug)
     {
-        $blogs = Blog::where('slug', $slug)->with('user_info')->first();
+        $blogs = Blog::where('slug', $slug)->with(['user_info','category_info','subcategory_info'])->first();
         // $comments = Blog::where('slug', $slu
-        // dd($blogs->Comments->all());
-        return view('website.blog_post', compact('blogs'));
+        $count = $blogs->comments->count() + $blogs->reply->count();
+        // $reply_count = ;
+        
+        // $show = Blog::find()
+        // dd($count);
+        return view('website.blog_post', compact('blogs', 'count'));
     }
     public function contact()
     {
         // $footer = Footer::latest()->get();
         $opening = OpeningHour::get();
-        return view('website.contact', compact('opening'));
+        return view('website.contact', compact('opening')); 
     }
 }

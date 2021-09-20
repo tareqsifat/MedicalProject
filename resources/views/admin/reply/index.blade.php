@@ -13,7 +13,7 @@
                 Categories
             </h2>
             <div class="w-full sm:w-auto flex items-center sm:ml-auto mt-3 sm:mt-0">
-                <a href="{{ route('comments.create') }}" class="btn btn-warning"><i class="fa fa-plus"></i> ADD</a>
+                <a href="{{ route('reply.create') }}" class="btn btn-warning"><i class="fa fa-plus"></i> ADD</a>
             </div>
         </div>
         <div class="p-5" id="responsive-table">
@@ -30,6 +30,7 @@
                                 <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">body</th>
                                 <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">Creator</th>
                                 <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">Blog</th>
+                                <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">Comment</th>
                                 <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">Action</th>
                             </tr>
                         </thead>

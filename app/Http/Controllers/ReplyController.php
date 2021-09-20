@@ -1,15 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Comment;
+use App\Models\Reply;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Auth;
 
-class CommentController extends Controller
+
+class ReplyController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,12 +19,9 @@ class CommentController extends Controller
      */
     public function index()
     {
-        $collection = Comment::latest()->get();
-
-        // dd($collection->all());
-        // $show = Comment::find(2);
-        // dd($show->reply);
-        return view('admin.comment.index',compact('collection'));
+        $collection = Reply::latest()->get();
+        // dd($collection->reply);
+        return view('admin.reply.index',compact('collection'));
     }
 
     /**
@@ -33,7 +31,7 @@ class CommentController extends Controller
      */
     public function create()
     {
-        // return view('admin.comment.create');
+        return view('admin.reply.create');
     }
 
     /**
@@ -45,7 +43,7 @@ class CommentController extends Controller
     public function store(Request $request)
     {
         if($request->body){
-            $comment = new Comment();
+            $reply = new Reply();
             if($request->hasFile('image')){
                 $file = $request->file('image');
                 $imagesfileName = $file->getClientOriginalName();
@@ -53,22 +51,23 @@ class CommentController extends Controller
                 $extension = pathinfo($imagesfileName, PATHINFO_EXTENSION);
                 
                 $savename = $filename.'.'.$extension;
-                $path = public_path("uploads/comments/$savename");
+                $path = public_path("uploads/replies/$savename");
                 Image::make($file)->resize(304,304)->save($path);
                 
                 // $savename->resize(306,306);
                 
-                $comment->image = $savename;
+                $reply->image = $savename;
             }
-            $comment->name = $request->name;
-            $comment->email = $request->email;
-            $comment->website = $request->website;
-            $comment->body = $request->body;
-            $comment->blog_id = $request->blog_id;
-            $comment->creator = Auth::user()->id;
+            $reply->name = $request->name;
+            $reply->email = $request->email;
+            $reply->website = $request->website;
+            $reply->body = $request->body;
+            $reply->blog_id = $request->blog_id;
+            $reply->comment_id = $request->comment_id;
+            $reply->creator = Auth::user()->id;
             // dd($request->all());
-            $comment->slug = Str::slug(uniqid().'_'.$request->body);
-            $comment->save();
+            $reply->slug = Str::slug(uniqid().'_'.$request->body);
+            $reply->save();
 
             // dd($request->all());
             return back();

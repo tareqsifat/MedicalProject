@@ -15,17 +15,25 @@ class Blog extends Model
     // {
     //     return $this->hasMany(Category::class);
     // }
-    public function Comments()
+    public function comments()
     {
         return $this->hasMany(Comment::class);
     }
+    public function reply()
+    {
+        return $this->hasManyThrough(Reply::class, Comment::class);
+    }
+    // public function subcategoris()
+    // {
+    //     return $this->hasOne(SubCategory::class);
+    // }
 
 
     public function User_info()
     {
         return $this->belongsTo('App\Models\User', 'creator', 'id');
     }
-    public function Category_info()
+    public function category_info()
     {
         return $this->belongsTo('App\Models\Category', 'category_id', 'id');
     }
