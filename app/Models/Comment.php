@@ -16,7 +16,7 @@ class Comment extends Model
 
     public function reply()
     {
-        return $this->hasMany(Reply::class);
+        return $this->hasMany(Reply::class)->where('approved',1);
     }
 
     public function blog()

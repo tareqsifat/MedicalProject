@@ -84,10 +84,7 @@ class WebsiteController extends Controller
     {
         $blogs = Blog::where('slug', $slug)->with(['user_info','category_info','subcategory_info'])->first();
         // $comments = Blog::where('slug', $slu
-        $count = $blogs->comments->count() + $blogs->reply->count();
-        // $reply_count = ;
-        
-        // $show = Blog::find()
+        $count = $blogs->comments->count() + $blogs->reply->where('comment.approved',1)->where('approved',1)->count();
         // dd($count);
         return view('website.blog_post', compact('blogs', 'count'));
     }

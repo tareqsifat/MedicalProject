@@ -28,6 +28,7 @@
                                 <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">email</th>
                                 <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">website</th>
                                 <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">body</th>
+                                <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">approved</th>
                                 <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">Creator</th>
                                 <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">Blog</th>
                                 <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">Comment</th>
@@ -43,7 +44,30 @@
                                     <td class="border-b whitespace-nowrap">{{ $item->name }}</td>
                                     <td class="border-b whitespace-nowrap">{{ $item->email }}</td>
                                     <td class="border-b whitespace-nowrap">{{ $item->website }}</td>
-                                    <td class="border-b whitespace-nowrap">{{ $item->body }}</td>
+                                    <td class="border-b whitespace-nowrap">{{\Illuminate\Support\Str::limit($item->body, 40, $end='...')}}</td>
+                                    <td class="border-b whitespace-nowrap">
+                                        @if ($item->approved)
+                                        <form action="{{ route('reply.update', $item->id) }}" method="POST">
+                                            @csrf
+                                            @method('PUT')
+                                            <select name="approved" id="" style="display: none">
+                                                <option value="0"></option>
+                                            </select>
+                                            <button type="submit" class="btn btn-primary">Approved</button>
+                                            {{-- <i type ="submit" class="btn btn-primary">Approved</i> --}}
+                                        </form>
+                                        @else
+                                            <form action="{{ route('reply.update', $item->id) }}" method="POST">
+                                                @csrf
+                                                @method('PUT')
+                                                <select name="approved" id="" style="display: none">
+                                                    <option value="1"></option>
+                                                </select>
+                                                <button type="submit" class="btn btn-secondary">Not Approved</button>
+                                            </form>
+                                            {{-- <i class="btn btn-secondary">Not Approved</i> --}}
+                                        @endif    
+                                    </td>
                                     <td class="border-b whitespace-nowrap">{{ $item->creator }}</td>
                                     {{-- <td class="border-b whitespace-nowrap">{{ $item->blog_id }}</td> --}}
                                     <td class="border-b whitespace-nowrap">{{ $item->blog_id }}</td>

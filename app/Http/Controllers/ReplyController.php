@@ -108,7 +108,11 @@ class ReplyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $reply = reply::find($id);
+        $reply->approved = $request->approved;
+        $reply->save();
+        
+        return redirect()->route('reply.index');
     }
 
     /**

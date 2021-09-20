@@ -17,7 +17,7 @@ class Blog extends Model
     // }
     public function comments()
     {
-        return $this->hasMany(Comment::class);
+        return $this->hasMany(Comment::class)->where('approved',1);
     }
     public function reply()
     {

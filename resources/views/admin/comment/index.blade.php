@@ -28,6 +28,7 @@
                                 <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">email</th>
                                 <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">website</th>
                                 <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">body</th>
+                                <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">Approved</th>
                                 <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">Creator</th>
                                 <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">Blog</th>
                                 <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">Action</th>
@@ -42,14 +43,37 @@
                                     <td class="border-b whitespace-nowrap">{{ $item->name }}</td>
                                     <td class="border-b whitespace-nowrap">{{ $item->email }}</td>
                                     <td class="border-b whitespace-nowrap">{{ $item->website }}</td>
-                                    <td class="border-b whitespace-nowrap">{{ $item->body }}</td>
+                                    <td class="border-b whitespace-nowrap">{{ \Illuminate\Support\Str::limit($item->body, 40, $end='...') }}</td>
+                                    <td class="border-b whitespace-nowrap">
+                                        @if ($item->approved)
+                                        <form action="{{ route('comments.update', $item->id) }}" method="POST">
+                                            @csrf
+                                            @method('PUT')
+                                            <select name="approved" id="" style="display: none">
+                                                <option value="0"></option>
+                                            </select>
+                                            <button type="submit" class="btn btn-primary">Approved</button>
+                                            {{-- <i type ="submit" class="btn btn-primary">Approved</i> --}}
+                                        </form>
+                                        @else
+                                            <form action="{{ route('comments.update', $item->id) }}" method="POST">
+                                                @csrf
+                                                @method('PUT')
+                                                <select name="approved" id="" style="display: none">
+                                                    <option value="1"></option>
+                                                </select>
+                                                <button type="submit" class="btn btn-secondary">Not Approved</button>
+                                            </form>
+                                            {{-- <i class="btn btn-secondary">Not Approved</i> --}}
+                                        @endif
+                                    </td>
                                     <td class="border-b whitespace-nowrap">{{ $item->creator }}</td>
                                     {{-- <td class="border-b whitespace-nowrap">{{ $item->blog_id }}</td> --}}
                                     <td class="border-b whitespace-nowrap">{{ $item->blog_id }}</td>
                                     <td class="border-b whitespace-nowrap">{{ $item->comment_id }}</td>
                                     <td class="border-b whitespace-nowrap">
                                         <div class="justify-content-between">
-                                            <a type="button" href="{{ route('category.edit',$item->id) }}" 
+                                            <a type="button" href="" 
                                                 class="btn btn-warning waves-effect waves-light m-1">
                                                 <i class="fa fa-pencil"></i> 
                                                 <span>edit</span>

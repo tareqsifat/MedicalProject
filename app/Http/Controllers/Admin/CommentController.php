@@ -70,7 +70,8 @@ class CommentController extends Controller
             $comment->slug = Str::slug(uniqid().'_'.$request->body);
             $comment->save();
 
-            // dd($request->all());
+            session()->flash('alert-success','Your comment is saved and send to admin for approval');
+
             return back();
         }
         else{
@@ -109,7 +110,11 @@ class CommentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $comment = Comment::find($id);
+        $comment->approved = $request->approved;
+        $comment->save();
+        
+        return redirect()->route('comments.index');
     }
 
     /**

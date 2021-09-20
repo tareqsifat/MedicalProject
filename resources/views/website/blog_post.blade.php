@@ -21,10 +21,10 @@
                     ============================================= -->
                     <div class="entry-meta">
                         <ul>
-                            <li><i class="icon-calendar3"></i> {{ $blogs->created_at->format('d/m/y h:i:s a') }}</li>
+                            <li><i class="icon-calendar3"></i> {{ $blogs->created_at->format('d M Y h:i:s a') }}</li>
                             <li><a href="#"><i class="icon-user"></i>{{ $blogs->user_info->name }}</a></li>
                             <li><i class="icon-folder-open"></i> <a href="#">{{ $blogs->category_info->name }}</a>, <a href="#">{{ $blogs->subcategory_info->name }}</a></li>
-                            <li><a href="#"><i class="icon-comments"></i>{{ $count }} {{ $count>1 ? 'comments' : 'comment' }}</a></li>
+                            <li><a href="#commentlist"><i class="icon-comments"></i>{{ $count }} {{ $count>1 ? 'comments' : 'comment' }}</a></li>
                             <li><a href="#"><i class="icon-camera-retro"></i></a></li>
                         </ul>
                     </div><!-- .entry-meta end -->
@@ -221,7 +221,7 @@
 
                     <!-- Comments List
                     ============================================= -->
-                    <ol class="commentlist clearfix">
+                    <ol class="commentlist clearfix" id="commentlist">
                         @foreach ($blogs->comments as $item)
                             <li class="comment even thread-even depth-1" id="li-comment-1">
                                 <div id="comment-1" class="comment-wrap clearfix">
@@ -377,6 +377,12 @@
 
                     <div class="clear"></div>
 
+                    {{-- comment_Session_message --}}
+                    @if (session()->has('alert-success'))
+                        <div class="text-theme-9 mt-2">
+                            {{ session('alert-success') }}
+                        </div>
+                    @endif
                     <!-- Comment Form
                     ============================================= -->
                     <div id="respond">
@@ -420,6 +426,7 @@
                         </form>
 
                     </div><!-- #respond end -->
+                    
 
                 </div><!-- #comments end -->
 
