@@ -14,6 +14,7 @@ use App\Models\OurWork;
 use App\Models\Service;
 use App\Models\Slider;
 use App\Models\Testimonial;
+use PhpParser\Node\Expr\Cast\String_;
 
 class WebsiteController extends Controller
 {
@@ -85,8 +86,17 @@ class WebsiteController extends Controller
         $blogs = Blog::where('slug', $slug)->with(['user_info','category_info','subcategory_info'])->first();
         // $comments = Blog::where('slug', $slu
         $count = $blogs->comments->count() + $blogs->reply->where('comment.approved',1)->where('approved',1)->count();
-        // dd($count);
-        return view('website.blog_post', compact('blogs', 'count'));
+
+        function finder(String $findby, String $value){
+            return Blog::where($findby, $value)->get();
+        }
+
+        $related_post = finder('category_id', $blogs->category_id);
+        $prev_post = finder('id', $blogs->id-1);
+        $next_post = finder('id', $blogs->id+1);
+        // $related_post = Blog::where('category_id', $blogs->category_id)->get();
+        // dd($next_post);
+        return view('website.blog_post', compact('blogs', 'count','related_post','prev_post', 'next_post'));
     }
     public function contact()
     {

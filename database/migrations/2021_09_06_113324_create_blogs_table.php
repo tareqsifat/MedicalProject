@@ -18,6 +18,7 @@ class CreateBlogsTable extends Migration
             $table->string('image',100);
             $table->string('title',100);
             $table->text('body')->nullable();
+            $table->string('tag')->nullable();
             $table->string('creator',100)->nullable();
             $table->string('slug',100)->nullable();
             $table->boolean('status')->default(1);

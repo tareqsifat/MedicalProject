@@ -21,8 +21,15 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $collection = Blog::with('User_info')->with('Category_info')->with('SubCategory_info')->get();
-        // dd($collection);
+
+        // foreach (Blog::get() as $key => $value) {
+        //     $tagss = explode(',', $value->tags);
+        // }
+        $collection = Blog::with('User_info')->with('category_info')->with('subcategory_info')->get();
+        // foreach($collection as $item){
+        //     dd($item->tags);
+        // }
+        // dd($tagss);
         return view('admin.blog.index', compact('collection'));
     }
 
@@ -66,6 +73,8 @@ class BlogController extends Controller
         }
         $blog->category_id = $request->category_id;
         $blog->subcategory_id = $request->subcategory_id;
+        // $tagss = explode(',',$request->tags);
+        $blog->tags = $request->tags;
         $blog->title = $request->title;
         $blog->body = $request->body;
         $blog->creator = Auth::user()->id;
@@ -131,6 +140,8 @@ class BlogController extends Controller
             $blog->image = $savename;
         }
 
+        $blog->tags = $request->tags;
+        // explode(',',);
         $blog->title = $request->title;
         $blog->category_id = $request->category_id;
         $blog->subcategory_id = $request->subcategory_id;

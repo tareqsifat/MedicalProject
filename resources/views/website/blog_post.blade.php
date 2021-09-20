@@ -47,12 +47,14 @@
                         <!-- Tag Cloud
                         ============================================= -->
                         <div class="tagcloud clearfix bottommargin">
-                            <a href="#">general</a>
-                            <a href="#">information</a>
-                            <a href="#">media</a>
-                            <a href="#">press</a>
-                            <a href="#">gallery</a>
-                            <a href="#">illustration</a>
+                            @foreach (explode(',', $blogs->tags) as $tag)
+                                <a href="#">{{ $tag }}</a>
+                                {{-- <a href="#">information</a>
+                                <a href="#">media</a>
+                                <a href="#">press</a>
+                                <a href="#">gallery</a>
+                                <a href="#">illustration</a> --}}
+                            @endforeach
                         </div><!-- .tagcloud end -->
 
                         <div class="clear"></div>
@@ -94,12 +96,17 @@
                 <!-- Post Navigation
                 ============================================= -->
                 <div class="row justify-content-between col-mb-30 post-navigation">
+                    @foreach ($prev_post as $item)
                     <div class="col-12 col-md-auto text-center">
-                        <a href="#">&lArr; This is a Standard post with a Slider Gallery</a>
+                        <a href="{{ route('website_blog_show',$item->slug) }}">&lArr; {{ $item->title }}</a>
                     </div>
+                    @endforeach
 
                     <div class="col-12 col-md-auto text-center">
-                        <a href="#">This is an Embedded Audio Post &rArr;</a>
+                        @foreach ($next_post as $item)
+                            <a href="{{ route('website_blog_show',$item->slug) }}"> {{ $item->title }}&rArr;</a>
+                        @endforeach
+                        {{-- <a href="#">This is an Embedded Audio Post &rArr;</a> --}}
                     </div>
                 </div><!-- .post-navigation end -->
 
@@ -122,95 +129,31 @@
                 <h4>Related Posts:</h4>
 
                 <div class="related-posts row posts-md col-mb-30">
-
-                    <div class="entry col-12 col-md-6">
-                        <div class="grid-inner row align-items-center gutter-20">
-                            <div class="col-4 col-xl-5">
-                                <div class="entry-image">
-                                    <a href="#"><img src="images/blog/small/10.jpg" alt="Blog Single"></a>
+                    @foreach ($related_post as $item)
+                        @if ($item->id != $blogs->id)
+                            <div class="entry col-12 col-md-6">
+                                <div class="grid-inner row align-items-center gutter-20">
+                                    <div class="col-4 col-xl-5">
+                                        <div class="entry-image">
+                                            <a href="#"><img src='{{ asset("/uploads/blogs/$item->image") }}' alt="{{ $item->image }}"></a>
+                                        </div>
+                                    </div>
+                                    <div class="col-8 col-xl-7">
+                                        <div class="entry-title title-xs nott">
+                                            <h3><a href="#">{{ $item->title }}</a></h3>
+                                        </div>
+                                        <div class="entry-meta">
+                                            <ul>
+                                                <li><i class="icon-calendar3"></i>{{ $item->created_at->format('d M Y h:i:s a') }}</li>
+                                                <li><a href="#"><i class="icon-comments"></i>12</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="entry-content d-none d-xl-block">{{ \Illuminate\Support\Str::limit($item->body, 60) }}</div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-8 col-xl-7">
-                                <div class="entry-title title-xs nott">
-                                    <h3><a href="#">This is an Image Post</a></h3>
-                                </div>
-                                <div class="entry-meta">
-                                    <ul>
-                                        <li><i class="icon-calendar3"></i> 10th July 2021</li>
-                                        <li><a href="#"><i class="icon-comments"></i> 12</a></li>
-                                    </ul>
-                                </div>
-                                <div class="entry-content d-none d-xl-block">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia nisi perferendis.</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="entry col-12 col-md-6">
-                        <div class="grid-inner row align-items-center gutter-20">
-                            <div class="col-4 col-xl-5">
-                                <div class="entry-image">
-                                    <a href="#"><img src="images/blog/small/20.jpg" alt="Blog Single"></a>
-                                </div>
-                            </div>
-                            <div class="col-8 col-xl-7">
-                                <div class="entry-title title-xs nott">
-                                    <h3><a href="#">This is a Video Post</a></h3>
-                                </div>
-                                <div class="entry-meta">
-                                    <ul>
-                                        <li><i class="icon-calendar3"></i> 24th July 2021</li>
-                                        <li><a href="#"><i class="icon-comments"></i> 16</a></li>
-                                    </ul>
-                                </div>
-                                <div class="entry-content d-none d-xl-block">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia nisi perferendis.</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="entry col-12 col-md-6">
-                        <div class="grid-inner row align-items-center gutter-20">
-                            <div class="col-4 col-xl-5">
-                                <div class="entry-image">
-                                    <a href="#"><img src="images/blog/small/21.jpg" alt="Blog Single"></a>
-                                </div>
-                            </div>
-                            <div class="col-8 col-xl-7">
-                                <div class="entry-title title-xs nott">
-                                    <h3><a href="#">This is a Gallery Post</a></h3>
-                                </div>
-                                <div class="entry-meta">
-                                    <ul>
-                                        <li><i class="icon-calendar3"></i> 8th Aug 2021</li>
-                                        <li><a href="#"><i class="icon-comments"></i> 8</a></li>
-                                    </ul>
-                                </div>
-                                <div class="entry-content d-none d-xl-block">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia nisi perferendis.</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="entry col-12 col-md-6">
-                        <div class="grid-inner row align-items-center gutter-20">
-                            <div class="col-4 col-xl-5">
-                                <div class="entry-image">
-                                    <a href="#"><img src="images/blog/small/22.jpg" alt="Blog Single"></a>
-                                </div>
-                            </div>
-                            <div class="col-8 col-xl-7">
-                                <div class="entry-title title-xs nott">
-                                    <h3><a href="#">This is an Audio Post</a></h3>
-                                </div>
-                                <div class="entry-meta">
-                                    <ul>
-                                        <li><i class="icon-calendar3"></i> 22nd Aug 2021</li>
-                                        <li><a href="#"><i class="icon-comments"></i> 21</a></li>
-                                    </ul>
-                                </div>
-                                <div class="entry-content d-none d-xl-block">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia nisi perferendis.</div>
-                            </div>
-                        </div>
-                    </div>
-
+                        @endif
+                    @endforeach
                 </div>
 
                 <!-- Comments

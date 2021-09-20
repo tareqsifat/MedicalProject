@@ -37,7 +37,7 @@ class Blog extends Model
     {
         return $this->belongsTo('App\Models\Category', 'category_id', 'id');
     }
-    public function SubCategory_info()
+    public function subcategory_info()
     {
         return $this->belongsTo('App\Models\SubCategory', 'subcategory_id', 'id');
     }

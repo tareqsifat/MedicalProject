@@ -31,10 +31,37 @@
                         <div class="text-theme-6 mt-2">{{ $message }}<br></div>
                     @enderror
                 </div>
-            <div class="preview">
+                <div class="form-group p-4">
+                    <label for="horizontal-form-1" class="form-label sm:w-20">Category</label>
+                    @error('category_id')
+                        <div class="text-theme-6 mt-2">{{ $message }}<br></div>
+                    @enderror
+                    <select name="category_id" id="horizontal-form-1" class="form-control">
+                        <option value="{{ $collection->category_info->id }}">{{ $collection->category_info->name }}</option>
+                        @foreach ($category as $item)
+                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="form-group p-4">
+                    <label for="horizontal-form-1" class="form-label sm:w-20">SubCategory</label>
+                    @error('subcategory_id')
+                        <div class="text-theme-6 mt-2">{{ $message }}<br></div>
+                    @enderror
+                    <select name="subcategory_id" id="horizontal-form-1" class="form-control">
+                        <option value="{{ $collection->subcategory_info->id }}">{{ $collection->subcategory_info->name }}</option>
+                        @foreach ($subcategory as $item)
+                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
                 <div class="form-group p-4">
                     <label for="horizontal-form-1" class="form-label sm:w-20">Body</label>
                     <textarea name="body" id="horizontal-form-1" class="form-control" value = "{{ $collection->body }}"></textarea>
+                </div>
+                <div class="form-group p-4">
+                    <label for="horizontal-form-1" class="form-label sm:w-20">tags</label>                    
+                    <input id="horizontal-form-1" name="tags" type="text" class="form-control" value="{{ $collection->tags }}">
                 </div>
                 <div class="sm:ml-20 sm:pl-5 mt-5">
                     <button type="submit" style="margin-bottom: 30px" class="btn btn-primary"><i class="icon-lock"></i> update</button>
