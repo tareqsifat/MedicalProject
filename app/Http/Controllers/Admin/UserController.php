@@ -86,7 +86,7 @@ class UserController extends Controller
     public function show($id)
     {
         $collection = User::find($id);
-        return view('admin.user.index',compact('collection'));
+        return view('admin.user.show',compact('collection'));
     }
 
     /**
