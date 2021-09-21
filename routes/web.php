@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\WebsiteController;
 use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Admin\CommentController;
+use Admin\CommentController;
 use App\Http\Controllers\Admin\UserController;
 
 // use App\Http\Controllers\Admin\CategoryController;
@@ -15,16 +15,16 @@ use App\Http\Controllers\Admin\UserController;
 // use App\Http\Controllers\Admin\FaqController;
 // use App\Http\Controllers\Admin\TestimonialController;
 // use App\Http\Controllers\Admin\FooterController;
-// use App\Http\Controllers\Admin\SubscribeController;
-// use App\Http\Controllers\Admin\SliderController;
-// use App\Http\Controllers\Admin\OurWorkController;
-// use App\Http\Controllers\Admin\OpeningHourController;
-// use App\Http\Controllers\Admin\AppointmentQueController;
-// use App\Http\Controllers\Admin\AppointmentPageController;
-// use App\Http\Controllers\Admin\DepartmentController;
-// use App\Http\Controllers\Admin\DoctorsController;
+use Admin\SubscribeController;
+// use Admin\SliderController;
+// use Admin\OurWorkController;
+// use Admin\OpeningHourController;
+// use Admin\AppointmentQueController;
+// use Admin\AppointmentPageController;
+// use Admin\DepartmentController;
+// use Admin\DoctorsController;
 use App\Http\Controllers\Admin\NotificationController;
-use App\Http\Controllers\ReplyController;
+// use ReplyController;
 
 // use App\Http\Controllers\Admin\TreatmentController;
 
@@ -44,7 +44,8 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::group( [
+Route::group([
+    'prefix'=>'admin',
     'middleware'=>['auth'],
 ],function(){
 
@@ -53,28 +54,19 @@ Route::group( [
     Route::get('/admin', [AdminController::class, 'index'])->name('admin_index');
     
     //user
-    Route::get('/user', [UserController::class, 'index'])->name('user_index');
+    Route::get('user', [UserController::class, 'index'])->name('user_index');
+    Route::get('user/create', [UserController::class, 'create'])->name('user_create');
+    Route::post('user/store', [UserController::class, 'store'])->name('user_store');
+    Route::get('user/view/{id}', [UserController::class, 'show'])->name('user_show');
+    Route::get('user/edit/{id}', [UserController::class, 'edit'])->name('user_edit');
+    Route::put('user/update', [UserController::class, 'update'])->name('user_update');
+    Route::delete('user/delete/{id}', [UserController::class, 'destroy'])->name('user_delete');
 });
-// Route::get('/user/view/{id}', [UserController::class, 'index'])->name('user_index');
-// Route::get('/user/create', [UserController::class, 'index'])->name('user_index');
-// Route::post('/user/store', [UserController::class, 'index'])->name('user_index');
-// Route::get('/user/edit/{id}', [UserController::class, 'index'])->name('user_index');
-// Route::post('/user/update', [UserController::class, 'index'])->name('user_index');
-// Route::post('/user/delete/{id}', [UserController::class, 'index'])->name('user_index');
-
-//Main_Category
-// Route::get('/category', [CategoryController::class , 'index'])->name('category_index');
-// Route::get('/category/view/{id}', [CategoryController::class , 'show'])->name('category_view');
-// Route::get('/category/create', [CategoryController::class , 'create'])->name('category_create');
-// Route::post('/category/store', [CategoryController::class , 'store'])->name('category_store');
-// Route::get('/category/edit/{id}', [CategoryController::class , 'edit'])->name('category_edit');
-// Route::get('/category/update', [CategoryController::class , 'update'])->name('category_update');
-// Route::get('/category/delete/{id}', [CategoryController::class , 'destroy'])->name('category_delete');
 
 Route::group([
     'prefix'=>'admin',
     'middleware'=>['auth'],
-    'namespace'=>'App\Http\Controllers\Admin'
+    'namespace'=>'Admin'
 
 ],function(){
     //category
@@ -95,8 +87,6 @@ Route::group([
     Route::resource('testimonial', TestimonialController::class);  
     //Footer
     Route::resource('footer', FooterController::class);  
-    //Subscribe
-    Route::resource('subscribe', SubscribeController::class);  
     //OutWork
     Route::resource('ourwork', OurWorkController::class);  
     //openingHour
@@ -112,15 +102,16 @@ Route::group([
     //Department
     Route::resource('departments', DepartmentController::class);
 });
-    // Comments
-    Route::resource('comments', CommentController::class);
-    // Reply
-    Route::resource('reply', ReplyController::class);
+// Comments
+Route::resource('comments', CommentController::class);
+//Subscribe
+Route::resource('subscribe', SubscribeController::class);  
+// Reply
+Route::resource('reply', ReplyController::class);
 
 Route::group([
     'prefix'=>'admin',
     'middleware'=>['auth'],
-
 ],function(){
     // Notification
     Route::get('all_notification',[NotificationController::class,'index'])->name('notification_index');

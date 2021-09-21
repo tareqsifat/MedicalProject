@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -14,7 +18,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('admin.user.index');
+        $collection = User::get();
+        return view('admin.user.index', compact('collection'));
     }
 
     /**
@@ -24,7 +29,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.user.create');
     }
 
     /**
@@ -35,7 +40,41 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[ 
+            'firstname' => ['required'],
+            'lastname' => ['required'],
+            'username' => ['required'],
+            'email' => ['required', 'email'],
+            'designation' => ['required'],
+            'photo' => ['required'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]); 
+        // dd($request->all());
+        $user = new User();
+
+        if($request->hasFile('photo')){
+            $file = $request->file('photo');
+            $imagesfileName = $file->getClientOriginalName();
+            $filename = pathinfo($imagesfileName, PATHINFO_FILENAME);
+            $extension = pathinfo($imagesfileName, PATHINFO_EXTENSION);
+            
+            $savename = $filename.'.'.$extension;
+            $path = public_path("uploads/users/$savename");
+            Image::make($file)->save($path);
+
+            $user->photo = $savename;
+        }
+        $user->firstname = $request->firstname;
+        $user->lastname = $request->lastname;
+        $user -> username = $request -> username;
+        $user -> designation = $request -> designation;
+        $user -> description = $request -> description;
+        $user -> email = $request -> email;
+        $user -> password = Hash::make($request->password); 
+        $user -> creator = Auth::user()->id;
+
+        $user -> slug =  $request->firstname.uniqid(10);
+        $user -> save();
     }
 
     /**
@@ -46,7 +85,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $collection = User::find($id);
+        return view('admin.user.index',compact('collection'));
     }
 
     /**

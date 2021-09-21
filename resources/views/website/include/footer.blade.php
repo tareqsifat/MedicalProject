@@ -54,8 +54,8 @@
 
                             <div class="col-lg-3 col-6 widget_links">
                                 <ul>
-                                    <li><a href="{{ route('login') }}">login</a>
-                                    <li><a href="{{ route('register') }}">Register</a></li>
+                                    <li><a href="{{ route('login') }}" target="_blank">login</a>
+                                    <li><a href="{{ route('register') }}" target="_blank">Register</a></li>
                                     <li><a href="#">eCommerce</a></li>
                                     <li><a href="#">Personal</a></li>
                                     <li><a href="#">One Page</a></li>

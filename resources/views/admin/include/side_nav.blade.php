@@ -38,7 +38,7 @@
                 </div>
             </a>
             <a href="{{ route('treatment.index') }}" class="side-menu">
-                <div class="side-menu__icon"> <i class="icon-medical-social-services"></i> </div>
+                <div class="side-menu__icon"> <i class="icon-medical-health-services"></i> </div>
                 <div class="side-menu__title">
                     Treatments 
                     <div class="side-menu__sub-icon "> <i ></i> </div>
@@ -59,35 +59,35 @@
                 </div>
             </a>
             <a href="{{ route('departments.index') }}" class="side-menu">
-                <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                <div class="side-menu__icon"> <i class="fa fa-building"></i> </div>
                 <div class="side-menu__title">
                     Department 
                     <div class="side-menu__sub-icon "> <i ></i> </div>
                 </div>
             </a>
             <a href="{{ route('doctors.index') }}" class="side-menu">
-                <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                <div class="side-menu__icon"> <i class="fa fa-user-md"></i> </div>
                 <div class="side-menu__title">
                     Doctors
                     <div class="side-menu__sub-icon "> <i ></i> </div>
                 </div>
             </a>
             <a href="{{ route('appoint_page.index') }}" class="side-menu">
-                <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                <div class="side-menu__icon"> <i class="fa fa-calendar-check"></i> </div>
                 <div class="side-menu__title">
                     Appontment Pages
                     <div class="side-menu__sub-icon "> <i ></i> </div>
                 </div>
             </a>
             <a href="{{ route('appoint_que.index') }}" class="side-menu">
-                <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                <div class="side-menu__icon"> <i class="fa fa-question-circle"></i> </div>
                 <div class="side-menu__title">
                     Appontment Questions
                     <div class="side-menu__sub-icon "> <i ></i> </div>
                 </div>
             </a>
             <a href="{{ route('opening_hour.index') }}" class="side-menu">
-                <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                <div class="side-menu__icon"> <i class="fa fa-clock"></i> </div>
                 <div class="side-menu__title">
                     Opening Hour 
                     <div class="side-menu__sub-icon "> <i ></i> </div>
@@ -101,63 +101,63 @@
                 </div>
             </a>
             <a href="{{ route('blogs.index') }}" class="side-menu">
-                <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                <div class="side-menu__icon"> <i class="fa fa-blog"></i> </div>
                 <div class="side-menu__title">
                     Blog 
                     <div class="side-menu__sub-icon "> <i ></i> </div>
                 </div>
             </a>
             <a href="{{ route('slider.index') }}" class="side-menu">
-                <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                <div class="side-menu__icon"> <i class="fas fa-sliders-h"></i> </div>
                 <div class="side-menu__title">
                     Slider
                     <div class="side-menu__sub-icon "> <i ></i> </div>
                 </div>
             </a>
             <a href="{{ route('service.index') }}" class="side-menu">
-                <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                <div class="side-menu__icon"> <i class="fab fa-servicestack"></i> </div>
                 <div class="side-menu__title">
                     Service
                     <div class="side-menu__sub-icon "> <i ></i> </div>
                 </div>
             </a>
             <a href="{{ route('appointments.index') }}" class="side-menu">
-                <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                <div class="side-menu__icon"> <i class="fa fa-calendar-check"></i> </div>
                 <div class="side-menu__title">
                     Book an Appointment
                     <div class="side-menu__sub-icon "> <i ></i> </div>
                 </div>
             </a>
             <a href="{{ route('testimonial.index') }}" class="side-menu">
-                <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                <div class="side-menu__icon"> <i class="fa fa-comment-dots"></i> </div>
                 <div class="side-menu__title">
                     Testimonial
                     <div class="side-menu__sub-icon "> <i ></i> </div>
                 </div>
             </a>
             <a href="{{ route('faqs.index') }}" class="side-menu">
-                <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                <div class="side-menu__icon"> <i class="fa fa-question-circle" aria-hidden="true"></i> </div>
                 <div class="side-menu__title">
                     FAQ 
                     <div class="side-menu__sub-icon "> <i ></i> </div>
                 </div>
             </a>
             <a href="{{ route('subscribe.index') }}" class="side-menu">
-                <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                <div class="side-menu__icon"><i class="fa fa-users" aria-hidden="true"></i>  </div>
                 <div class="side-menu__title">
                     Subscribe
                     <div class="side-menu__sub-icon "> <i ></i> </div>
                 </div>
             </a>
             <a href="{{ route('ourwork.index') }}" class="side-menu">
-                <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                <div class="side-menu__icon"><i class="icon-medical-social-services"></i>  </div>
                 <div class="side-menu__title">
                     OurWork
                     <div class="side-menu__sub-icon "> <i ></i> </div>
                 </div>
             </a>
             <a href="{{ route('footer.index') }}" class="side-menu">
-                <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                <div class="side-menu__icon"> <i class="fas fa-users-cog"></i> </div>
                 <div class="side-menu__title">
                     Footer
                     <div class="side-menu__sub-icon "> <i ></i> </div>
@@ -166,17 +166,6 @@
         </li>
         <li class="side-nav__devider my-6"></li>
         <li>
-            {{-- <a href="{{ route('logout') }}" class="side-menu" >
-                <div class="side-menu__title">
-                    Log Out
-                    <div class="side-menu__sub-icon "> </div>
-                </div>
-            </a> --}}
-            {{-- <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a> --}}
             <form id="logout-form" class="side-menu" action="{{ route('logout') }}" method="POST" class="d-none">
                 @csrf
                 <button type="submit"><i class="icon-line-log-out"></i> Log out</button>

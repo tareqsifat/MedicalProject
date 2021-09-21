@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Footer;
 use App\Models\Notification;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -27,9 +28,13 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         $footer = Footer::first();
-        View::share(['footer' => $footer]);
         $notification = Notification::where('notification', 0)->get();
+        // $authuser = Auth::user() ;
+        View::share(['footer' => $footer]);
         View::share(['notification' => $notification]);
+        // View::share(['authuser' => $authuser]);
+
+        // dd($authuser);
 
     }
 }

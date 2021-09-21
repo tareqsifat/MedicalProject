@@ -101,98 +101,44 @@
         <div class="notification-content pt-2 dropdown-menu">
             <div class="notification-content__box dropdown-menu__content box dark:bg-dark-6">
                 <div class="notification-content__title">Notifications</div>
-                    @foreach ($notification as $key=> $item)
-                        @if ($item->notification == 0)
-                            <div class="cursor-pointer relative flex items-center mt-5">
-                                <div class="w-12 h-12 flex-none image-fit mr-1">
-                                    <img alt="Rubick Tailwind HTML Admin Template" class="rounded-full" src="{{ asset('contents/admin') }}/dist/images/profile-3.jpg">
-                                    <div class="w-3 h-3 bg-theme-9 absolute right-0 bottom-0 rounded-full border-2 border-white"></div>
-                                </div>
-                                <div class="ml-2 overflow-hidden">
-                                    <div class="flex items-center">
-                                        <a href="javascript:;" class="font-medium truncate mr-5">{{ $item->creator }}</a> 
-                                        <div class="text-xs text-gray-500 ml-auto whitespace-nowrap">{{ $item->created_at }}</div>
-                                    </div>
-                                    <div class="w-full truncate text-gray-600 mt-0.5">{{ $item->message }}</div>
-                                </div>
+                @foreach ($notification as $key=> $item)
+                    @if ($item->notification == 0)
+                        <div class="cursor-pointer relative flex items-center mt-5">
+                            <div class="w-12 h-12 flex-none image-fit mr-1">
+                                <img alt="Rubick Tailwind HTML Admin Template" class="rounded-full" src="{{ asset('contents/admin') }}/dist/images/profile-3.jpg">
+                                <div class="w-3 h-3 bg-theme-9 absolute right-0 bottom-0 rounded-full border-2 border-white"></div>
                             </div>
-                        @endif
-                    @endforeach
-                    {{-- <div class="cursor-pointer relative flex items-center mt-5">
-                        <div class="w-full truncate text-gray-600 mt-0.5">No new Notification</div>
+                            <div class="ml-2 overflow-hidden">
+                                <div class="flex items-center">
+                                    <a href="javascript:;" class="font-medium truncate mr-5">{{ $item->creator }}</a> 
+                                    <div class="text-xs text-gray-500 ml-auto whitespace-nowrap">{{ $item->created_at }}</div>
+                                </div>
+                                <div class="w-full truncate text-gray-600 mt-0.5">{{ $item->message }}</div>
+                            </div>
+                        </div>
+                    @endif
+                @endforeach
+
+                @if(empty($notification->all()))
+                    <div class="cursor-pointer relative flex items-center mt-5">
+                        <div class="w-full truncate text-gray-600 mt-0.5">No New Notification</div>
                     </div>
                     <div class="cursor-pointer relative flex items-center mt-5">
-                        <a href="{{ route('notification_index') }}">
-                        <div class="w-full truncate text-gray-600 mt-0.5">See All Notifications</div>
-                    </div>
-                 --}}
-                 
-                 {{-- @php
-                    dd($notification->all());
-                 @endphp --}}
-
-                    @if(empty($notification->all()))
-                        <div class="cursor-pointer relative flex items-center mt-5">
-                            <div class="w-full truncate text-gray-600 mt-0.5">No New Notification</div>
+                        <div class="ml-2 overflow-hidden">
+                            <a href="{{ route('notification_index') }}">
+                                <div class="w-full truncate text-gray-600 mt-0.5">See All Notifications</div>
+                            </a>
                         </div>
-                        <div class="cursor-pointer relative flex items-center mt-5">
-                            <div class="ml-2 overflow-hidden">
-                                <a href="{{ route('notification_index') }}">
-                                    <div class="w-full truncate text-gray-600 mt-0.5">See All Notifications</div>
-                                </a>
-                            </div>
-                        </div> 
-                    @else
-                        <div class="cursor-pointer relative flex items-center mt-5">
-                            <div class="ml-2 overflow-hidden">
-                                <a href="{{ route('notification_index') }}">
-                                    <div class="w-full truncate text-gray-600 mt-0.5">See All Notifications</div>
-                                </a>
-                            </div>
-                        </div> 
-                    @endif
-                
-                
-                {{-- @endif --}}
-                {{-- <div class="cursor-pointer relative flex items-center mt-5">
-                    <div class="w-12 h-12 flex-none image-fit mr-1">
-                        <img alt="Rubick Tailwind HTML Admin Template" class="rounded-full" src="{{ asset('contents/admin') }}/dist/images/profile-6.jpg">
-                        <div class="w-3 h-3 bg-theme-9 absolute right-0 bottom-0 rounded-full border-2 border-white"></div>
-                    </div>
-                    <div class="ml-2 overflow-hidden">
-                        <div class="flex items-center">
-                            <a href="javascript:;" class="font-medium truncate mr-5">Brad Pitt</a> 
-                            <div class="text-xs text-gray-500 ml-auto whitespace-nowrap">06:05 AM</div>
+                    </div> 
+                @else
+                    <div class="cursor-pointer relative flex items-center mt-5">
+                        <div class="ml-2 overflow-hidden">
+                            <a href="{{ route('notification_index') }}">
+                                <div class="w-full truncate text-gray-600 mt-0.5">See All Notifications</div>
+                            </a>
                         </div>
-                        <div class="w-full truncate text-gray-600 mt-0.5">It is a long established fact that a reader will be {{ asset('contents/admin') }}/distracted by the readable content of a page when looking at its layout. The point of using Lorem </div>
-                    </div>
-                </div>
-                <div class="cursor-pointer relative flex items-center mt-5">
-                    <div class="w-12 h-12 flex-none image-fit mr-1">
-                        <img alt="Rubick Tailwind HTML Admin Template" class="rounded-full" src="{{ asset('contents/admin') }}/dist/images/profile-6.jpg">
-                        <div class="w-3 h-3 bg-theme-9 absolute right-0 bottom-0 rounded-full border-2 border-white"></div>
-                    </div>
-                    <div class="ml-2 overflow-hidden">
-                        <div class="flex items-center">
-                            <a href="javascript:;" class="font-medium truncate mr-5">Denzel Washington</a> 
-                            <div class="text-xs text-gray-500 ml-auto whitespace-nowrap">05:09 AM</div>
-                        </div>
-                        <div class="w-full truncate text-gray-600 mt-0.5">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 20</div>
-                    </div>
-                </div>
-                <div class="cursor-pointer relative flex items-center mt-5">
-                    <div class="w-12 h-12 flex-none image-fit mr-1">
-                        <img alt="Rubick Tailwind HTML Admin Template" class="rounded-full" src="{{ asset('contents/admin') }}/dist/images/profile-12.jpg">
-                        <div class="w-3 h-3 bg-theme-9 absolute right-0 bottom-0 rounded-full border-2 border-white"></div>
-                    </div>
-                    <div class="ml-2 overflow-hidden">
-                        <div class="flex items-center">
-                            <a href="javascript:;" class="font-medium truncate mr-5">Denzel Washington</a> 
-                            <div class="text-xs text-gray-500 ml-auto whitespace-nowrap">05:09 AM</div>
-                        </div>
-                        <div class="w-full truncate text-gray-600 mt-0.5">It is a long established fact that a reader will be {{ asset('contents/admin') }}/distracted by the readable content of a page when looking at its layout. The point of using Lorem </div>
-                    </div>
-                </div> --}}
+                    </div> 
+                @endif
             </div>
         </div>
     </div>
@@ -200,23 +146,27 @@
     <!-- BEGIN: Account Menu -->
     <div class="intro-x dropdown w-8 h-8">
         <div class="dropdown-toggle w-8 h-8 rounded-full overflow-hidden shadow-lg image-fit zoom-in" role="button" aria-expanded="false">
-            <img alt="Rubick Tailwind HTML Admin Template" src="{{ asset('contents/admin') }}/dist/images/profile-8.jpg">
+            <img alt="Rubick Tailwind HTML Admin Template" src='{{ asset("/uploads/users") }}/{{ Illuminate\Support\Facades\Auth::user()->photo }}'>
         </div>
         <div class="dropdown-menu w-56">
             <div class="dropdown-menu__content box bg-theme-26 dark:bg-dark-6 text-white">
                 <div class="p-4 border-b border-theme-27 dark:border-dark-3">
-                    <div class="font-medium"><b>{{ Illuminate\Support\Facades\Auth::user()->name }}</b>
+                    <div class="font-medium"><b>{{ Illuminate\Support\Facades\Auth::user()->username }}</b>
                     </div>
                     <div class="text-xs text-theme-28 mt-0.5 dark:text-gray-600">{{ Illuminate\Support\Facades\Auth::user()->email }}</div>
                 </div>
                 <div class="p-2">
                     <a href="" class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 dark:hover:bg-dark-3 rounded-md"> <i data-feather="user" class="w-4 h-4 mr-2"></i> Profile </a>
-                    <a href="" class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 dark:hover:bg-dark-3 rounded-md"> <i data-feather="edit" class="w-4 h-4 mr-2"></i> Add Account </a>
+                    <a href="{{ route('user_create') }}" class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 dark:hover:bg-dark-3 rounded-md"> <i data-feather="edit" class="w-4 h-4 mr-2"></i> Add Account </a>
                     <a href="" class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 dark:hover:bg-dark-3 rounded-md"> <i data-feather="lock" class="w-4 h-4 mr-2"></i> Reset Password </a>
                     <a href="" class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 dark:hover:bg-dark-3 rounded-md"> <i data-feather="help-circle" class="w-4 h-4 mr-2"></i> Help </a>
                 </div>
                 <div class="p-2 border-t border-theme-27 dark:border-dark-3">
-                    <a href="" class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 dark:hover:bg-dark-3 rounded-md"> <i data-feather="toggle-right" class="w-4 h-4 mr-2"></i> Logout </a>
+                    <form id="logout-form" class="side-menu" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                        <button type="submit" class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 dark:hover:bg-dark-3 rounded-md"> <i data-feather="toggle-right" class="w-4 h-4 mr-2"></i> Logout </button>
+                        {{-- <button type="submit"><i class="icon-line-log-out"></i> Log out</button> --}}
+                    </form>
                 </div>
             </div>
         </div>
