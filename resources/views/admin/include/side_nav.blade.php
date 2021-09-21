@@ -31,28 +31,28 @@
         </li>
         <li>
             <a href="{{ route('category.index') }}" class="side-menu">
-                <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                <div class="side-menu__icon"> <i class="icon-medical-social-services"></i> </div>
                 <div class="side-menu__title">
                     category 
                     <div class="side-menu__sub-icon "> <i ></i> </div>
                 </div>
             </a>
             <a href="{{ route('treatment.index') }}" class="side-menu">
-                <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                <div class="side-menu__icon"> <i class="icon-medical-social-services"></i> </div>
                 <div class="side-menu__title">
                     Treatments 
                     <div class="side-menu__sub-icon "> <i ></i> </div>
                 </div>
             </a>
             <a href="{{ route('reply.index') }}" class="side-menu">
-                <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                <div class="side-menu__icon"> <i class="icon-reply"></i> </div>
                 <div class="side-menu__title">
                     reply 
                     <div class="side-menu__sub-icon "> <i ></i> </div>
                 </div>
             </a>
             <a href="{{ route('comments.index') }}" class="side-menu">
-                <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                <div class="side-menu__icon"> <i class="icon-comment"></i> </div>
                 <div class="side-menu__title">
                     Comments 
                     <div class="side-menu__sub-icon "> <i ></i> </div>
