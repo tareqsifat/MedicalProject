@@ -6,24 +6,25 @@ use App\Http\Controllers\WebsiteController;
 use App\Http\Controllers\Admin\AdminController;
 use Admin\CommentController;
 use App\Http\Controllers\Admin\UserController;
-
-// use App\Http\Controllers\Admin\CategoryController;
-// use App\Http\Controllers\Admin\SubCategoryController;
-// use App\Http\Controllers\Admin\BlogController;
-// use App\Http\Controllers\Admin\ServiceController;
-// use App\Http\Controllers\Admin\AppointmentController;
-// use App\Http\Controllers\Admin\FaqController;
-// use App\Http\Controllers\Admin\TestimonialController;
-// use App\Http\Controllers\Admin\FooterController;
 use Admin\SubscribeController;
-// use Admin\SliderController;
-// use Admin\OurWorkController;
-// use Admin\OpeningHourController;
-// use Admin\AppointmentQueController;
-// use Admin\AppointmentPageController;
-// use Admin\DepartmentController;
-// use Admin\DoctorsController;
+use App\Http\Controllers\Admin\AppointmentController;
+use App\Http\Controllers\Admin\AppointmentPageController;
+use App\Http\Controllers\Admin\AppointmentQueController;
+use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\DepartmentController;
+use App\Http\Controllers\Admin\DoctorsController;
+use App\Http\Controllers\Admin\FaqController;
+use App\Http\Controllers\Admin\FooterController;
 use App\Http\Controllers\Admin\NotificationController;
+use App\Http\Controllers\Admin\OpeningHourController;
+use App\Http\Controllers\Admin\OurWorkController;
+use App\Http\Controllers\Admin\ServiceController;
+use App\Http\Controllers\Admin\SliderController;
+use App\Http\Controllers\Admin\SubCategoryController;
+use App\Http\Controllers\Admin\TestimonialController;
+use App\Http\Controllers\Admin\TreatmentController;
+
 // use ReplyController;
 
 // use App\Http\Controllers\Admin\TreatmentController;
@@ -66,7 +67,7 @@ Route::group([
 Route::group([
     'prefix'=>'admin',
     'middleware'=>['auth'],
-    'namespace'=>'Admin'
+    // 'namespace'=>'Admin'
 
 ],function(){
     //category

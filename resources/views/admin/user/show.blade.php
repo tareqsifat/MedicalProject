@@ -20,6 +20,9 @@
                         <tbody>
                             <tr>
                                 <td>Photo</td>
+                                <td>
+                                    <img src='{{ asset("uploads/users/$collection->photo") }}' alt="{{ $collection->photo }}">
+                                </td>
                             </tr>
                             <tr>
                                 <td>Id</td>
@@ -40,19 +43,11 @@
                                 <td>designation</td>
                             </tr>
                             <tr>
-                                <td>des</td>
+                                <td>description</td>
                             </tr>
                             <tr>
-                                <td>email</td>
+                                
                             </tr>
-                            <tr>firstname</tr>
-                            <tr>lastname</tr>
-                            <tr>username</tr>
-                            <tr>email</tr>
-                            <tr>designation</tr>
-                            <tr>description</tr>
-                            <tr>creator</tr>
-                            <tr>created At</tr>
                         </tbody>
 
                     </table>
