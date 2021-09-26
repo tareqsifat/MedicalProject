@@ -3,50 +3,63 @@
     <div class="intro-y box mt-5">
         <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200">
             <h2 class="font-medium text-base mr-auto">
-                Categories
+                User
             </h2>
-            <div class="w-full sm:w-auto flex items-center sm:ml-auto mt-3 sm:mt-0">
-                <a href="{{ route('reply.create') }}" class="btn btn-warning"><i class="fa fa-plus"></i> ADD</a>
-            </div>
         </div>
-        <div class="p-5" id="responsive-table">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="p-5" id="responsive-table">
             <div class="preview">
                 <div class="overflow-x-auto">
                     <table class="table">
                         <thead>
                             <th><p>Fields</p></th>
+                            <th><p></p></th>
                             <th><p>Data</p></th>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>Photo</td>
+                                <td>:</td>
                                 <td>
-                                    <img src='{{ asset("uploads/users/$collection->photo") }}' alt="{{ $collection->photo }}">
+                                    <img src='{{ asset("/uploads/users/$collection->photo") }}' alt="{{ $collection->photo }}" width="100px">
                                 </td>
                             </tr>
                             <tr>
                                 <td>Id</td>
+                                <td>:</td>
+                                <td>{{ $collection->id }}</td>
                             </tr>
                             <tr>
                                 <td>firstname</td>
+                                <td>:</td>
+                                <td>{{ $collection->firstname }}</td>
                             </tr>
                             <tr>
                                 <td>lastname</td>
+                                <td>:</td>
+                                <td>{{ $collection->lastname }}</td>
                             </tr>
                             <tr>
                                 <td>username</td>
+                                <td>:</td>
+                                <td>{{ $collection->username }}</td>
                             </tr>
                             <tr>
                                 <td>email</td>
+                                <td>:</td>
+                                <td>{{ $collection->email }}</td>
                             </tr>
                             <tr>
                                 <td>designation</td>
+                                <td>:</td>
+                                <td>{{ $collection->designation }}</td>
                             </tr>
                             <tr>
                                 <td>description</td>
-                            </tr>
-                            <tr>
-                                
+                                <td>:</td>
+                                <td>{{ $collection->description }}</td>
                             </tr>
                         </tbody>
 
@@ -60,6 +73,10 @@
                 </div>
             </div>
         </div>
+                </div>
+            </div>
+        </div>
+        
     </div>
 <!-- END: Responsive Table -->
 @endsection

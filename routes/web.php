@@ -4,9 +4,9 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\WebsiteController;
 use App\Http\Controllers\Admin\AdminController;
-use Admin\CommentController;
+use App\Http\Controllers\Admin\CommentController;
 use App\Http\Controllers\Admin\UserController;
-use Admin\SubscribeController;
+use App\Http\Controllers\Admin\SubscribeController;
 use App\Http\Controllers\Admin\AppointmentController;
 use App\Http\Controllers\Admin\AppointmentPageController;
 use App\Http\Controllers\Admin\AppointmentQueController;
@@ -24,6 +24,9 @@ use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\Admin\TreatmentController;
+use App\Http\Controllers\ReplyController;
+use App\Http\Controllers\LoginController;
+
 
 // use ReplyController;
 
@@ -60,16 +63,9 @@ Route::group([
     Route::post('user/store', [UserController::class, 'store'])->name('user_store');
     Route::get('user/view/{id}', [UserController::class, 'show'])->name('user_show');
     Route::get('user/edit/{id}', [UserController::class, 'edit'])->name('user_edit');
-    Route::put('user/update', [UserController::class, 'update'])->name('user_update');
+    Route::put('user/update/{id}', [UserController::class, 'update'])->name('user_update');
     Route::delete('user/delete/{id}', [UserController::class, 'destroy'])->name('user_delete');
-});
 
-Route::group([
-    'prefix'=>'admin',
-    'middleware'=>['auth'],
-    // 'namespace'=>'Admin'
-
-],function(){
     //category
     Route::resource('category', CategoryController::class);
     //subCategory
@@ -102,7 +98,10 @@ Route::group([
     Route::resource('treatment', TreatmentController::class);
     //Department
     Route::resource('departments', DepartmentController::class);
+    // Notification
+    Route::get('all_notification',[NotificationController::class,'index'])->name('notification_index');
 });
+
 // Comments
 Route::resource('comments', CommentController::class);
 //Subscribe
@@ -110,13 +109,6 @@ Route::resource('subscribe', SubscribeController::class);
 // Reply
 Route::resource('reply', ReplyController::class);
 
-Route::group([
-    'prefix'=>'admin',
-    'middleware'=>['auth'],
-],function(){
-    // Notification
-    Route::get('all_notification',[NotificationController::class,'index'])->name('notification_index');
-});
 
 
 Route::get('/', [WebsiteController::class, 'index'])->name('website_index');

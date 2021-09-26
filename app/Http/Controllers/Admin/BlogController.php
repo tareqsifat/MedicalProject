@@ -141,7 +141,6 @@ class BlogController extends Controller
         }
 
         $blog->tags = $request->tags;
-        // explode(',',);
         $blog->title = $request->title;
         $blog->category_id = $request->category_id;
         $blog->subcategory_id = $request->subcategory_id;
