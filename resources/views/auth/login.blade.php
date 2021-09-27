@@ -71,14 +71,14 @@
                             <div class="form-group p-4">
                             <label for="horizontal-form-1" class="form-label sm:w-20">Email</label>
                             @error('email')
-                            <div class="text-theme-6 mt-2">{{ $message }}<br></div>
+                                <div class="text-theme-6 mt-2">{{ $message }}<br></div>
                             @enderror
                             <input id="horizontal-form-1" name="email" type="email" class="form-control" placeholder="Email">
                         </div>
                         <div class="form-group p-4">
                             <label for="horizontal-form-1" class="form-label sm:w-20">Password</label>
                             @error('password')
-                            <div class="text-theme-6 mt-2">{{ $message }}<br></div>
+                                <div class="text-theme-6 mt-2">{{ $message }}<br></div>
                             @enderror
                             <input id="horizontal-form-1" name="password" type="password" class="form-control" placeholder="Password">
                         </div>

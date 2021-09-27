@@ -80,20 +80,18 @@ Route::group([
     Route::resource('appointments', AppointmentController::class);
     //FAQ
     Route::resource('faqs', FaqController::class);
-    //FAQ
-    Route::resource('testimonial', TestimonialController::class);  
     //Footer
     Route::resource('footer', FooterController::class);  
     //OutWork
     Route::resource('ourwork', OurWorkController::class);  
     //openingHour
-    Route::resource('opening_hour', OpeningHourController::class);  
+    Route::resource('opening_hour', OpeningHourController::class);
     //AppointMent_Questions
-    Route::resource('appoint_que', AppointmentQueController::class);  
+    Route::resource('appoint_que', AppointmentQueController::class);
     //AppointMent_Page
-    Route::resource('appoint_page', AppointmentPageController::class);  
+    Route::resource('appoint_page', AppointmentPageController::class);
     //Doctor List
-    Route::resource('doctors', DoctorsController::class);  
+    Route::resource('doctors', DoctorsController::class);
     //Treatment 
     Route::resource('treatment', TreatmentController::class);
     //Department
@@ -104,6 +102,8 @@ Route::group([
 
 // Comments
 Route::resource('comments', CommentController::class);
+//Testimonial
+Route::resource('testimonial', TestimonialController::class);  
 //Subscribe
 Route::resource('subscribe', SubscribeController::class);  
 // Reply

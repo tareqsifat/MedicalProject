@@ -1,4 +1,4 @@
-@extends('admin.layout.admin')
+@extends('admin.layout.admin')11
 
 @section('content')
     <h2 class="intro-y text-lg font-medium mt-10">

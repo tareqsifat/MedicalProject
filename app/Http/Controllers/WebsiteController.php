@@ -77,16 +77,13 @@ class WebsiteController extends Controller
     public function blog()
     {
         $blog = Blog::get();
-        // $footer = Footer::latest()->get();
         return view('website.blog', compact('blog'));
     }
 
     public function blogShow($slug)
     {
         $blogs = Blog::where('slug', $slug)->with(['user_info','category_info','subcategory_info'])->first();
-        // $comments = Blog::where('slug', $slu
-        $count = $blogs->comments->count() + $blogs->reply->where('comment.approved',1)->where('approved',1)->count();
-
+        $count = $blogs->comments->count() + $blogs->reply->count();
         function finder(String $findby, String $value){
             return Blog::where($findby, $value)->get();
         }
@@ -94,13 +91,10 @@ class WebsiteController extends Controller
         $related_post = finder('category_id', $blogs->category_id);
         $prev_post = finder('id', $blogs->id-1);
         $next_post = finder('id', $blogs->id+1);
-        // $related_post = Blog::where('category_id', $blogs->category_id)->get();
-        // dd($next_post);
         return view('website.blog_post', compact('blogs', 'count','related_post','prev_post', 'next_post'));
     }
     public function contact()
     {
-        // $footer = Footer::latest()->get();
         $opening = OpeningHour::get();
         return view('website.contact', compact('opening')); 
     }

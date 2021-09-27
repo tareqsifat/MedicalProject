@@ -3,12 +3,16 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<meta name="author" content="SemiColonWeb" />
-	{{-- <meta property="og:url"           content="https://www.your-domain.com/your-page.html" />
-	<meta property="og:type"          content="website" />
-	<meta property="og:title"         content="Your Website Title" />
-	<meta property="og:description"   content="Your description" />
-	<meta property="og:image"         content="https://www.your-domain.com/path/image.jpg" /> --}}
+	
+    {{-- <meta property="og:url"           content="{{ $url }}" />
+    <meta property="og:type"          content="website" />
+    <meta property="og:title"         content="{{ $title }}" />
+    <meta property="og:description"   content="{{ $description }}" />
+    <meta property="og:image"         content="{{ $image }}" /> --}}
 
+	{{-- @php
+		dd($image);
+	@endphp --}}
 	<!-- Stylesheets
 	============================================= -->
 	@include('website.partials.part_css')

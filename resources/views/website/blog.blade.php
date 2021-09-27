@@ -34,8 +34,8 @@
 							</div>
 							<div class="entry-meta">
 								<ul>
-									<li><i class="icon-calendar3"></i>{{ $item->created_at->format('d/m/y h:i:s a') }}</li>
-									<li><a href="blog-single.html#comments"><i class="icon-comments"></i> 13</a></li>
+									<li><i class="icon-calendar3"></i>{{ $item->created_at->format('d M Y h:i:s a') }}</li>
+									<li><a href="blog-single.html#comments"><i class="icon-comments"></i>{{ $item->comments->count()+$item->reply->count() }}</a></li>
 									<li><a href="#"><i class="icon-camera-retro"></i></a></li>
 								</ul>
 							</div>
