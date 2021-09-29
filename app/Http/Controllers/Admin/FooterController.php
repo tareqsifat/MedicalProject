@@ -7,8 +7,6 @@ use App\Models\Footer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Session;
 
 class FooterController extends Controller
 {
@@ -127,19 +125,22 @@ class FooterController extends Controller
     public function singleupdate(Request $request, $id)
     {
         $footer = Footer::find($id);
-        dd('ok');
-
-        $footer->email = $request->email;
-        $footer->facebook = $request->facebook;
-        $footer->phone = $request->phone;
-        $footer->feed = $request->feed;
-        $footer->company_name = $request->company_name;
-
-        // dd('ok');
-        $footer->creator = Auth::user()->id;
-        $footer->slug = Str::slug($request->email);
-
-        $footer->save();
+        
+        if ($request->has('company_name')) {
+            $footer->update(array("company_name" => "$request->company_name"));
+        }
+        if ($request->has('email')) {
+            $footer->update(array("email" => "$request->email"));
+        }
+        if ($request->has('facebook')) {
+            $footer->update(array("facebook" => "$request->facebook"));
+        }
+        if ($request->has('phone')) {
+            $footer->update(array("phone" => "$request->phone"));
+        }
+        if ($request->has('feed')) {
+            $footer->update(array("feed" => "$request->feed"));
+        }
 
         Session()->flash('alert-success','footer Updated Successfully');
 
