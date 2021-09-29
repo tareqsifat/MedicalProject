@@ -18,39 +18,92 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">#</th>
-                                <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">Email</th>
-                                <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">Phone</th>
-                                <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">Facebook</th>
-                                <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">Feed</th>
+                                <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">Field</th>
+                                <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">Data</th>
+                                <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">Action</th>
                             </tr>
                         </thead>
                         {{-- <img src="/" alt="" height="50px"> --}}
                         <tbody>
                             @foreach ($collection as $key=>$item)
                                 <tr>
-                                    <td class="border-b whitespace-nowrap">{{ $key+1 }}</td>
+                                    <td class="border-b whitespace-nowrap">Company Name</td>
+                                    <td class="border-b whitespace-nowrap">{{ $item->company_name }}</td>
+                                    <td class="border-b whitespace-nowrap">
+                                        <a type="button" 
+                                            class="btn btn-warning waves-effect waves-light m-1 booltip"
+                                            onclick="document.getElementById('singleform').style.display = 'block'">
+                                            {{-- booltip is a custop tooltip arrtibute, made for avoiding same name conflict with tooltip comes with template --}}
+                                            <i class="fas fa-pencil-alt"></i>
+                                            <div class="booltiptext">Edit Company</div>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td id="singleform" style="display: none">
+                                        @include('admin.include.single_update', [
+                                            'collection' => $item,
+                                            'name' => 'company_name'
+                                        ])
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border-b whitespace-nowrap">Email</td>
                                     <td class="border-b whitespace-nowrap">{{ $item->email }}</td>
+                                    <td class="border-b whitespace-nowrap">
+                                        <a type="button" href="{{ route('footer.edit', $item->id) }}" 
+                                            class="btn btn-warning waves-effect waves-light m-1 booltip">
+                                            <i class="fas fa-pencil-alt"></i>
+                                            <div class="booltiptext">Edit Email</div>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border-b whitespace-nowrap">Phone</td>
                                     <td class="border-b whitespace-nowrap">{{ $item->phone }}</td>
+                                    <td class="border-b whitespace-nowrap">
+                                        <a type="button" href="{{ route('footer.edit', $item->id) }}" 
+                                            class="btn btn-warning waves-effect waves-light m-1 booltip">
+                                            <i class="fas fa-pencil-alt"></i>
+                                            <div class="booltiptext">Edit Phone</div>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border-b whitespace-nowrap">Facebook</td>
                                     <td class="border-b whitespace-nowrap">{{ $item->facebook }}</td>
+                                    <td class="border-b whitespace-nowrap">
+                                        <a type="button" href="{{ route('footer.edit', $item->id) }}" 
+                                            class="btn btn-warning waves-effect waves-light m-1 booltip">
+                                            <i class="fas fa-pencil-alt"></i>
+                                            <div class="booltiptext">Edit Facebook</div>
+                                        </a>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="border-b whitespace-nowrap">Feed</td>
                                     <td class="border-b whitespace-nowrap">{{ $item->feed }}</td>
                                     <td class="border-b whitespace-nowrap">
-                                        <div class="d-inline">
-                                            <a type="button" href="{{ route('footer.edit',$item->id) }}" 
-                                                class="btn btn-warning waves-effect waves-light m-1">
-                                                <i class="fa fa-pencil"></i> 
-                                                <span>edit</span>
-                                            </a>
-                                            <form method="POST" action="{{ route('footer.destroy', $item->id) }}">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" onclick="return confirm('Are you want to delete?')" class="btn btn-denger">Delete</button>
-                                            </form>
-                                        </div>
+                                        <a type="button" href="{{ route('footer.edit', $item->id) }}" 
+                                            class="btn btn-warning waves-effect waves-light m-1 booltip">
+                                            <i class="fas fa-pencil-alt"></i>
+                                            <div class="booltiptext">Edit Feed</div>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td class="border-b whitespace-nowrap">
+                                        <a type="button" href="{{ route('footer.edit', $item->id) }}" 
+                                            class="btn btn-warning waves-effect waves-light m-1">
+                                            <i class="fas fa-pencil-alt"></i>&nbsp;
+                                            <span>Edit All</span> 
+                                        </a>
                                     </td>
                                 </tr>
                             @endforeach
-                            
                         </tbody>
                     </table>
                     <div class="d-flex justify-content-center">

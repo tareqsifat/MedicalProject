@@ -28,10 +28,10 @@ class FooterController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        return view('admin.footer.create');
-    }
+    // public function create()
+    // {
+    //     return view('admin.footer.create');
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -39,31 +39,31 @@ class FooterController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        $this->validate($request, [
-            'email' => 'required',
-            'facebook' => 'required',
-            'phone' => 'required',
-            'feed' => 'required',
-        ]);
+    // public function store(Request $request)
+    // {
+    //     $this->validate($request, [
+    //         'email' => 'required_if:anotherfield,value',
+    //         'facebook' => 'required',
+    //         'phone' => 'required',
+    //         'feed' => 'required',
+    //     ]);
 
-        $footer = new Footer();
+    //     $footer = new Footer();
 
-        $footer->email = $request->email;
-        $footer->facebook = $request->facebook;
-        $footer->phone = $request->phone;
-        $footer->feed = $request->feed;
+    //     $footer->email = $request->email;
+    //     $footer->facebook = $request->facebook;
+    //     $footer->phone = $request->phone;
+    //     $footer->feed = $request->feed;
 
-        $footer->creator = Auth::user()->id;
-        $footer->slug = Str::slug($request->email);
+    //     $footer->creator = Auth::user()->id;
+    //     $footer->slug = Str::slug($request->email);
 
-        $footer->save();
+    //     $footer->save();
 
-        Session()->flash('alert-success','footer Added Successfully');
+    //     Session()->flash('alert-success','footer Added Successfully');
 
-        return redirect()->route('footer.index');
-    }
+    //     return redirect()->route('footer.index');
+    // }
 
     /**
      * Display the specified resource.
@@ -104,13 +104,38 @@ class FooterController extends Controller
             'feed' => 'required',
         ]);
 
+
         $footer = Footer::find($id);
+        // dd($request);
 
         $footer->email = $request->email;
         $footer->facebook = $request->facebook;
         $footer->phone = $request->phone;
         $footer->feed = $request->feed;
+        $footer->company_name = $request->company_name;
 
+        $footer->creator = Auth::user()->id;
+        $footer->slug = Str::slug($request->email);
+
+        $footer->save();
+
+        Session()->flash('alert-success','footer Updated Successfully');
+
+        return redirect()->route('footer.index');
+    }
+
+    public function singleupdate(Request $request, $id)
+    {
+        $footer = Footer::find($id);
+        dd('ok');
+
+        $footer->email = $request->email;
+        $footer->facebook = $request->facebook;
+        $footer->phone = $request->phone;
+        $footer->feed = $request->feed;
+        $footer->company_name = $request->company_name;
+
+        // dd('ok');
         $footer->creator = Auth::user()->id;
         $footer->slug = Str::slug($request->email);
 
@@ -127,13 +152,13 @@ class FooterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        $footer = Footer::find($id);
-        $footer->delete();
+    // public function destroy($id)
+    // {
+    //     $footer = Footer::find($id);
+    //     $footer->delete();
 
-        Session()->flash('alert-danger','footer deleted Successfully');
+    //     Session()->flash('alert-danger','footer deleted Successfully');
 
-        return back();
-    }
+    //     return back();
+    // }
 }

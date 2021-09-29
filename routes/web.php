@@ -98,6 +98,7 @@ Route::group([
     Route::resource('departments', DepartmentController::class);
     // Notification
     Route::get('all_notification',[NotificationController::class,'index'])->name('notification_index');
+    Route::put('footer/single_update/{id}',[FooterController::class,'singleupdate'])->name('footer_single_update');
 });
 
 // Comments
