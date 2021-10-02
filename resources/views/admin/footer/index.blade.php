@@ -28,7 +28,7 @@
                                     <td class="border-b whitespace-nowrap">
                                         <a type="button" 
                                             class="btn btn-warning waves-effect waves-light m-1 booltip"
-                                            onclick="document.getElementById('singleform').style.display = 'block'">
+                                            onclick="viewClose('singleform')">
                                             {{-- booltip is a custop tooltip arrtibute, made for avoiding same name conflict with tooltip comes with template --}}
                                             <i class="fas fa-pencil-alt"></i>
                                             <div class="booltiptext">Edit Company</div>
@@ -37,16 +37,16 @@
                                 </tr>
                                 <tr>
                                     <td colspan="2" id="singleform" style="display: none">
-                                        <form method="POST" action="{{ route('footer_single_update', $item->id) }}" enctype="multipart/form-data" style="padding-right: 10px" id="horizontal-form">
+                                        {{-- <form method="POST" action="{{ route('footer_single_update', $item->id) }}" enctype="multipart/form-data" style="padding-right: 10px" id="horizontal-form">
                                             @csrf
                                             @method('PUT')
-                                            <div class="preview">
-                                                <div class="form-group p-4 mb-3">
-                                                    <label for="horizontal-form-1" class="form-label sm:w-20">Company Name</label>
-                                                    <input id="horizontal-form-1" name="company_name" type="text" class="form-control" value="{{ $item->company_name }}">
-                                                    @error('company_name')
+                                                {{-- <div class="preview">
+                                                    <div class="form-group p-4 mb-3">
+                                                        <label for="horizontal-form-1" class="form-label sm:w-20">Company Name</label>
+                                                        <input id="horizontal-form-1" name="company_name" type="text" class="form-control" value="{{ $item->company_name }}">
+                                                        @error('company_name')
                                                         <div class="text-theme-6 mt-2">{{ $message }}<br></div>
-                                                    @enderror
+                                                        @enderror
                                                 </div>
                                                 <div class="sm:ml-20 sm:pl-5 mt-5" style="text-align: right; margin-right: 20px">
                                                     <button type="button" onclick="document.getElementById('singleform').style.display = 'none'" style="margin-bottom: 30px" class="btn btn-primary">
@@ -59,7 +59,12 @@
                                                     </button>
                                                 </div>
                                             </div>
-                                        </form>
+                                        </form> --}}
+                                        @include('admin.include.single_update',[
+                                            'item' => $item,
+                                            'name' => 'company_name',
+                                            'fname' =>'singleform'
+                                        ])
                                     </td>
                                 </tr>
                                 <tr>
@@ -68,7 +73,7 @@
                                         <td class="border-b whitespace-nowrap">
                                             <a type="button" 
                                                 class="btn btn-warning waves-effect waves-light m-1 booltip"
-                                                onclick="document.getElementById('singleform1').style.display='block'">
+                                                onclick="viewClose('singleform1')">
                                                 <i class="fas fa-pencil-alt"></i>
                                                 <div class="booltiptext">Edit Email</div>
                                             </a>
@@ -77,15 +82,15 @@
                                 </tr>
                                 <tr>
                                     <td colspan="2" id="singleform1" style="display: none">
-                                        <form method="POST" action="{{ route('footer_single_update', $item->id) }}" enctype="multipart/form-data" style="padding-right: 10px" id="horizontal-form">
+                                        {{-- <form method="POST" action="{{ route('footer_single_update', $item->id) }}" enctype="multipart/form-data" style="padding-right: 10px" id="horizontal-form">
                                             @csrf
-                                            @method('PUT')
-                                            <div class="preview">
+                                            @method('PUT') --}}
+                                            {{-- <div class="preview">
                                                 <div class="form-group p-4 mb-3">
                                                     <label for="horizontal-form-1" class="form-label sm:w-20">email</label>
                                                     <input id="horizontal-form-1" name="email" type="text" class="form-control" value="{{ $item->email }}">
                                                     @error('email')
-                                                        <div class="text-theme-6 mt-2">{{ $message }}<br></div>
+                                                    <div class="text-theme-6 mt-2">{{ $message }}<br></div>
                                                     @enderror
                                                 </div>
                                                 <div class="sm:ml-20 sm:pl-5 mt-5" style="text-align: right; margin-right: 20px">
@@ -93,8 +98,13 @@
                                                     
                                                     <button type="submit" style="margin-bottom: 30px" class="btn btn-primary"><i class="icon-lock"></i>&nbsp; update</button>
                                                 </div>
-                                            </div>
-                                        </form>
+                                            </div> --}}
+                                        {{-- </form> --}}
+                                            @include('admin.include.single_update',[
+                                                'item' => $item,
+                                                'name' => 'email',
+                                                'fname' =>'singleform1'
+                                            ])
                                     </td>
                                 </tr>
                                 <tr>
@@ -103,7 +113,7 @@
                                     <td class="border-b whitespace-nowrap">
                                         <a type="button" 
                                             class="btn btn-warning waves-effect waves-light m-1 booltip"
-                                            onclick="document.getElementById('singleform2').style.display='block'">
+                                            onclick="viewClose('singleform2')">
                                             <i class="fas fa-pencil-alt"></i>
                                             <div class="booltiptext">Edit phone</div>
                                         </a>
@@ -112,10 +122,11 @@
                                 </tr>
                                 <tr>
                                     <td colspan="2" id="singleform2" style="display: none">
-                                        <form method="POST" action="{{ route('footer_single_update', $item->id) }}" enctype="multipart/form-data" style="padding-right: 10px" id="horizontal-form">
+                                        {{-- <form method="POST" action="{{ route('footer_single_update', $item->id) }}" enctype="multipart/form-data" style="padding-right: 10px" id="horizontal-form">
                                             @csrf
-                                            @method('PUT')
-                                            <div class="preview">
+                                            @method('PUT') --}}
+                                            
+                                            {{-- <div class="preview">
                                                 <div class="form-group p-4 mb-3">
                                                     <label for="horizontal-form-1" class="form-label sm:w-20">phone</label>
                                                     <input id="horizontal-form-1" name="phone" type="text" class="form-control" value="{{ $item->phone }}">
@@ -128,8 +139,13 @@
                                                     
                                                     <button type="submit" style="margin-bottom: 30px" class="btn btn-primary"><i class="icon-lock"></i>&nbsp; update</button>
                                                 </div>
-                                            </div>
-                                        </form>
+                                            </div> 
+                                        </form>--}}
+                                        @include('admin.include.single_update',[
+                                            'item' => $item,
+                                            'name' => 'phone',
+                                            'fname' =>'singleform2'
+                                        ])
                                     </td>
                                 </tr>
                                 <tr>
@@ -138,7 +154,7 @@
                                     <td class="border-b whitespace-nowrap">
                                         <a type="button" 
                                             class="btn btn-warning waves-effect waves-light m-1 booltip"
-                                            onclick="document.getElementById('singleform3').style.display='block'">
+                                            onclick="viewClose('singleform3')">
                                             <i class="fas fa-pencil-alt"></i>
                                             <div class="booltiptext">Edit Facebook</div>
                                         </a>
@@ -146,9 +162,10 @@
                                 </tr>
                                 <tr>
                                     <td colspan="2" id="singleform3" style="display: none">
-                                        <form method="POST" action="{{ route('footer_single_update', $item->id) }}" enctype="multipart/form-data" style="padding-right: 10px" id="horizontal-form">
+                                        {{-- <form method="POST" action="{{ route('footer_single_update', $item->id) }}" enctype="multipart/form-data" style="padding-right: 10px" id="horizontal-form">
                                             @csrf
                                             @method('PUT')
+                                            
                                             <div class="preview">
                                                 <div class="form-group p-4 mb-3">
                                                     <label for="horizontal-form-1" class="form-label sm:w-20">Facebook</label>
@@ -163,7 +180,12 @@
                                                     <button type="submit" style="margin-bottom: 30px" class="btn btn-primary"><i class="icon-lock"></i>&nbsp; update</button>
                                                 </div>
                                             </div>
-                                        </form>
+                                        </form> --}}
+                                        @include('admin.include.single_update',[
+                                            'item' => $item,
+                                            'name' => 'facebook',
+                                            'fname' =>'singleform3'
+                                        ])
                                     </td>
                                 </tr>
                                 <tr>
@@ -172,7 +194,7 @@
                                     <td class="border-b whitespace-nowrap">
                                         <a type="button" 
                                             class="btn btn-warning waves-effect waves-light m-1 booltip"
-                                            onclick="document.getElementById('singleform4').style.display='block'">
+                                            onclick="viewClose('singleform4')">
                                             <i class="fas fa-pencil-alt"></i>
                                             <div class="booltiptext">Edit Feed</div>
                                         </a>
@@ -180,9 +202,10 @@
                                 </tr>
                                 <tr>
                                     <td colspan="2" id="singleform4" style="display: none">
-                                        <form method="POST" action="{{ route('footer_single_update', $item->id) }}" enctype="multipart/form-data" style="padding-right: 10px" id="horizontal-form">
+                                        {{-- <form method="POST" action="{{ route('footer_single_update', $item->id) }}" enctype="multipart/form-data" style="padding-right: 10px" id="horizontal-form">
                                             @csrf
                                             @method('PUT')
+                                            
                                             <div class="preview">
                                                 <div class="form-group p-4 mb-3">
                                                     <label for="horizontal-form-1" class="form-label sm:w-20">Feed</label>
@@ -197,7 +220,12 @@
                                                     <button type="submit" style="margin-bottom: 30px" class="btn btn-primary"><i class="icon-lock"></i>&nbsp; update</button>
                                                 </div>
                                             </div>
-                                        </form>
+                                        </form> --}}
+                                        @include('admin.include.single_update',[
+                                            'item' => $item,
+                                            'name' => 'feed',
+                                            'fname' =>'singleform4'
+                                        ])
                                     </td>
                                 </tr>
                                 <tr>
@@ -221,5 +249,16 @@
             </div>
         </div>
     </div>
+    <script>
+        function viewClose(name){
+            console.log(name);
+            if(name){
+                document.getElementById(name).style.display='block';
+            }
+            else{
+                document.getElementById(name).style.display='none';
+            } 
+        }
+    </script>
     <!-- END: Responsive Table -->
 @endsection

@@ -26,7 +26,7 @@ use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\Admin\TreatmentController;
 use App\Http\Controllers\ReplyController;
 use App\Http\Controllers\LoginController;
-
+use App\Http\Controllers\SendEmailController;
 
 // use ReplyController;
 
@@ -109,6 +109,8 @@ Route::resource('testimonial', TestimonialController::class);
 Route::resource('subscribe', SubscribeController::class);  
 // Reply
 Route::resource('reply', ReplyController::class);
+// Send Email
+Route::resource('send_email', SendEmailController::class);
 
 
 
