@@ -28,7 +28,7 @@
                                     <td class="border-b whitespace-nowrap">
                                         <a type="button" 
                                             class="btn btn-warning waves-effect waves-light m-1 booltip"
-                                            onclick="viewClose('singleform')">
+                                            onclick="viewClose('singleform0')">
                                             {{-- booltip is a custop tooltip arrtibute, made for avoiding same name conflict with tooltip comes with template --}}
                                             <i class="fas fa-pencil-alt"></i>
                                             <div class="booltiptext">Edit Company</div>
@@ -36,7 +36,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2" id="singleform" style="display: none">
+                                    <td colspan="2" id="singleform0" style="display: none">
                                         {{-- <form method="POST" action="{{ route('footer_single_update', $item->id) }}" enctype="multipart/form-data" style="padding-right: 10px" id="horizontal-form">
                                             @csrf
                                             @method('PUT')
@@ -49,7 +49,7 @@
                                                         @enderror
                                                 </div>
                                                 <div class="sm:ml-20 sm:pl-5 mt-5" style="text-align: right; margin-right: 20px">
-                                                    <button type="button" onclick="document.getElementById('singleform').style.display = 'none'" style="margin-bottom: 30px" class="btn btn-primary">
+                                                    <button type="button" onclick="document.getElementById('singleform0').style.display = 'none'" style="margin-bottom: 30px" class="btn btn-primary">
                                                         <i class="fas fa-window-close"></i>
                                                         &nbsp; close
                                                     </button>
@@ -63,7 +63,7 @@
                                         @include('admin.include.single_update',[
                                             'item' => $item,
                                             'name' => 'company_name',
-                                            'fname' =>'singleform'
+                                            'fname' =>'singleform0'
                                         ])
                                     </td>
                                 </tr>
@@ -251,13 +251,51 @@
     </div>
     <script>
         function viewClose(name){
-            console.log(name);
-            if(name){
-                document.getElementById(name).style.display='block';
+        console.log(name);
+            // console.log(name);
+            for (let index = 0; index < 5; index++) {
+                if(name == ("singleform"+index)){
+                    document.getElementById(("singleform"+index)).style.display='block';
+                }
+                else{
+                    document.getElementById("singleform"+index).style.display='none';
+                }
             }
-            else{
-                document.getElementById(name).style.display='none';
-            } 
+            // if(name == 'singleform0'){
+            //     document.getElementById(name).style.display='block';
+            //     document.getElementById('singleform1').style.display='none';
+            //     document.getElementById('singleform2').style.display='none';
+            //     document.getElementById('singleform3').style.display='none';
+            //     document.getElementById('singleform4').style.display='none';
+            // }
+            // if(name == 'singleform1'){
+            //     document.getElementById(name).style.display='block';
+            //     document.getElementById('singleform0').style.display='none';
+            //     document.getElementById('singleform2').style.display='none';
+            //     document.getElementById('singleform3').style.display='none';
+            //     document.getElementById('singleform4').style.display='none';
+            // }
+            // if(name == 'singleform2'){
+            //     document.getElementById(name).style.display='block';
+            //     document.getElementById('singleform0').style.display='none';
+            //     document.getElementById('singleform1').style.display='none';
+            //     document.getElementById('singleform3').style.display='none';
+            //     document.getElementById('singleform4').style.display='none';
+            // }
+            // if(name == 'singleform3'){
+            //     document.getElementById(name).style.display='block';
+            //     document.getElementById('singleform0').style.display='none';
+            //     document.getElementById('singleform2').style.display='none';
+            //     document.getElementById('singleform1').style.display='none';
+            //     document.getElementById('singleform4').style.display='none';
+            // }
+            // if(name == 'singleform4'){
+            //     document.getElementById(name).style.display='block';
+            //     document.getElementById('singleform0').style.display='none';
+            //     document.getElementById('singleform2').style.display='none';
+            //     document.getElementById('singleform3').style.display='none';
+            //     document.getElementById('singleform1').style.display='none';
+            // }
         }
     </script>
     <!-- END: Responsive Table -->

@@ -76,8 +76,6 @@ Route::group([
     Route::resource('slider', SliderController::class);
     //service
     Route::resource('service', ServiceController::class);
-    //Appointment
-    Route::get('appointments', [AppointmentController::class, 'index'])->name('appointments_index');
     //FAQ
     Route::resource('faqs', FaqController::class);
     //Footer
@@ -98,8 +96,13 @@ Route::group([
     Route::resource('departments', DepartmentController::class);
     // Notification
     Route::get('all_notification',[NotificationController::class,'index'])->name('notification_index');
+    //Appointment
+    Route::get('appointments', [AppointmentController::class, 'index'])->name('appointments_index');
+    //Appointment_delete
+    Route::get('appointments/{appointments}', [AppointmentController::class, 'destroy'])->name('appointments_destroy');
     // footer single update route
     Route::put('footer/single_update/{id}',[FooterController::class,'singleupdate'])->name('footer_single_update');
+    //user_message_index
     Route::get('send_email',[SendEmailController::class, 'index'])->name('send_email_index');
 });
 

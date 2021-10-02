@@ -7,7 +7,7 @@
     <div class="intro-y box mt-5">
         <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200">
             <h2 class="font-medium text-base mr-auto">
-                USer Messages
+                User Messages
             </h2>
             <div class="w-full sm:w-auto flex items-center sm:ml-auto mt-3 sm:mt-0">
                 {{-- <a href="{{ route('send_email_Store') }}" class="btn btn-warning"><i class="fa fa-plus"></i> ADD</a> --}}
@@ -50,9 +50,9 @@
                                     </td> --}}
                                 </tr>
                             @endforeach
-                            
                         </tbody>
                     </table>
+                    
                 </div>
             </div>
         </div>

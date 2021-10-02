@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use App\Models\Footer;
 use App\Models\Notification;
+use Illuminate\Pagination\Paginator;
+// use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -35,6 +37,8 @@ class AppServiceProvider extends ServiceProvider
         // View::share(['authuser' => $authuser]);
 
         // dd($authuser);
+
+        // Paginator::useBootstrap();
 
     }
 }

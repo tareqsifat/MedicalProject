@@ -17,7 +17,8 @@ class AppointmentController extends Controller
      */
     public function index()
     {
-        $collection = Appointment::latest()->get();
+        $collection = Appointment::latest()->paginate(10);
+        // dd($collection->links()->paginator->onFirstPage());
         return view('admin.appointment.index',compact('collection'));
     }
 
@@ -83,10 +84,10 @@ class AppointmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
+    // public function show($id)
+    // {
+    //     //
+    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -94,10 +95,10 @@ class AppointmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
-    }
+    // public function edit($id)
+    // {
+    //     //
+    // }
 
     /**
      * Update the specified resource in storage.
@@ -106,10 +107,10 @@ class AppointmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+    // public function update(Request $request, $id)
+    // {
+    //     //
+    // }
 
     /**
      * Remove the specified resource from storage.
@@ -117,8 +118,10 @@ class AppointmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Appointment $appointments)
     {
-        //
+        // $collection = Appointment::find($id);
+        $appointments->delete();
+        return redirect()->back();
     }
 }

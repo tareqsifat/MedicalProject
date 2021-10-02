@@ -128,7 +128,7 @@
                     <div class="side-menu__sub-icon "> <i ></i> </div>
                 </div>
             </a>
-            <a href="{{ route('appointments.index') }}" class="side-menu {{ Request::is('admin/appointments') ? 'side-menu--active' : '' }}">
+            <a href="{{ route('appointments_index') }}" class="side-menu {{ Request::is('admin/appointments') ? 'side-menu--active' : '' }}">
                 <div class="side-menu__icon"> <i class="fa fa-calendar-check"></i> </div>
                 <div class="side-menu__title">
                     Book an Appointment
