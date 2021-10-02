@@ -77,7 +77,7 @@ Route::group([
     //service
     Route::resource('service', ServiceController::class);
     //Appointment
-    Route::resource('appointments', AppointmentController::class);
+    Route::get('appointments', [AppointmentController::class, 'index'])->name('appointments_index');
     //FAQ
     Route::resource('faqs', FaqController::class);
     //Footer
@@ -98,11 +98,15 @@ Route::group([
     Route::resource('departments', DepartmentController::class);
     // Notification
     Route::get('all_notification',[NotificationController::class,'index'])->name('notification_index');
+    // footer single update route
     Route::put('footer/single_update/{id}',[FooterController::class,'singleupdate'])->name('footer_single_update');
+    Route::get('send_email',[SendEmailController::class, 'index'])->name('send_email_index');
 });
 
 // Comments
 Route::resource('comments', CommentController::class);
+//create appointment from user
+Route::post('appointments', [AppointmentController::class, 'store'])->name('appointments_store');
 //Testimonial
 Route::resource('testimonial', TestimonialController::class);  
 //Subscribe
@@ -110,7 +114,7 @@ Route::resource('subscribe', SubscribeController::class);
 // Reply
 Route::resource('reply', ReplyController::class);
 // Send Email
-Route::resource('send_email', SendEmailController::class);
+Route::post('send_email', [SendEmailController::class,'store'])->name('send_email_Store');
 
 
 

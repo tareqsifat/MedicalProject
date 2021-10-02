@@ -17,7 +17,7 @@ class SendEmailController extends Controller
      */
     public function index()
     {
-        $collection = SendEmail::get();
+        $collection = SendEmail::latest()->get();
         return view('admin.send_email.index',compact('collection'));
     }
 
@@ -26,10 +26,10 @@ class SendEmailController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        return view('admin.send_email.create');
-    }
+    // public function create()
+    // {
+    //     return view('admin.send_email.create');
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -39,6 +39,7 @@ class SendEmailController extends Controller
      */
     public function store(Request $request)
     {
+        //dd($request);
         $this->validate($request,[
             'phone'=>'required',
             'subject'=>'required',
@@ -62,7 +63,10 @@ class SendEmailController extends Controller
         $nofication->save();
         
 
-        return back();
+        session()->flash('alert-success','Your message saved successfully');
+
+
+        return 'Your message saved successfully';
     }
 
     /**

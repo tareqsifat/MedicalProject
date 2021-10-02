@@ -26,10 +26,10 @@ class AppointmentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        return view('admin.appointment.create');
-    }
+    // public function create()
+    // {
+    //     return view('admin.appointment.create');
+    // }
 
     // public function topbar()
     // {
@@ -74,7 +74,7 @@ class AppointmentController extends Controller
 
         Session()->flash('alert-success', 'Appointment added successfully');
 
-        return back();
+        return 'Your Appointment is added successfully';
     }
 
     /**

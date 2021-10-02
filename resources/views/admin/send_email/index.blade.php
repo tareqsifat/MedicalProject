@@ -7,10 +7,10 @@
     <div class="intro-y box mt-5">
         <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200">
             <h2 class="font-medium text-base mr-auto">
-                Appointments
+                USer Messages
             </h2>
             <div class="w-full sm:w-auto flex items-center sm:ml-auto mt-3 sm:mt-0">
-                <a href="{{ route('send_email.create') }}" class="btn btn-warning"><i class="fa fa-plus"></i> ADD</a>
+                {{-- <a href="{{ route('send_email_Store') }}" class="btn btn-warning"><i class="fa fa-plus"></i> ADD</a> --}}
             </div>
         </div>
         <div class="p-5" id="responsive-table">
@@ -39,7 +39,7 @@
                                     <td class="border-b whitespace-nowrap">{{ $item->subject }}</td>
                                     <td class="border-b whitespace-nowrap">{{ $item->service }}</td>
                                     <td class="border-b whitespace-nowrap">{{ $item->message }}</td>
-                                    <td class="border-b whitespace-nowrap">
+                                    {{-- <td class="border-b whitespace-nowrap">
                                         <div class="d-inline">
                                             <form method="POST" action="{{ route('send_email.destroy', $item->id) }}">
                                                 @csrf
@@ -47,7 +47,7 @@
                                                 <button type="submit" onclick="return confirm('Are you want to delete?')" class="btn btn-denger">Delete</button>
                                             </form>
                                         </div>
-                                    </td>
+                                    </td> --}}
                                 </tr>
                             @endforeach
                             

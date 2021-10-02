@@ -37,7 +37,7 @@
                     <div class="side-menu__sub-icon "> <i ></i> </div>
                 </div>
             </a>
-            <a href="{{ route('send_email.index') }}" class="side-menu {{ Request::is('admin/send_email') ? 'side-menu--active' : '' }}">
+            <a href="{{ route('send_email_index') }}" class="side-menu {{ Request::is('admin/send_email') ? 'side-menu--active' : '' }}">
                 <div class="side-menu__icon"> <i class="icon-medical-health-services"></i> </div>
                 <div class="side-menu__title">
                      Contact Messages 

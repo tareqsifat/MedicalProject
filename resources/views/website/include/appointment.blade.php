@@ -1,5 +1,5 @@
 
-<form method="POST" class="row mb-0" id="template-medical-form" action="{{ route('appointments.store') }}" enctype="multipart/form-data">
+<form method="POST" class="row mb-0" id="template-medical-form" action="{{ route('appointments_store') }}" enctype="multipart/form-data">
     @csrf
     <div class="col-md-8 form-group">
         <label for="template-medical-name">Name:</label>
@@ -60,7 +60,7 @@
     </div>
     <div class="col-12 form-group text-end">
         {{-- <input type="button" style="margin-bottom: 30px" class="btn btn-primary" value="add  appointment"> --}}
-        <button type="submit" style="margin-bottom: 30px" class="btn btn-primary"><i class="icon-lock"></i> Add</button>
+        <button type="submit" id="submit_button" style="margin-bottom: 30px" class="btn btn-primary"><i class="icon-lock"></i> Add</button>
     </div>
 </form>
 <script>

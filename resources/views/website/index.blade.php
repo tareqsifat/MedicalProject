@@ -23,6 +23,7 @@
 						<div class="form-result"></div>
 						@include('website.include.appointment')
 					</div>
+					<div class="flash-message"></div>
 				</div>
 			</div>
 
@@ -57,5 +58,20 @@
 		{{-- Meet Specilists Team --}}
 		@include('website.include.meet_specialists')
 	</section>
-
+	<script>
+		$('#submit_button').click( function(e) {
+			e.preventDefault(); // prevent actual form submit
+			var form = $('#template-medical-form').serialize();
+			//var url = form.attr('action'); //get submit url [replace url here if desired]
+			$.ajax({
+				type: "POST",
+				url: "{{ url("appointments") }}",
+				data: form, // serializes form input
+				success: function(data){
+					// console.log(data);
+					$('div.flash-message').html(data);
+				}
+			});
+		});
+	</script>
 @endsection

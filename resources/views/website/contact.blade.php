@@ -31,12 +31,12 @@
 
 						<div class="form-result"></div>
 
-						<form class="row mb-0" id="template-contactform" name="template-contactform" action="{{ route('send_email.store') }}" method="post">
-
+						<form class="row mb-0" id="template-contactform" name="template-contactform" method="post">
+							@csrf
 							<div class="form-process">
-								<div class="css3-spinner">
+								<!--<div class="css3-spinner">
 									<div class="css3-spinner-scaler"></div>
-								</div>
+								</div>-->
 							</div>
 
 							<div class="col-md-4 form-group">
@@ -76,15 +76,15 @@
 
 							<div class="col-12 form-group">
 								<label for="template-contactform-message">Message <small>*</small></label>
-								<textarea class="required sm-form-control" id="template-contactform-message" name="template-contactform-message" rows="6" cols="30"></textarea>
+								<textarea class="required sm-form-control" id="template-contactform-message" name="message" rows="6" cols="30"></textarea>
 							</div>
 
 							<div class="col-12 form-group">
-								<button class="button button-3d m-0" type="submit" id="template-contactform-submit" name="template-contactform-submit" value="submit">Send Message</button>
+								<button class="button button-3d m-0" type="button" id="abc" >Send Message</button>
 							</div>
 						</form>
 					</div>
-
+					<div class="flash-message"></div>
 				</div>
 
 				<div class="col-lg-4">
@@ -132,5 +132,22 @@
 
 		</div>
 	</div>
+
+	<script>
+		$('#abc').click( function(e) {
+			e.preventDefault(); // prevent actual form submit
+			var form = $('#template-contactform').serialize();
+			//var url = form.attr('action'); //get submit url [replace url here if desired]
+			$.ajax({
+				type: "POST",
+				url: "{{ url("send_email") }}",
+				data: form, // serializes form input
+				success: function(data){
+					// console.log(data);
+					$('div.flash-message').html(data);
+				}
+			});
+		});
+	</script>
 </section><!-- #content end -->
 @endsection

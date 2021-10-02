@@ -1,4 +1,3 @@
-<script src="{{ asset('contents/website') }}/js/jquery.js"></script>
 	<script src="{{ asset('contents/website') }}/js/plugins.min.js"></script>
 
 	<!-- Footer Scripts

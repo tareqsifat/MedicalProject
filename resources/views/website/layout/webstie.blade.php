@@ -3,6 +3,8 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<meta name="author" content="SemiColonWeb" />
+	<script src="{{ asset('contents/website') }}/js/jquery.js"></script>
+
 	
     {{-- <meta property="og:url"           content="{{ $url }}" />
     <meta property="og:type"          content="website" />

@@ -10,7 +10,7 @@
                 Appointments
             </h2>
             <div class="w-full sm:w-auto flex items-center sm:ml-auto mt-3 sm:mt-0">
-                <a href="{{ route('appointments.create') }}" class="btn btn-warning"><i class="fa fa-plus"></i> ADD</a>
+                <a href="{{ route('appointments_create') }}" class="btn btn-warning"><i class="fa fa-plus"></i> ADD</a>
             </div>
         </div>
         <div class="p-5" id="responsive-table">
@@ -40,18 +40,13 @@
                                     <td class="border-b whitespace-nowrap">{{ $item->appointmentDate }}</td>
                                     <td class="border-b whitespace-nowrap">{{ $item->message }}</td>
                                     <td class="border-b whitespace-nowrap">
-                                        <div class="d-inline">
-                                            <a type="button" href="{{ route('subcategory.edit',$item->id) }}" 
-                                                class="btn btn-warning waves-effect waves-light m-1">
-                                                <i class="fa fa-pencil"></i> 
-                                                <span>edit</span>
-                                            </a>
-                                            <form method="POST" action="{{ route('subcategory.destroy', $item->id) }}">
+                                        {{-- <div class="d-inline">
+                                            <form method="POST" action="{{ route('subcategory_destroy', $item->id) }}">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" onclick="return confirm('Are you want to delete?')" class="btn btn-denger">Delete</button>
                                             </form>
-                                        </div>
+                                        </div> --}}
                                     </td>
                                 </tr>
                             @endforeach
