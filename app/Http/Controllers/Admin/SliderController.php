@@ -89,6 +89,7 @@ class SliderController extends Controller
     public function edit($id)
     {
         $collection = Slider::find($id);
+        // dd($collection);
         return view('admin.slider.edit',compact('collection'));
     }
 
@@ -105,6 +106,8 @@ class SliderController extends Controller
         $this->validate($request, [
             'left_title' => 'required'
         ]);
+        // Slider::where('id', $id)->update(['status'=> 0]);
+
         $slider = Slider::find($id);
         
         if($slider){
@@ -133,7 +136,6 @@ class SliderController extends Controller
         else{
             return abort(404);
         }
-        
     }
 
     /**

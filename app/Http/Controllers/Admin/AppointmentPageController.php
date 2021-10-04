@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\AppointPage;
 use App\Models\Notification;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
@@ -20,7 +19,8 @@ class AppointmentPageController extends Controller
      */
     public function index()
     {
-        $collection = AppointPage::latest()->get();
+        $collection = AppointPage::get();
+        // dd($collection->all());
         return view('admin.appoint_page.index',compact('collection'));
     }
 
@@ -60,7 +60,6 @@ class AppointmentPageController extends Controller
             $path = public_path("uploads/appoint_pages/$savename");
             Image::make($file)->save($path);
             
-
             $appoint_page->title_image = $savename;
         }
         if($request->hasFile('form_image')){
@@ -100,10 +99,10 @@ class AppointmentPageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
+    // public function show($id)
+    // {
+    //     //
+    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -170,9 +169,21 @@ class AppointmentPageController extends Controller
 
         $nofication->message = "Appoint Page Data updated successfully";
 
-        session()->flash('alert-success','appoint_page updated successfully');
+        session()->flash('alert-success','appoint_page updated successfully'); 
 
         return redirect()->route('appoint_page.index');
+    }
+    public function publish(Request $request, $id)
+    {
+        $publish = AppointPage::where('published',1)->update([
+            'published' => 0
+        ]);
+        $appoint_page = AppointPage::find($id);
+
+        
+        $appoint_page->published = $request->published;
+        $appoint_page->save();
+        return back();
     }
 
     /**

@@ -18,11 +18,7 @@ class CommentController extends Controller
      */
     public function index()
     {
-        $collection = Comment::latest()->get();
-
-        // dd($collection->all());
-        // $show = Comment::find(2);
-        // dd($show->reply);
+        $collection = Comment::latest()->paginate(10);
         return view('admin.comment.index',compact('collection'));
     }
 
@@ -115,7 +111,7 @@ class CommentController extends Controller
         $comment->save();
         
         return redirect()->route('comments.index');
-    }
+    } 
 
     /**
      * Remove the specified resource from storage.
@@ -125,6 +121,10 @@ class CommentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $collection = Comment::find($id);
+        $collection->delete();
+
+        session()->flash('alert-danger','comment deleted Successfully');
+        return back();
     }
 }

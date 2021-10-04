@@ -32,8 +32,8 @@
                                     <td class="border-b whitespace-nowrap">{{ $key+1 }}</td>
                                     <td class="border-b whitespace-nowrap">{{ $item->day }}</td>
                                     @if(!($item->isclosed))
-                                        <td class="border-b whitespace-nowrap">{{ $item->start_time }}</td>
-                                        <td class="border-b whitespace-nowrap">{{ $item->end_time }}</td>
+                                        <td class="border-b whitespace-nowrap">{{ $item->start_time->format('h:i:s a') }}</td>
+                                        <td class="border-b whitespace-nowrap">{{ $item->end_time->format('h:i:s a') }}</td>
                                     @else    
                                         <td class="border-b whitespace-nowrap"></td>
                                         <td class="border-b whitespace-nowrap"></td>

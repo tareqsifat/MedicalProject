@@ -5,7 +5,7 @@
     <div class="intro-y box mt-5">
         <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200">
             <h2 class="font-medium text-base mr-auto">
-                sliders
+                All sliders
             </h2>
             <div class="w-full sm:w-auto flex items-center sm:ml-auto mt-3 sm:mt-0">
                 <a href="{{ route('slider.create') }}" class="btn btn-warning"><i class="fa fa-plus"></i> ADD</a>
@@ -21,7 +21,8 @@
                                 <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">Image</th>
                                 <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">Left-title</th>
                                 <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">Right-title</th>
-                                <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">Status</th>
+                                <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">Action</th>
+                                <th class="border-b-2 dark:border-dark-5 whitespace-nowrap"></th>
                             </tr>
                         </thead>
                         {{-- <img src="/" alt="" height="50px"> --}}
@@ -32,22 +33,19 @@
                                     <td class="border-b whitespace-nowrap"><img src='{{ asset("uploads/sliders/$item->image") }}' style="height: 100px" alt="{{ $item->image }}"></td>
                                     <td class="border-b whitespace-nowrap">{{ $item->left_title }}</td>
                                     <td class="border-b whitespace-nowrap">{{ $item->right_title }}</td>
-                                    <td class="border-b whitespace-nowrap">
-                                        <button  class="btn btn-warning">Active</button>
+                                    <td class="border-b whitespace-nowrap" style="width:100px">
+                                        <a type="button" href="{{ route('slider.edit', $item->id) }}" 
+                                            class="btn btn-warning waves-effect waves-light m-1">
+                                            <i class="fa fa-pencil"></i> 
+                                            <span>Edit</span>
+                                        </a>
                                     </td>
-                                    <td class="border-b whitespace-nowrap">
-                                        <div class="d-inline">
-                                            <a type="button" href="{{ route('slider.edit', $item->id) }}" 
-                                                class="btn btn-warning waves-effect waves-light m-1">
-                                                <i class="fa fa-pencil"></i> 
-                                                <span>edit</span>
-                                            </a>
-                                            <form method="POST" action="{{ route('slider.destroy', $item->id) }}">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" onclick="return confirm('Are you want to delete?')" class="btn btn-denger"> Delete</button>
-                                            </form>
-                                        </div>
+                                    <td class="border-b whitespace-nowrap" style="width: 100px"> 
+                                        <form method="POST" action="{{ route('slider.destroy', $item->id) }}">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" onclick="return confirm('Are you want to delete?')" class="btn btn-danger"> Delete</button>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach

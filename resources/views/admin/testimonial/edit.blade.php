@@ -8,7 +8,7 @@
                 Testimonial update
             </h2>
             <div class="form-check w-full sm:w-auto sm:ml-auto mt-3 sm:mt-0">
-                <a href="{{ route('testimonial.index') }}" class="btn btn-primary"><i class="icon-backward"></i> <- Back</a>
+                <a href="{{ route('testimonial.index') }}" class="btn btn-primary"><i class="icon-backward"></i>&nbsp;Back</a>
             </div>
         </div>
         <form method="POST" action="{{ route('testimonial.update', $collection->id) }}" enctype="multipart/form-data" id="horizontal-form">
@@ -25,13 +25,13 @@
                 </div>
                 <div class="form-group p-4">
                     <label for="horizontal-form-1" class="form-label sm:w-20">Body</label>
-                    <textarea name="body" id="horizontal-form-1"placeholder="Description" class="form-control" value="{{ $collection->body }}"></textarea>
+                    <textarea name="body" id="horizontal-form-1"placeholder="Description" class="form-control" value="">{{ $collection->body }}</textarea>
                     @error('body')
                         <div class="text-theme-6 mt-2">{{ $message }}<br></div>
                     @enderror
                 </div>
                 <div class="sm:ml-20 sm:pl-5 mt-5">
-                    <button type="submit" style="margin-bottom: 30px" class="btn btn-primary"><i class="icon-lock"></i> update</button>
+                    <button type="submit" style="margin-bottom: 30px" class="btn btn-primary"><i class="icon-lock"></i>&nbsp;update</button>
                 </div>
             </div>
         </form>

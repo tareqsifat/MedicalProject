@@ -26,10 +26,10 @@ class OpeningHourController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        return view('admin.opening_hour.create');
-    }
+    // public function create()
+    // {
+    //     return view('admin.opening_hour.create');
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -150,8 +150,8 @@ class OpeningHourController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
-    }
+    // public function destroy($id)
+    // {
+    //     //
+    // }
 }

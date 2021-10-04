@@ -7,7 +7,7 @@
                 Create Appointment Page Data
             </h2>
             <div class="form-check w-full sm:w-auto sm:ml-auto mt-3 sm:mt-0">
-                <a href="{{ route('appoint_page.index') }}" class="btn btn-primary"><i class="icon-backward"></i>
+                <a href="{{ route('appoint_page.index') }}" class="btn btn-primary"><i class="icon-backward"></i> &nbsp;
                      Back</a>
             </div>
         </div>
@@ -43,7 +43,7 @@
                     <input id="horizontal-form-1" name="question_message" type="text" class="form-control" placeholder="Title Message">
                 </div>
                 <div class="sm:ml-20 sm:pl-5 mt-5">
-                    <button type="submit" style="margin-bottom: 30px" class="btn btn-primary"><i class="icon-lock"></i> Add</button>
+                    <button type="submit" style="margin-bottom: 30px" class="btn btn-primary"><i class="icon-lock"></i>&nbsp; Add</button>
                 </div>
             </div>
         </form>

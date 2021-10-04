@@ -23,7 +23,9 @@
                                 <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">Form image</th>
                                 <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">Title Message</th>
                                 <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">Question Message</th>
-                                <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">action</th>
+                                <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">Published</th>
+                                <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">Action</th>
+                                <th class="border-b-2 dark:border-dark-5 whitespace-nowrap"></th>
                             </tr>
                         </thead>
                         {{-- <img src="/" alt="" height="50px"> --}}
@@ -35,21 +37,40 @@
                                     <td class="border-b whitespace-nowrap"><img src='{{ asset("/uploads/appoint_pages/$item->form_image") }}' style="height: 100px;" alt="{{ $item->form_image }}"></td>
                                     <td class="border-b whitespace-nowrap">{{ \Illuminate\Support\Str::limit($item->title_message, 35, $end='...') }}</td>
                                     <td class="border-b whitespace-nowrap">{{ \Illuminate\Support\Str::limit($item->question_message, 35, $end='...') }}</td>
-                                    <td class="border-b whitespace-nowrap">{{ \Illuminate\Support\Str::limit($item->highlight_title, 35, $end='...') }}</td>
-                                    <td class="border-b whitespace-nowrap">{{ \Illuminate\Support\Str::limit($item->highlight_message, 35, $end='...') }}</td>
                                     <td class="border-b whitespace-nowrap">
-                                        <div class="d-flex justify-content-between" style="text-align: left">
+                                        @if ($item->published)
+                                            <form action="{{ route('appoint_publish', $item->id) }}" method="POST">
+                                                @csrf
+                                                @method('GET')
+                                                <select name="published" id="" style="display: none">
+                                                    <option value="0"></option>
+                                                </select>
+                                                <button type="submit" class="btn btn-primary">Published</button>
+                                            </form>
+                                        @else
+                                            <form action="{{ route('appoint_publish', $item->id) }}" method="POST">
+                                                @csrf
+                                                @method('GET')
+                                                <select name="published" id="" style="display: none">
+                                                    <option value="1"></option>
+                                                </select>
+                                                <button type="submit" class="btn btn-secondary">Not Published</button>
+                                            </form>
+                                        @endif
+                                    </td>
+                                    <td class="border-b whitespace-nowrap">
                                             <a type="button" href="{{ route('appoint_page.edit', $item->id) }}" 
                                                 class="btn btn-warning waves-effect waves-light m-1">
                                                 <i class="fa fa-pencil"></i> 
                                                 <span>Edit</span>
                                             </a>
-                                            <form method="POST" action="{{ route('appoint_page.destroy', $item->id) }}">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" onclick="return confirm('Are you want to delete?')" class="btn btn-danger">Delete</button>
-                                            </form>
-                                        </div>
+                                    </td>
+                                    <td class="border-b whitespace-nowrap">
+                                        <form method="POST" action="{{ route('appoint_page.destroy', $item->id) }}">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" onclick="return confirm('Are you want to delete?')" class="btn btn-danger">Delete</button>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach

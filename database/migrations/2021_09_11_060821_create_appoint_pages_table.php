@@ -19,8 +19,7 @@ class CreateAppointPagesTable extends Migration
             $table->string('form_image',100);
             $table->text('title_message');
             $table->text('question_message');
-            $table->string('highlight_title',100);
-            $table->string('highlight_message',100);
+            $table->boolean('published')->default(1);
             $table->string('creator',100)->nullable();
             $table->string('slug',100)->nullable();
             $table->boolean('status')->default(1);

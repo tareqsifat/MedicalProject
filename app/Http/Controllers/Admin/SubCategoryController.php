@@ -18,7 +18,7 @@ class SubCategoryController extends Controller
      */
     public function index()
     {
-        $collection = SubCategory::with('category_info')->get();
+        $collection = SubCategory::with('category_info')->paginate(10);
         // dd($collection);
         return view('admin.subCategory.index', compact('collection'));
     }

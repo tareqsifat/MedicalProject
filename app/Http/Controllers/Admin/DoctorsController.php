@@ -18,7 +18,7 @@ class DoctorsController extends Controller
      */
     public function index()
     {
-        $collection = Doctor::get();
+        $collection = Doctor::paginate(10);
         return view('admin.doctor.index',compact('collection'));
     }
 

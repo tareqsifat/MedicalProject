@@ -5,10 +5,10 @@
     <div class="intro-y box mt-5">
         <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5">
             <h2 class="font-medium text-base mr-auto">
-                Opening hours Edit
+                Opening hour Edit
             </h2>
             <div class="form-check w-full sm:w-auto sm:ml-auto mt-3 sm:mt-0">
-                <a href="{{ route('opening_hour.index') }}" class="btn btn-primary"><i class="icon-backward"></i> <- Back</a>
+                <a href="{{ route('opening_hour.index') }}" class="btn btn-primary"><i class="icon-backward"></i> &nbsp; Back</a>
             </div>
         </div>
         <form method="POST" action="{{ route('opening_hour.update', $collection->id) }}" enctype="multipart/form-data" id="horizontal-form">
@@ -25,7 +25,7 @@
                     @error('start_time')
                         <div class="text-theme-6 mt-2">{{ $message }}<br></div>
                     @enderror
-                    <input id="horizontal-form-1" name="start_time" type="time" class="form-control" value="{{ $collection->stat_time }}" placeholder="Start time">
+                    <input id="horizontal-form-1" name="start_time" type="time" class="form-control" value="{{ $collection->stat_time }}">
                 </div>
                 <div class="from-group p-4">
                     <label for="horizontal-form-1" class="form-label sm:w-20">End time</label>
@@ -46,7 +46,7 @@
                     <label for="horizontal-form-1" class="form-control">Open</label>
                 </div>
                 <div class="sm:ml-20 sm:pl-5 mt-5">
-                    <button type="submit" style="margin-bottom: 30px" class="btn btn-primary"><i class="icon-lock"></i> update</button>
+                    <button type="submit" style="margin-bottom: 30px" class="btn btn-primary"><i class="icon-lock"></i>&nbsp; update</button>
                 </div>
             </div>
         </form>

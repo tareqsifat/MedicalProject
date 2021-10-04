@@ -12,6 +12,7 @@
                 <a href="{{ route('appoint_que.create') }}" class="btn btn-warning"><i class="fa fa-plus"></i> ADD</a>
             </div>
         </div>
+        <p class="p-5">First 6 entries of this list will be shown on the website</p>
         <div class="p-5" id="responsive-table">
             <div class="preview">
                 <div class="overflow-x-auto">
@@ -33,18 +34,18 @@
                                     {{-- <td class="border-b whitespace-nowrap">{{ $item->answer }}</td> --}}
                                     <td>{{ \Illuminate\Support\Str::limit($item->answer, 100, $end='...') }}</td>
                                     <td class="border-b whitespace-nowrap">
-                                        <div class="d-inline">
-                                            <a type="button" href="{{ route('appoint_que.edit',$item->id) }}" 
-                                                class="btn btn-warning waves-effect waves-light m-1">
-                                                <i class="fa fa-pencil"></i> 
-                                                <span>edit</span>
-                                            </a>
-                                            <form method="POST" action="{{ route('appoint_que.destroy', $item->id) }}">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" onclick="return confirm('Are you want to delete?')" class="btn btn-denger">Delete</button>
-                                            </form>
-                                        </div>
+                                        <a type="button" href="{{ route('appoint_que.edit',$item->id) }}" 
+                                            class="btn btn-warning waves-effect waves-light m-1">
+                                            <i class="fa fa-pencil"></i> 
+                                            <span>edit</span>
+                                        </a>
+                                    </td>
+                                    <td class="border-b whitespace-nowrap">
+                                        <form method="POST" action="{{ route('appoint_que.destroy', $item->id) }}">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" onclick="return confirm('Are you want to delete?')" class="btn btn-danger">Delete</button>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach

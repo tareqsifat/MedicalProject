@@ -9,9 +9,6 @@
             <h2 class="font-medium text-base mr-auto">
                 Appointments
             </h2>
-            <div class="w-full sm:w-auto flex items-center sm:ml-auto mt-3 sm:mt-0">
-                {{-- <a href="{{ route('appointments_create') }}" class="btn btn-warning"><i class="fa fa-plus"></i> ADD</a> --}}
-            </div>
         </div>
         <div class="p-5" id="responsive-table">
             <div class="preview">
@@ -26,6 +23,8 @@
                                 <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">Date of Birth</th>
                                 <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">Appointment Date</th>
                                 <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">Message</th>
+                                <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">Action</th>
+                                <th class="border-b-2 dark:border-dark-5 whitespace-nowrap"></th>
                             </tr>
                         </thead>
                         {{-- <img src="/" alt="" height="50px"> --}}
@@ -44,7 +43,7 @@
                                             <form method="POST" action="{{ route('appointments_destroy', $item->id) }}">
                                                 @csrf
                                                 @method('GET')
-                                                <button type="submit" onclick="return confirm('Are you want to delete?')" class="btn btn-denger">Delete</button>
+                                                <button type="submit" onclick="return confirm('Are you want to delete?')" class="btn btn-danger"><i class="fas fa-trash-alt"></i>&nbsp;Delete</button>
                                             </form>
                                         </div>
                                     </td>

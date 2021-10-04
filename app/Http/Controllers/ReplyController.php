@@ -29,10 +29,10 @@ class ReplyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        return view('admin.reply.create');
-    }
+    // public function create()
+    // {
+    //     return view('admin.reply.create');
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -123,6 +123,10 @@ class ReplyController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $collection = Reply::find($id);
+        $collection->delete();
+
+        session()->flash('alert-danger','reply deleted Successfully');
+        return back();
     }
 }

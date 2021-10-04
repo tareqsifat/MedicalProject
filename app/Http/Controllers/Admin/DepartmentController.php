@@ -17,10 +17,10 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        $collection = Department::where('status',1)->with('doctor_info')->with('treatment_info')->get();
+        $collection = Department::where('status',1)->with(['doctor_info', 'treatment'])->get();
         // foreach ($collection as $value) {
         //     # code...
-        //     dd($value->doctor_info);
+        //     dd($value);
         // }
         return view('admin.department.index',compact('collection'));
     }

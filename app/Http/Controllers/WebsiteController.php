@@ -50,7 +50,8 @@ class WebsiteController extends Controller
     {
         // $footer = Footer::latest()->get();
         $appoint_que = AppointQue::latest()->get();
-        $appoint_page = AppointPage::latest()->get();
+        $appoint_page = AppointPage::where('published',1)->first();
+        // dd($appoint_page);
         return view('website.appointment', compact('appoint_que','appoint_page'));
     }
 

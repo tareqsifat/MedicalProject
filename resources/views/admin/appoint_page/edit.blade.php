@@ -8,7 +8,7 @@
                 All Blog
             </h2>
             <div class="form-check w-full sm:w-auto sm:ml-auto mt-3 sm:mt-0">
-                <a href="{{ route('appoint_page.index') }}" class="btn btn-primary"><i class="icon-backward"></i> <- Back</a>
+                <a href="{{ route('appoint_page.index') }}" class="btn btn-primary"><i class="icon-backward"></i>&nbsp; Back</a>
             </div>
         </div>
         <form method="POST" action="{{ route('appoint_page.update', $collection->id) }}" enctype="multipart/form-data" id="horizontal-form">
@@ -43,7 +43,7 @@
                     @enderror
                 </div>
                 <div class="sm:ml-20 sm:pl-5 mt-5">
-                    <button type="submit" style="margin-bottom: 30px" class="btn btn-primary"><i class="icon-lock"></i> update</button>
+                    <button type="submit" style="margin-bottom: 30px" class="btn btn-primary"><i class="icon-lock"></i>&nbsp; update</button>
                 </div>
             </div>
         </form>

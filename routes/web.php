@@ -104,6 +104,10 @@ Route::group([
     Route::put('footer/single_update/{id}',[FooterController::class,'singleupdate'])->name('footer_single_update');
     //user_message_index
     Route::get('send_email',[SendEmailController::class, 'index'])->name('send_email_index');
+    //user_message_delete
+    Route::delete('send_email/{id}',[SendEmailController::class, 'destroy'])->name('send_email_delete');
+    //Appointment_publisher_route
+    Route::get('appoint_publish/{id}',[AppointmentPageController::class, 'publish'])->name('appoint_publish');
 });
 
 // Comments

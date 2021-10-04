@@ -8,8 +8,7 @@
                 All SubCategory
             </h2>
             <div class="form-check w-full sm:w-auto sm:ml-auto mt-3 sm:mt-0">
-                <a href="{{ route('subcategory.index') }}" class="btn btn-primary"><i class="icon-backward"></i>
-                     Back</a>
+                <a href="{{ route('subcategory.index') }}" class="btn btn-primary"><i class="icon-backward"></i>&nbsp; Back</a>
             </div>
         </div>
         <form method="POST" class="insert_form" action="{{ route('subcategory.store') }}" enctype="multipart/form-data" id="horizontal-form">
@@ -35,7 +34,7 @@
                     <input id="horizontal-form-1" name="name" type="text" class="form-control" placeholder="SubCategory Name">
                 </div>
                 <div class="sm:ml-20 sm:pl-5 mt-5">
-                    <button type="submit" style="margin-bottom: 30px" class="btn btn-primary"><i class="icon-lock"></i> Add</button>
+                    <button type="submit" style="margin-bottom: 30px" class="btn btn-primary"><i class="icon-lock"></i>&nbsp; Add</button>
                 </div>
             </div>
         </form>

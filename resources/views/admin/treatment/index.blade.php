@@ -26,6 +26,7 @@
                                 <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">Name</th>
                                 <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">Cost</th>
                                 <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">Action</th>
+                                <th class="border-b-2 dark:border-dark-5 whitespace-nowrap"></th>
                             </tr>
                         </thead>
                         {{-- <img src="/" alt="" height="50px"> --}}
@@ -35,19 +36,20 @@
                                     <td class="border-b whitespace-nowrap">{{ $key+1 }}</td>
                                     <td class="border-b whitespace-nowrap">{{ $item->name }}</td>
                                     <td class="border-b whitespace-nowrap">{{ $item->cost }}</td>
-                                    <td class="border-b whitespace-nowrap">
-                                        <div class="justify-content-between">
-                                            <a type="button" href="{{ route('treatment.edit',$item->id) }}" 
-                                                class="btn btn-warning waves-effect waves-light m-1">
-                                                <i class="fa fa-pencil"></i> 
-                                                <span>edit</span>
-                                            </a>
-                                            <form method="POST" action="{{ route('treatment.destroy', $item->id) }}">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" onclick="return confirm('Are you want to delete?')" class="btn btn-denger">Delete</button>
-                                            </form>
-                                        </div>
+                                    <td style="width: 80px; text-align: left" 
+                                        class="border-b whitespace-nowrap">
+                                        <a type="button" href="{{ route('treatment.edit',$item->id) }}" 
+                                            class="btn btn-warning waves-effect waves-light m-1">
+                                            <i class="fa fa-pencil"></i> 
+                                            <span>edit</span>
+                                        </a>
+                                    </td>
+                                    <td style="width: 80px;  text-align: right" class="border-b whitespace-nowrap">
+                                        <form method="POST"  action="{{ route('treatment.destroy', $item->id) }}">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" onclick="return confirm('Are you want to delete?')" class="btn btn-danger">Delete</button>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach

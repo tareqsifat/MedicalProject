@@ -18,7 +18,7 @@ class AppointmentQueController extends Controller
      */
     public function index()
     {
-        $collection = AppointQue::latest()->get();
+        $collection = AppointQue::latest()->paginate(10);
         return view('admin.appoint_que.index',compact('collection'));
     }
 

@@ -13,4 +13,5 @@ class Testimonial extends Model
         'body',
         'image'
     ];
+
 }

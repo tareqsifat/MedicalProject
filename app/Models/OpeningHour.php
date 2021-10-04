@@ -13,4 +13,5 @@ class OpeningHour extends Model
         'day',
         'isclosed' 
     ];
+    protected $dates = ['start_time', 'end_time'];
 }

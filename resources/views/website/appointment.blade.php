@@ -1,8 +1,8 @@
 @extends('website.layout.webstie')
 
 @section('content')
-@foreach ($appoint_page as $item)
-	<section id="page-title" class="page-title-parallax" style="background-image: url('{{"/uploads/appoint_pages/$item->title_image"}}'); background-position: bottom center; background-size: cover; padding: 80px 0;">
+{{-- @foreach ($appoint_page as $appoint_page) --}}
+	<section id="page-title" class="page-title-parallax" style="background-image: url('{{"/uploads/appoint_pages/$appoint_page->title_image"}}'); background-position: bottom center; background-size: cover; padding: 80px 0;">
 
 		<div class="container clearfix">
 			<h1>Appointment</h1>
@@ -14,32 +14,31 @@
 		</div>
 
 	</section>
-	@break
-@endforeach
+	{{-- @break
+@endforeach --}}
 <!-- #page-title end -->
 
 <!-- Content
 ============================================= -->
 <section id="content">
 	<div class="content-wrap">
-		@foreach ($appoint_page as $item)
+		{{-- @foreach ($appoint_page as $appoint_page) --}}
 			
 			<div class="container clearfix">
 
 				<div class="heading-block center border-bottom-0 mb-0">
 					<h3>Book an Appointment.</h3>
-					<span>{{ $item->title_message }}</span>
+					<span>{{ $appoint_page->title_message }}</span>
 				</div>
 
 			</div>
 
 			<div class="section mb-0 parallax"style="background: url('{{ asset('contents/website') }}/contents/website/demos/medical/images/appointment/bg.jpg') top center no-repeat / cover;" data-bottom-top="background-position:0px 0px;" data-top-bottom="background-position:0px 200px;">
-				{{-- <img src="{{ 'contents/website' }}/contents/website/demos/medical/images/appointment/bg.jpg" alt=""> --}}
 				<div class="container">
 					<div class="row">
 						<div class="col-lg-5">
 							<div class="d-none d-lg-block" style="position: relative;" data-height-xl="413" >
-								<img src='{{ asset("/uploads/appoint_pages/$item->form_image") }}' alt="Image" style="position: absolute; bottom: -65px;">
+								<img src='{{ asset("/uploads/appoint_pages/$appoint_page->form_image") }}' alt="Image" style="position: absolute; bottom: -65px;">
 							</div>
 						</div>
 
@@ -57,7 +56,7 @@
 				<div class="container clearfix">
 					<div class="heading-block center border-bottom-0 bottommargin-lg">
 						<h3>Questions Before Booking</h3>
-						<span>{{ $item->question_message }}</span>
+						<span>{{ $appoint_page->question_message }}</span>
 					</div>
 					<div id="faqs" class="faqs row">
 						@foreach ($appoint_que as $key=> $item)
@@ -97,8 +96,8 @@
 					</div>
 				</div>
 			</div>
-			@break
-		@endforeach
+			{{-- @break
+		@endforeach --}}
 	</div>
 </section><!-- #content end -->
 @endsection

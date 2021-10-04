@@ -18,7 +18,7 @@ class TestimonialController extends Controller
      */
     public function index()
     {
-        $collection = Testimonial::get();
+        $collection = Testimonial::paginate(10);
         return view('admin.testimonial.index', compact('collection'));
     }
     

@@ -37,29 +37,6 @@
                                 </tr>
                                 <tr>
                                     <td colspan="2" id="singleform0" style="display: none">
-                                        {{-- <form method="POST" action="{{ route('footer_single_update', $item->id) }}" enctype="multipart/form-data" style="padding-right: 10px" id="horizontal-form">
-                                            @csrf
-                                            @method('PUT')
-                                                {{-- <div class="preview">
-                                                    <div class="form-group p-4 mb-3">
-                                                        <label for="horizontal-form-1" class="form-label sm:w-20">Company Name</label>
-                                                        <input id="horizontal-form-1" name="company_name" type="text" class="form-control" value="{{ $item->company_name }}">
-                                                        @error('company_name')
-                                                        <div class="text-theme-6 mt-2">{{ $message }}<br></div>
-                                                        @enderror
-                                                </div>
-                                                <div class="sm:ml-20 sm:pl-5 mt-5" style="text-align: right; margin-right: 20px">
-                                                    <button type="button" onclick="document.getElementById('singleform0').style.display = 'none'" style="margin-bottom: 30px" class="btn btn-primary">
-                                                        <i class="fas fa-window-close"></i>
-                                                        &nbsp; close
-                                                    </button>
-                                                    <button type="submit" style="margin-bottom: 30px" class="btn btn-primary">
-                                                        <i class="icon-lock"></i>
-                                                        &nbsp; update
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </form> --}}
                                         @include('admin.include.single_update',[
                                             'item' => $item,
                                             'name' => 'company_name',
@@ -82,29 +59,11 @@
                                 </tr>
                                 <tr>
                                     <td colspan="2" id="singleform1" style="display: none">
-                                        {{-- <form method="POST" action="{{ route('footer_single_update', $item->id) }}" enctype="multipart/form-data" style="padding-right: 10px" id="horizontal-form">
-                                            @csrf
-                                            @method('PUT') --}}
-                                            {{-- <div class="preview">
-                                                <div class="form-group p-4 mb-3">
-                                                    <label for="horizontal-form-1" class="form-label sm:w-20">email</label>
-                                                    <input id="horizontal-form-1" name="email" type="text" class="form-control" value="{{ $item->email }}">
-                                                    @error('email')
-                                                    <div class="text-theme-6 mt-2">{{ $message }}<br></div>
-                                                    @enderror
-                                                </div>
-                                                <div class="sm:ml-20 sm:pl-5 mt-5" style="text-align: right; margin-right: 20px">
-                                                    <button type="button" onclick="document.getElementById('singleform1').style.display = 'none'" style="margin-bottom: 30px" class="btn btn-primary"><i class="fas fa-window-close"></i>&nbsp; close</button>
-                                                    
-                                                    <button type="submit" style="margin-bottom: 30px" class="btn btn-primary"><i class="icon-lock"></i>&nbsp; update</button>
-                                                </div>
-                                            </div> --}}
-                                        {{-- </form> --}}
-                                            @include('admin.include.single_update',[
-                                                'item' => $item,
-                                                'name' => 'email',
-                                                'fname' =>'singleform1'
-                                            ])
+                                        @include('admin.include.single_update',[
+                                            'item' => $item,
+                                            'name' => 'email',
+                                            'fname' =>'singleform1'
+                                        ])
                                     </td>
                                 </tr>
                                 <tr>
@@ -122,25 +81,6 @@
                                 </tr>
                                 <tr>
                                     <td colspan="2" id="singleform2" style="display: none">
-                                        {{-- <form method="POST" action="{{ route('footer_single_update', $item->id) }}" enctype="multipart/form-data" style="padding-right: 10px" id="horizontal-form">
-                                            @csrf
-                                            @method('PUT') --}}
-                                            
-                                            {{-- <div class="preview">
-                                                <div class="form-group p-4 mb-3">
-                                                    <label for="horizontal-form-1" class="form-label sm:w-20">phone</label>
-                                                    <input id="horizontal-form-1" name="phone" type="text" class="form-control" value="{{ $item->phone }}">
-                                                    @error('phone')
-                                                        <div class="text-theme-6 mt-2">{{ $message }}<br></div>
-                                                    @enderror
-                                                </div>
-                                                <div class="sm:ml-20 sm:pl-5 mt-5" style="text-align: right; margin-right: 20px">
-                                                    <button type="button" onclick="document.getElementById('singleform2').style.display = 'none'" style="margin-bottom: 30px" class="btn btn-primary"><i class="fas fa-window-close"></i>&nbsp; close</button>
-                                                    
-                                                    <button type="submit" style="margin-bottom: 30px" class="btn btn-primary"><i class="icon-lock"></i>&nbsp; update</button>
-                                                </div>
-                                            </div> 
-                                        </form>--}}
                                         @include('admin.include.single_update',[
                                             'item' => $item,
                                             'name' => 'phone',
@@ -162,25 +102,6 @@
                                 </tr>
                                 <tr>
                                     <td colspan="2" id="singleform3" style="display: none">
-                                        {{-- <form method="POST" action="{{ route('footer_single_update', $item->id) }}" enctype="multipart/form-data" style="padding-right: 10px" id="horizontal-form">
-                                            @csrf
-                                            @method('PUT')
-                                            
-                                            <div class="preview">
-                                                <div class="form-group p-4 mb-3">
-                                                    <label for="horizontal-form-1" class="form-label sm:w-20">Facebook</label>
-                                                    <input id="horizontal-form-1" name="facebook" type="text" class="form-control" value="{{ $item->facebook }}">
-                                                    @error('facebook')
-                                                        <div class="text-theme-6 mt-2">{{ $message }}<br></div>
-                                                    @enderror
-                                                </div>
-                                                <div class="sm:ml-20 sm:pl-5 mt-5" style="text-align: right; margin-right: 20px">
-                                                    <button type="button" onclick="document.getElementById('singleform3').style.display = 'none'" style="margin-bottom: 30px" class="btn btn-primary"><i class="fas fa-window-close"></i>&nbsp; close</button>
-                                                    
-                                                    <button type="submit" style="margin-bottom: 30px" class="btn btn-primary"><i class="icon-lock"></i>&nbsp; update</button>
-                                                </div>
-                                            </div>
-                                        </form> --}}
                                         @include('admin.include.single_update',[
                                             'item' => $item,
                                             'name' => 'facebook',
@@ -202,25 +123,6 @@
                                 </tr>
                                 <tr>
                                     <td colspan="2" id="singleform4" style="display: none">
-                                        {{-- <form method="POST" action="{{ route('footer_single_update', $item->id) }}" enctype="multipart/form-data" style="padding-right: 10px" id="horizontal-form">
-                                            @csrf
-                                            @method('PUT')
-                                            
-                                            <div class="preview">
-                                                <div class="form-group p-4 mb-3">
-                                                    <label for="horizontal-form-1" class="form-label sm:w-20">Feed</label>
-                                                    <input id="horizontal-form-1" name="feed" type="text" class="form-control" value="{{ $item->feed }}">
-                                                    @error('feed')
-                                                        <div class="text-theme-6 mt-2">{{ $message }}<br></div>
-                                                    @enderror
-                                                </div>
-                                                <div class="sm:ml-20 sm:pl-5 mt-5" style="text-align: right; margin-right: 20px">
-                                                    <button type="button" onclick="document.getElementById('singleform4').style.display = 'none'" style="margin-bottom: 30px" class="btn btn-primary"><i class="fas fa-window-close"></i>&nbsp; close</button>
-                                                    
-                                                    <button type="submit" style="margin-bottom: 30px" class="btn btn-primary"><i class="icon-lock"></i>&nbsp; update</button>
-                                                </div>
-                                            </div>
-                                        </form> --}}
                                         @include('admin.include.single_update',[
                                             'item' => $item,
                                             'name' => 'feed',
@@ -251,8 +153,6 @@
     </div>
     <script>
         function viewClose(name){
-        console.log(name);
-            // console.log(name);
             for (let index = 0; index < 5; index++) {
                 if(name == ("singleform"+index)){
                     document.getElementById(("singleform"+index)).style.display='block';

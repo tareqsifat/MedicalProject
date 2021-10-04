@@ -17,7 +17,7 @@ class SendEmailController extends Controller
      */
     public function index()
     {
-        $collection = SendEmail::latest()->get();
+        $collection = SendEmail::latest()->paginate(10);
         return view('admin.send_email.index',compact('collection'));
     }
 
@@ -111,6 +111,11 @@ class SendEmailController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $collection = SendEmail::find($id);
+        $collection->delete();
+
+        Session()->flash('alert-danger','message deleted Successfully');
+
+        return back();
     }
 }

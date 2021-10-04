@@ -21,15 +21,7 @@ class BlogController extends Controller
      */
     public function index()
     {
-
-        // foreach (Blog::get() as $key => $value) {
-        //     $tagss = explode(',', $value->tags);
-        // }
-        $collection = Blog::with('User_info')->with('category_info')->with('subcategory_info')->get();
-        // foreach($collection as $item){
-        //     dd($item->tags);
-        // }
-        // dd($tagss);
+        $collection = Blog::with('User_info')->with(['category_info','subcategory_info'])->get();
         return view('admin.blog.index', compact('collection'));
     }
 

@@ -18,7 +18,7 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        $collection = Service::where('status',1)->latest()->paginate(5);
+        $collection = Service::where('status',1)->latest()->paginate(10);
         return view('admin.services.index', compact('collection'));
     }
 

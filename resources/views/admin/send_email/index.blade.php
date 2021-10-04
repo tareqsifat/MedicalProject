@@ -39,20 +39,24 @@
                                     <td class="border-b whitespace-nowrap">{{ $item->subject }}</td>
                                     <td class="border-b whitespace-nowrap">{{ $item->service }}</td>
                                     <td class="border-b whitespace-nowrap">{{ $item->message }}</td>
-                                    {{-- <td class="border-b whitespace-nowrap">
+                                    <td class="border-b whitespace-nowrap">
                                         <div class="d-inline">
-                                            <form method="POST" action="{{ route('send_email.destroy', $item->id) }}">
+                                            <form method="POST" action="{{ route('send_email_delete', $item->id) }}">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" onclick="return confirm('Are you want to delete?')" class="btn btn-denger">Delete</button>
+                                                <button type="submit" onclick="return confirm('Are you want to delete?')" class="btn btn-danger">Delete</button>
                                             </form>
                                         </div>
-                                    </td> --}}
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
-                    
+                    @if ($collection->links()->paginator->hasPages())
+                        <div class="d-flex justify-content-center">
+                            {!! $collection->links() !!}
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>

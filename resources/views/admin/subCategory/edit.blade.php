@@ -5,10 +5,10 @@
     <div class="intro-y box mt-5">
         <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5">
             <h2 class="font-medium text-base mr-auto">
-                All Category
+                Edit Subcategory
             </h2>
             <div class="form-check w-full sm:w-auto sm:ml-auto mt-3 sm:mt-0">
-                <a href="{{ route('subcategory.index') }}" class="btn btn-primary"><i class="icon-backward"></i> <- Back</a>
+                <a href="{{ route('subcategory.index') }}" class="btn btn-primary"><i class="icon-backward"></i>&nbsp; Back</a>
             </div>
         </div>
         <form method="POST" action="{{ route('subcategory.update', $collection->id) }}" enctype="multipart/form-data" id="horizontal-form">
@@ -33,7 +33,7 @@
                     </select>
                 </div>
                 <div class="sm:ml-20 sm:pl-5 mt-5">
-                    <button type="submit" style="margin-bottom: 30px" class="btn btn-primary"><i class="icon-lock"></i> update</button>
+                    <button type="submit" style="margin-bottom: 30px" class="btn btn-primary"><i class="icon-lock"></i>&nbsp; update</button>
                 </div>
             </div>
         </form>

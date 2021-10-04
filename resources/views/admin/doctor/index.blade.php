@@ -6,7 +6,7 @@
     <div class="intro-y box mt-5">
         <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200">
             <h2 class="font-medium text-base mr-auto">
-                Doctors
+               All Doctors
             </h2>
             <div class="w-full sm:w-auto flex items-center sm:ml-auto mt-3 sm:mt-0">
                 <a href="{{ route('doctors.create') }}" class="btn btn-warning"><i class="fa fa-plus"></i> ADD</a>
@@ -25,6 +25,7 @@
                                 <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">Description</th>
                                 <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">Social Links</th>
                                 <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">action</th>
+                                <th class="border-b-2 dark:border-dark-5 whitespace-nowrap"></th>
                             </tr>
                         </thead>
                         {{-- <img src="/" alt="" height="50px"> --}}
@@ -49,22 +50,26 @@
                                         </div>
                                     </td>
                                     <td class="border-b whitespace-nowrap">
-                                        <div class="d-flex justify-content-between" style="text-align: left">
-                                            <a type="button" href="{{ route('doctors.edit', $item->id) }}" 
-                                                class="btn btn-warning waves-effect waves-light m-1">
-                                                <i class="fa fa-pencil"></i> 
-                                                <span>Edit</span>
-                                            </a>
-                                            <form method="POST" action="{{ route('doctors.destroy', $item->id) }}">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" onclick="return confirm('Are you want to delete?')" class="btn btn-danger">Delete</button>
-                                            </form>
-                                        </div>
+                                        <a type="button" href="{{ route('doctors.edit', $item->id) }}" 
+                                            class="btn btn-warning waves-effect waves-light m-1">
+                                            <i class="fa fa-pencil"></i> 
+                                            <span>Edit</span>
+                                        </a>
+                                    </td>
+                                    <td class="border-b whitespace-nowrap">
+                                        <form method="POST" action="{{ route('doctors.destroy', $item->id) }}">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" onclick="return confirm('Are you want to delete?')" class="btn btn-danger">Delete</button>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach
-                            
+                            @if ($collection->links()->paginator->hasPages())
+                                <div class="d-flex justify-content-center">
+                                    {!! $collection->links() !!}
+                                </div>
+                            @endif
                         </tbody>
                     </table>
                 </div>

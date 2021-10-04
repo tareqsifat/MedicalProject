@@ -19,10 +19,10 @@ class Department extends Model
 
     public function doctor_info()
     {
-        return $this->belongsTo('App\Models\Doctor', 'doctor_id', 'id');
+        return $this->belongsTo(Doctor::class, 'doctor_id', 'id');
     }
-    public function treatment_info()
+    public function treatment()
     {
-        return $this->belongsTo('App\Models\Treatment', 'treatment_id', 'id');
+        return $this->belongsTo(Treatment::class, 'treatment_id', 'id');
     }
 }
